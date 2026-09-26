@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Hull Suite — Paper Trading</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<style>
+  :root {
+    color-scheme: light;
+    --page:#eceff8; --surface-1:#ffffff; --surface-2:#f3f5fb; --text-primary:#0e1320; --text-secondary:#4f5a74; --text-muted:#76829c;
+    --gridline:#e2e7f1; --border:rgba(14,19,32,0.10); --shadow:0 1px 2px rgba(14,19,32,0.06), 0 8px 24px rgba(40,50,110,0.08);
+    --brand-a:#4338ca; --brand-b:#7c3aed; --brand-c:#0d9488; --accent:#4f46e5;
+    --nifty:#6d4bd8; --sensex:#0b8f83; --long:#12a150; --short:#d6336c; --good:#12a150; --warning:#c77d00; --critical:#dc3545;
+    --slate-1:#1b2340; --slate-2:#2d3a66;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      color-scheme: dark;
+      --page:#090c14; --surface-1:#131a29; --surface-2:#1a2336; --text-primary:#eef1f9; --text-secondary:#a0abc4; --text-muted:#7f8aa3;
+      --gridline:#253048; --border:rgba(238,241,249,0.11); --shadow:0 1px 2px rgba(0,0,0,0.4), 0 10px 28px rgba(0,0,0,0.35);
+      --brand-a:#4f46e5; --brand-b:#8b5cf6; --brand-c:#14b8a6; --accent:#9b8cf3;
+      --nifty:#8a75ec; --sensex:#17a390; --long:#2bc85a; --short:#e0578a; --good:#2bc85a; --warning:#f2b636; --critical:#f0645f;
+      --slate-1:#0f1630; --slate-2:#26305a;
+    }
+  }
+  * { box-sizing: border-box; }
+  html { font-size: clamp(15px, 0.55vw + 9px, 19px); }
+  body { margin:0; color:var(--text-primary); font-family:system-ui,-apple-system,"Segoe UI",sans-serif; line-height:1.4;
+    background: radial-gradient(1100px 480px at 8% -8%, color-mix(in srgb, var(--brand-b) 16%, transparent), transparent 70%),
+                radial-gradient(900px 480px at 100% 0%, color-mix(in srgb, var(--brand-c) 14%, transparent), transparent 70%), var(--page);
+    background-attachment: fixed; }
+  .muted { color: var(--text-muted); }
+  b { font-variant-numeric: tabular-nums; }
+  .good { color: var(--good); } .bad { color: var(--critical); }
+
+  .hero { background: linear-gradient(115deg, var(--brand-a) 0%, var(--brand-b) 52%, var(--brand-c) 100%); color:#fff; padding:1.05rem clamp(14px,2vw,32px) 0.9rem; box-shadow:0 6px 26px rgba(67,56,202,0.28); }
+  .hero-inner { max-width:2300px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; gap:12px 24px; flex-wrap:wrap; }
+  .brand { display:flex; align-items:center; gap:0.9rem; }
+  .logo { width:2.5rem; height:2.5rem; border-radius:0.8rem; background:rgba(255,255,255,0.18); display:grid; place-items:center; font-size:1.35rem; }
+  h1 { font-size:1.45rem; margin:0; font-weight:800; letter-spacing:-0.015em; }
+  .tag { font-size:0.86rem; opacity:0.88; margin-top:1px; }
+  .hero-right { display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
+  .hero-pill { background:rgba(255,255,255,0.16); border:1px solid rgba(255,255,255,0.28); padding:0.32rem 0.75rem; border-radius:999px; font-size:0.82rem; font-variant-numeric:tabular-nums; }
+  a.btn { background:#fff; color:var(--brand-a); text-decoration:none; font-weight:700; font-size:0.88rem; padding:0.45rem 0.95rem; border-radius:999px; box-shadow:0 2px 10px rgba(0,0,0,0.18); }
+  details.rules { max-width:2300px; margin:0.55rem auto 0; font-size:0.83rem; opacity:0.95; }
+  details.rules summary { cursor:pointer; font-weight:600; width:fit-content; }
+  details.rules p { margin:0.4rem 0 0; max-width:1200px; opacity:0.92; }
+
+  .page { max-width:2300px; margin:0 auto; padding:1.1rem clamp(14px,2vw,32px) 2rem; }
+  .kpis { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(165px,100%),1fr)); gap:0.9rem; margin-bottom:1rem; }
+  .kpi { position:relative; overflow:hidden; background:var(--surface-1); border:1px solid var(--border); border-radius:1rem; padding:0.95rem 1.1rem; box-shadow:var(--shadow); }
+  .kpi::before { content:""; position:absolute; inset:0 auto 0 0; width:5px; background:var(--kc,var(--accent)); }
+  .kpi .k { font-size:0.72rem; text-transform:uppercase; letter-spacing:0.07em; color:var(--text-muted); font-weight:700; }
+  .kpi .v { font-size:1.85rem; font-weight:800; letter-spacing:-0.02em; font-variant-numeric:tabular-nums; margin-top:0.1rem; line-height:1.15; }
+  .kpi .s { font-size:0.82rem; color:var(--text-secondary); margin-top:0.15rem; }
+  .kpi.g { --kc:var(--good); } .kpi.b { --kc:var(--critical); } .kpi.v1 { --kc:var(--nifty); } .kpi.v2 { --kc:var(--sensex); }
+
+  .st-pill { display:inline-flex; align-items:center; gap:0.35rem; font-weight:700; font-size:0.78rem; padding:0.15rem 0.55rem; border-radius:999px; }
+  .st-pill.live { background:color-mix(in srgb,var(--good) 16%,var(--surface-1)); color:var(--good); }
+  .st-pill.stale { background:color-mix(in srgb,var(--critical) 16%,var(--surface-1)); color:var(--critical); }
+  .st-pill.closed { background:color-mix(in srgb,var(--warning) 18%,var(--surface-1)); color:var(--warning); }
+  .dot { display:inline-block; width:0.55rem; height:0.55rem; border-radius:50%; background:currentColor; }
+  .st-pill.live .dot { animation:pulse 2s infinite; }
+  @keyframes pulse { 0%,100% { box-shadow:0 0 0 0 color-mix(in srgb,currentColor 55%,transparent); } 60% { box-shadow:0 0 0 6px transparent; } }
+
+  .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(420px,100%),1fr)); gap:1rem; }
+  .card { background:var(--surface-1); border:1px solid var(--border); border-radius:1.1rem; box-shadow:var(--shadow); overflow:hidden; }
+  .card-h { display:flex; align-items:center; justify-content:space-between; padding:0.85rem 1.1rem; border-bottom:1px solid var(--gridline); }
+  .card-h .name { font-weight:800; font-size:1.05rem; }
+  .card-h .name .sym { display:inline-block; padding:0.1rem 0.55rem; border-radius:999px; color:#fff; font-size:0.78rem; margin-right:0.45rem; }
+  .sym.NIFTY { background:var(--nifty); } .sym.SENSEX { background:var(--sensex); }
+  .hull-badge { font-size:0.75rem; font-weight:800; padding:0.18rem 0.6rem; border-radius:999px; color:#fff; letter-spacing:0.04em; }
+  .hull-badge.GREEN { background:var(--long); } .hull-badge.RED { background:var(--short); }
+  .decision { display:flex; align-items:center; gap:0.9rem; padding:0.95rem 1.1rem; color:#fff; }
+  .decision.LONG { background:linear-gradient(120deg,color-mix(in srgb,var(--long) 70%,#000),var(--long)); }
+  .decision.SHORT { background:linear-gradient(120deg,color-mix(in srgb,var(--short) 70%,#000),var(--short)); }
+  .decision.FLAT { background:linear-gradient(120deg,var(--slate-1),var(--slate-2)); }
+  .decision .act { font-size:1.6rem; font-weight:800; line-height:1.1; }
+  .decision .lbl { font-size:0.7rem; text-transform:uppercase; letter-spacing:0.07em; opacity:0.9; font-weight:700; }
+  .decision .meta { font-size:0.84rem; opacity:0.93; margin-top:0.1rem; }
+  .decision .pnl { margin-left:auto; text-align:right; }
+  .decision .pnl .big { font-size:1.5rem; font-weight:800; font-variant-numeric:tabular-nums; }
+  .stats { display:grid; grid-template-columns:repeat(4,1fr); gap:0; border-bottom:1px solid var(--gridline); }
+  .stat { padding:0.7rem 0.6rem; text-align:center; border-right:1px solid var(--gridline); }
+  .stat:last-child { border-right:0; }
+  .stat .v { font-size:1.1rem; font-weight:700; font-variant-numeric:tabular-nums; }
+  .stat .k { font-size:0.68rem; text-transform:uppercase; letter-spacing:0.06em; color:var(--text-muted); font-weight:700; }
+  .chart { padding:0.6rem 1rem 0.3rem; }
+  .chart svg { width:100%; height:auto; display:block; }
+  .note { padding:0 1.1rem 0.9rem; font-size:0.8rem; color:var(--text-secondary); }
+  .banner { margin-bottom:1rem; padding:0.8rem 1.1rem; border-radius:0.9rem; font-weight:600; font-size:0.9rem; border:1px solid var(--border); background:var(--surface-1); }
+  .banner.err { background:color-mix(in srgb,var(--critical) 12%,var(--surface-1)); color:var(--critical); }
+  .foot { font-size:0.8rem; color:var(--text-muted); margin-top:1.4rem; line-height:1.6; }
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="hero-inner">
+    <div class="brand"><div class="logo">〰</div>
+      <div><h1>Hull Suite — Paper Trading</h1><div class="tag">NIFTY + SENSEX · HMA &amp; EHMA (length 55) · 15-min · positional</div></div></div>
+    <div class="hero-right">
+      <span id="status"></span><span class="hero-pill" id="tick">…</span>
+      <a class="btn" href="trades.html">Day-wise trades &amp; P&amp;L →</a>
+    </div>
+  </div>
+  <details class="rules"><summary>Strategy rules</summary>
+    <p>Hull Suite (InSilico): the Hull line is <b>GREEN</b> when it is above its value 2 bars ago, <b>RED</b> otherwise. A flip to green = go LONG, a flip to red = go SHORT; the opposite flip closes the trade and reverses. Signal on the closed 15-min bar, fill at the next bar's open. Positional: trades are held overnight, always in the market after the first flip. HMA = weighted Hull average, EHMA = the same built from exponential averages. Nothing else — no CPR, no EMA exit (both tested and rejected). 1 lot per strategy.</p></details>
+</header>
+<main class="page">
+  <div id="err"></div>
+  <div class="kpis" id="kpis"></div>
+  <div class="grid" id="cards"></div>
+  <div class="foot">Read-only page: it cannot place, modify or cancel any order — it only displays what the paper engine computed. Paper P&amp;L is on the index (spot) in points, with 0.01% cost per side; ₹ = points × lot size (NIFTY 65, SENSEX 20). Refreshes every 30 seconds from <code>live_state.json</code>.</div>
+</main>
+<script>
+const STATE_URL = "live_state.json";
+const esc = s => String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const fmt = (v, d=1) => (v > 0 ? "+" : "") + Number(v).toFixed(d);
+const rs = v => (v < 0 ? "−₹" : "₹") + Math.abs(Math.round(v)).toLocaleString("en-IN");
+const cls = v => v > 0 ? "good" : v < 0 ? "bad" : "";
+function istNow() {
+  const p = new Intl.DateTimeFormat("en-GB", {timeZone:"Asia/Kolkata", weekday:"short", hour:"2-digit", minute:"2-digit", hour12:false}).formatToParts(new Date());
+  const g = t => p.find(x => x.type === t).value; return {wd:g("weekday"), mins:(+g("hour"))*60 + (+g("minute"))};
+}
+function spark(tail, colour) {
+  const W=420, H=110, P=6; if (!tail || tail.length < 2) return "";
+  const vals = tail.flatMap(p => [p.c, p.h]); const lo = Math.min(...vals), hi = Math.max(...vals), sp = (hi-lo) || 1;
+  const x = i => P + i*(W-2*P)/(tail.length-1), y = v => H-P - (v-lo)*(H-2*P)/sp;
+  const line = k => tail.map((p,i) => `${x(i).toFixed(1)},${y(p[k]).toFixed(1)}`).join(" ");
+  const col = colour === "GREEN" ? "var(--long)" : "var(--short)";
+  return `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Price and Hull line, last ${tail.length} bars"><polyline fill="none" stroke="var(--text-muted)" stroke-width="1.4" opacity="0.75" points="${line("c")}"/><polyline fill="none" stroke="${col}" stroke-width="2.6" stroke-linejoin="round" points="${line("h")}"/></svg>`;
+}
+function card(sym, mode, v, ltp) {
+  const p = v.position, dir = p ? p.dir : "FLAT";
+  const pnlTxt = p ? `${fmt(p.unrealized_net_pts)} pts · ${rs(p.unrealized_rs)}` : "—";
+  const meta = p ? `since ${esc(p.entry_time.slice(5,16))} @ ${p.entry_price}` : "waiting for the first Hull flip after paper start";
+  const wr = v.closed_trades ? Math.round(100*v.wins/v.closed_trades) + "%" : "—";
+  const pend = v.pending_signal ? `<div class="note"><b>Signal on the latest close: ${esc(v.pending_signal)}</b> — fills at the next bar's open.</div>` : "";
+  return `<section class="card">
+    <div class="card-h"><div class="name"><span class="sym ${sym}">${sym}</span>${mode}</div><span class="hull-badge ${v.colour}">HULL ${v.colour}</span></div>
+    <div class="decision ${dir}"><div><div class="lbl">Position</div><div class="act">${dir}</div><div class="meta">${meta}</div></div>
+      <div class="pnl"><div class="lbl">Open P&amp;L</div><div class="big">${p ? fmt(p.unrealized_net_pts) : "—"}</div><div class="meta">${p ? rs(p.unrealized_rs) : ""}</div></div></div>
+    <div class="stats">
+      <div class="stat"><div class="v ${cls(v.total_net_rs)}">${rs(v.total_net_rs)}</div><div class="k">Total P&amp;L</div></div>
+      <div class="stat"><div class="v ${cls(v.realized_net_rs)}">${rs(v.realized_net_rs)}</div><div class="k">Realized</div></div>
+      <div class="stat"><div class="v">${v.closed_trades}</div><div class="k">Closed trades</div></div>
+      <div class="stat"><div class="v">${wr}</div><div class="k">Win rate</div></div>
+    </div>
+    <div class="chart">${spark(v.tail, v.colour)}</div>
+    <div class="note">Hull ${v.hull} vs ${v.hull_2_bars_ago} two bars ago · ${v.colour} since ${esc(v.colour_since.slice(5,16))} · last closed bar ${esc(v.last_completed_bar.slice(5))} · index ${ltp}</div>
+    ${pend}
+  </section>`;
+}
+async function refresh() {
+  try {
+    const s = await (await fetch(STATE_URL + "?t=" + Date.now(), {cache:"no-store"})).json();
+    const now = istNow(), inMkt = !["Sat","Sun"].includes(now.wd) && now.mins >= 555 && now.mins <= 940;
+    const age = (Date.now() - new Date(s.last_tick + "+05:30").getTime()) / 60000;
+    let pill = `<span class="st-pill closed"><span class="dot"></span>MARKET CLOSED</span>`;
+    if (inMkt) pill = age > 4 ? `<span class="st-pill stale"><span class="dot"></span>STALE — ${Math.round(age)} min</span>` : `<span class="st-pill live"><span class="dot"></span>LIVE</span>`;
+    document.getElementById("status").innerHTML = pill;
+    document.getElementById("tick").textContent = "last tick " + s.last_tick.replace("T"," ").slice(5,16) + " IST";
+    document.getElementById("err").innerHTML = (s.errors||[]).length ? `<div class="banner err">Data error: ${esc(s.errors.join(" | "))}</div>` : "";
+    const all = Object.values(s.instruments).flatMap(i => Object.values(i.strategies));
+    const closed = all.reduce((a,x) => a + x.closed_trades, 0), wins = all.reduce((a,x) => a + x.wins, 0);
+    document.getElementById("kpis").innerHTML = `
+      <div class="kpi ${s.total_net_rs>=0?"g":"b"}"><div class="k">Total paper P&amp;L</div><div class="v ${cls(s.total_net_rs)}">${rs(s.total_net_rs)}</div><div class="s">all 4 strategies, incl. open</div></div>
+      <div class="kpi"><div class="k">Realized</div><div class="v ${cls(s.realized_net_rs)}">${rs(s.realized_net_rs)}</div><div class="s">closed trades only</div></div>
+      <div class="kpi v1"><div class="k">Open positions</div><div class="v">${s.open_positions}/4</div><div class="s">1 lot each</div></div>
+      <div class="kpi v2"><div class="k">Closed trades</div><div class="v">${closed}</div><div class="s">win rate ${closed ? Math.round(100*wins/closed) + "%" : "—"}</div></div>
+      <div class="kpi"><div class="k">Paper start</div><div class="v" style="font-size:1.35rem">${esc(s.paper_start)}</div><div class="s">backtest: 33–42% win rate expected</div></div>`;
+    document.getElementById("cards").innerHTML = Object.entries(s.instruments).flatMap(([sym, i]) =>
+      ["HMA","EHMA"].map(m => card(sym, m, i.strategies[m], i.ltp))).join("");
+  } catch (e) {
+    document.getElementById("err").innerHTML = `<div class="banner err">Could not load live_state.json — ${esc(e.message)}</div>`;
+  }
+}
+refresh(); setInterval(refresh, 30000);
+</script>
+</body>
+</html>
