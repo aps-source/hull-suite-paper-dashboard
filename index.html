@@ -91,7 +91,7 @@
   .bt { margin:0 1.1rem 0.9rem; padding:0.7rem 0.85rem; border-radius:0.8rem; background:var(--surface-2); border:1px solid var(--gridline); }
   .bt .t { display:flex; justify-content:space-between; align-items:center; font-size:0.7rem; text-transform:uppercase; letter-spacing:0.07em; color:var(--text-muted); font-weight:700; margin-bottom:0.45rem; }
   .bt .t a { color:var(--accent); text-decoration:none; text-transform:none; letter-spacing:0; font-size:0.78rem; }
-  .bt .g { display:grid; grid-template-columns:repeat(auto-fit,minmax(88px,1fr)); gap:0.5rem 0.8rem; }
+  .bt .g { display:grid; grid-template-columns:repeat(3,1fr); gap:0.6rem 0.8rem; }
   .bt .g div b { display:block; font-size:0.98rem; } .bt .g div span { font-size:0.68rem; color:var(--text-muted); text-transform:uppercase; letter-spacing:0.05em; font-weight:700; }
   .banner { margin-bottom:1rem; padding:0.8rem 1.1rem; border-radius:0.9rem; font-weight:600; font-size:0.9rem; border:1px solid var(--border); background:var(--surface-1); }
   .banner.err { background:color-mix(in srgb,var(--critical) 12%,var(--surface-1)); color:var(--critical); }
@@ -139,8 +139,7 @@ function btBlock(b) {
   if (!b) return "";
   return `<div class="bt"><div class="t"><span>Backtest reference · 2026 YTD (1 lot)</span><a href="backtest.html">Full backtest →</a></div><div class="g">
     <div><b class="${cls(b.net_rs)}">${rs(b.net_rs)}</b><span>Net P&amp;L</span></div><div><b>${b.trades}</b><span>Trades</span></div><div><b>${b.win_pct}%</b><span>Win rate</span></div>
-    <div><b>${b.pf}</b><span>Profit factor</span></div><div><b class="bad">${rs(b.max_dd_rs)}</b><span>Max drawdown</span></div><div><b>${b.max_consec_loss}</b><span>Max losses in a row</span></div>
-    <div><b class="${cls(b.oos_total.net_pts)}">${b.oos_total.pf}</b><span>PF 2021–25</span></div></div></div>`;
+    <div><b>${b.pf}</b><span>Profit factor</span></div><div><b class="bad">${rs(b.max_dd_rs)}</b><span>Max DD</span></div><div><b class="${cls(b.oos_total.net_pts)}">${b.oos_total.pf}</b><span>PF 2021–25</span></div></div></div>`;
 }
 function card(sym, mode, v, ltp, bt) {
   const p = v.position, dir = p ? p.dir : "FLAT";
