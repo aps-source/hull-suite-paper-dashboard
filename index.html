@@ -88,6 +88,11 @@
   .chart { padding:0.6rem 1rem 0.3rem; }
   .chart svg { width:100%; height:auto; display:block; }
   .note { padding:0 1.1rem 0.9rem; font-size:0.8rem; color:var(--text-secondary); }
+  .bt { margin:0 1.1rem 0.9rem; padding:0.7rem 0.85rem; border-radius:0.8rem; background:var(--surface-2); border:1px solid var(--gridline); }
+  .bt .t { display:flex; justify-content:space-between; align-items:center; font-size:0.7rem; text-transform:uppercase; letter-spacing:0.07em; color:var(--text-muted); font-weight:700; margin-bottom:0.45rem; }
+  .bt .t a { color:var(--accent); text-decoration:none; text-transform:none; letter-spacing:0; font-size:0.78rem; }
+  .bt .g { display:grid; grid-template-columns:repeat(auto-fit,minmax(88px,1fr)); gap:0.5rem 0.8rem; }
+  .bt .g div b { display:block; font-size:0.98rem; } .bt .g div span { font-size:0.68rem; color:var(--text-muted); text-transform:uppercase; letter-spacing:0.05em; font-weight:700; }
   .banner { margin-bottom:1rem; padding:0.8rem 1.1rem; border-radius:0.9rem; font-weight:600; font-size:0.9rem; border:1px solid var(--border); background:var(--surface-1); }
   .banner.err { background:color-mix(in srgb,var(--critical) 12%,var(--surface-1)); color:var(--critical); }
   .foot { font-size:0.8rem; color:var(--text-muted); margin-top:1.4rem; line-height:1.6; }
@@ -100,7 +105,7 @@
       <div><h1>Hull Suite — Paper Trading</h1><div class="tag">NIFTY + SENSEX · HMA &amp; EHMA (length 55) · 15-min · positional</div></div></div>
     <div class="hero-right">
       <span id="status"></span><span class="hero-pill" id="tick">…</span>
-      <a class="btn" href="trades.html">Day-wise trades &amp; P&amp;L →</a><a class="btn" href="backtest.html">Backtest →</a>
+      <a class="btn" href="trades.html">Day-wise trades &amp; P&amp;L →</a><a class="btn" href="backtest.html">Backtest data →</a>
     </div>
   </div>
   <details class="rules"><summary>Strategy rules</summary>
@@ -130,7 +135,14 @@ function spark(tail, colour) {
   const col = colour === "GREEN" ? "var(--long)" : "var(--short)";
   return `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Price and Hull line, last ${tail.length} bars"><polyline fill="none" stroke="var(--text-muted)" stroke-width="1.4" opacity="0.75" points="${line("c")}"/><polyline fill="none" stroke="${col}" stroke-width="2.6" stroke-linejoin="round" points="${line("h")}"/></svg>`;
 }
-function card(sym, mode, v, ltp) {
+function btBlock(b) {
+  if (!b) return "";
+  return `<div class="bt"><div class="t"><span>Backtest reference · 2026 YTD (1 lot)</span><a href="backtest.html">Full backtest →</a></div><div class="g">
+    <div><b class="${cls(b.net_rs)}">${rs(b.net_rs)}</b><span>Net P&amp;L</span></div><div><b>${b.trades}</b><span>Trades</span></div><div><b>${b.win_pct}%</b><span>Win rate</span></div>
+    <div><b>${b.pf}</b><span>Profit factor</span></div><div><b class="bad">${rs(b.max_dd_rs)}</b><span>Max drawdown</span></div><div><b>${b.max_consec_loss}</b><span>Max losses in a row</span></div>
+    <div><b class="${cls(b.oos_total.net_pts)}">${b.oos_total.pf}</b><span>PF 2021–25</span></div></div></div>`;
+}
+function card(sym, mode, v, ltp, bt) {
   const p = v.position, dir = p ? p.dir : "FLAT";
   const pnlTxt = p ? `${fmt(p.unrealized_net_pts)} pts · ${rs(p.unrealized_rs)}` : "—";
   const meta = p ? `since ${esc(p.entry_time.slice(5,16))} @ ${p.entry_price}` : "waiting for the first Hull flip after paper start";
@@ -149,6 +161,7 @@ function card(sym, mode, v, ltp) {
     <div class="chart">${spark(v.tail, v.colour)}</div>
     <div class="note">Hull ${v.hull} vs ${v.hull_2_bars_ago} two bars ago · ${v.colour} since ${esc(v.colour_since.slice(5,16))} · last closed bar ${esc(v.last_completed_bar.slice(5))} · index ${ltp}</div>
     ${pend}
+    ${btBlock(bt)}
   </section>`;
 }
 async function refresh() {
@@ -161,6 +174,7 @@ async function refresh() {
     document.getElementById("status").innerHTML = pill;
     document.getElementById("tick").textContent = "last tick " + s.last_tick.replace("T"," ").slice(5,16) + " IST";
     document.getElementById("err").innerHTML = (s.errors||[]).length ? `<div class="banner err">Data error: ${esc(s.errors.join(" | "))}</div>` : "";
+    if (!window.BT) { try { window.BT = (await (await fetch("backtest_data.json")).json()).strategies; } catch (e) { window.BT = {}; } }
     const all = Object.values(s.instruments).flatMap(i => Object.values(i.strategies));
     const closed = all.reduce((a,x) => a + x.closed_trades, 0), wins = all.reduce((a,x) => a + x.wins, 0);
     document.getElementById("kpis").innerHTML = `
@@ -170,7 +184,7 @@ async function refresh() {
       <div class="kpi v2"><div class="k">Closed trades</div><div class="v">${closed}</div><div class="s">win rate ${closed ? Math.round(100*wins/closed) + "%" : "—"}</div></div>
       <div class="kpi"><div class="k">Paper start</div><div class="v" style="font-size:1.35rem">${esc(s.paper_start)}</div><div class="s">backtest: 33–42% win rate expected</div></div>`;
     document.getElementById("cards").innerHTML = Object.entries(s.instruments).flatMap(([sym, i]) =>
-      ["HMA","EHMA"].map(m => card(sym, m, i.strategies[m], i.ltp))).join("");
+      ["HMA","EHMA"].map(m => card(sym, m, i.strategies[m], i.ltp, BT[sym + " " + m]))).join("");
   } catch (e) {
     document.getElementById("err").innerHTML = `<div class="banner err">Could not load live_state.json — ${esc(e.message)}</div>`;
   }
