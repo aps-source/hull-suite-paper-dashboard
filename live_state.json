@@ -3,7 +3,7 @@
  "paper_start": "2026-09-28",
  "hull_length": 55,
  "timeframe": "15m",
- "last_tick": "2026-09-28T09:40:13",
+ "last_tick": "2026-09-28T09:44:24",
  "lots": {
   "NIFTY": 65,
   "SENSEX": 20
@@ -11,16 +11,16 @@
  "cost_per_side_pct": 0.01,
  "instruments": {
   "NIFTY": {
-   "ltp": 22859.6,
-   "last_1m": "2026-09-28 09:40:00",
+   "ltp": 22861.05,
+   "last_1m": "2026-09-28 09:44:00",
    "strategies": {
     "HMA": {
      "mode": "HMA",
-     "colour": "GREEN",
-     "colour_since": "2026-09-25 13:45:00",
-     "hull": 23056.2,
-     "hull_2_bars_ago": 23045.33,
-     "pending_signal": null,
+     "colour": "RED",
+     "colour_since": "2026-09-28 09:30:00",
+     "hull": 23052.23,
+     "hull_2_bars_ago": 23053.75,
+     "pending_signal": "SHORT",
      "position": null,
      "closed_trades": 0,
      "wins": 0,
@@ -29,11 +29,6 @@
      "total_net_pts": 0.0,
      "total_net_rs": 0.0,
      "tail": [
-      {
-       "t": "09-23 13:15",
-       "c": 23439.4,
-       "h": 23417.78
-      },
       {
        "t": "09-23 13:30",
        "c": 23431.05,
@@ -328,17 +323,22 @@
        "t": "09-28 09:15",
        "c": 22908.6,
        "h": 23056.2
+      },
+      {
+       "t": "09-28 09:30",
+       "c": 22861.05,
+       "h": 23052.23
       }
      ],
-     "last_completed_bar": "2026-09-28 09:15"
+     "last_completed_bar": "2026-09-28 09:30"
     },
     "EHMA": {
      "mode": "EHMA",
-     "colour": "GREEN",
-     "colour_since": "2026-09-25 14:30:00",
-     "hull": 23042.56,
-     "hull_2_bars_ago": 23040.85,
-     "pending_signal": null,
+     "colour": "RED",
+     "colour_since": "2026-09-28 09:30:00",
+     "hull": 23035.38,
+     "hull_2_bars_ago": 23044.58,
+     "pending_signal": "SHORT",
      "position": null,
      "closed_trades": 0,
      "wins": 0,
@@ -347,11 +347,6 @@
      "total_net_pts": 0.0,
      "total_net_rs": 0.0,
      "tail": [
-      {
-       "t": "09-23 13:15",
-       "c": 23439.4,
-       "h": 23416.74
-      },
       {
        "t": "09-23 13:30",
        "c": 23431.05,
@@ -646,23 +641,28 @@
        "t": "09-28 09:15",
        "c": 22908.6,
        "h": 23042.56
+      },
+      {
+       "t": "09-28 09:30",
+       "c": 22861.05,
+       "h": 23035.38
       }
      ],
-     "last_completed_bar": "2026-09-28 09:15"
+     "last_completed_bar": "2026-09-28 09:30"
     }
    }
   },
   "SENSEX": {
-   "ltp": 73020.01,
-   "last_1m": "2026-09-28 09:40:00",
+   "ltp": 72996.91,
+   "last_1m": "2026-09-28 09:44:00",
    "strategies": {
     "HMA": {
      "mode": "HMA",
-     "colour": "GREEN",
-     "colour_since": "2026-09-25 11:45:00",
-     "hull": 73652.52,
-     "hull_2_bars_ago": 73613.39,
-     "pending_signal": null,
+     "colour": "RED",
+     "colour_since": "2026-09-28 09:30:00",
+     "hull": 73640.83,
+     "hull_2_bars_ago": 73642.7,
+     "pending_signal": "SHORT",
      "position": null,
      "closed_trades": 0,
      "wins": 0,
@@ -671,11 +671,6 @@
      "total_net_pts": 0.0,
      "total_net_rs": 0.0,
      "tail": [
-      {
-       "t": "09-23 13:15",
-       "c": 74876.81,
-       "h": 74815.73
-      },
       {
        "t": "09-23 13:30",
        "c": 74832.27,
@@ -970,17 +965,22 @@
        "t": "09-28 09:15",
        "c": 73171.1,
        "h": 73652.52
+      },
+      {
+       "t": "09-28 09:30",
+       "c": 72996.91,
+       "h": 73640.83
       }
      ],
-     "last_completed_bar": "2026-09-28 09:15"
+     "last_completed_bar": "2026-09-28 09:30"
     },
     "EHMA": {
      "mode": "EHMA",
-     "colour": "GREEN",
-     "colour_since": "2026-09-25 14:15:00",
-     "hull": 73591.26,
-     "hull_2_bars_ago": 73582.9,
-     "pending_signal": null,
+     "colour": "RED",
+     "colour_since": "2026-09-28 09:30:00",
+     "hull": 73568.88,
+     "hull_2_bars_ago": 73596.37,
+     "pending_signal": "SHORT",
      "position": null,
      "closed_trades": 0,
      "wins": 0,
@@ -989,11 +989,6 @@
      "total_net_pts": 0.0,
      "total_net_rs": 0.0,
      "tail": [
-      {
-       "t": "09-23 13:15",
-       "c": 74876.81,
-       "h": 74819.23
-      },
       {
        "t": "09-23 13:30",
        "c": 74832.27,
@@ -1288,9 +1283,14 @@
        "t": "09-28 09:15",
        "c": 73171.1,
        "h": 73591.26
+      },
+      {
+       "t": "09-28 09:30",
+       "c": 72996.91,
+       "h": 73568.88
       }
      ],
-     "last_completed_bar": "2026-09-28 09:15"
+     "last_completed_bar": "2026-09-28 09:30"
     }
    }
   }
