@@ -127,13 +127,50 @@ function istNow() {
   const p = new Intl.DateTimeFormat("en-GB", {timeZone:"Asia/Kolkata", weekday:"short", hour:"2-digit", minute:"2-digit", hour12:false}).formatToParts(new Date());
   const g = t => p.find(x => x.type === t).value; return {wd:g("weekday"), mins:(+g("hour"))*60 + (+g("minute"))};
 }
-function spark(tail, colour) {
-  const W=420, H=110, P=6; if (!tail || tail.length < 2) return "";
-  const vals = tail.flatMap(p => [p.c, p.h]); const lo = Math.min(...vals), hi = Math.max(...vals), sp = (hi-lo) || 1;
-  const x = i => P + i*(W-2*P)/(tail.length-1), y = v => H-P - (v-lo)*(H-2*P)/sp;
-  const line = k => tail.map((p,i) => `${x(i).toFixed(1)},${y(p[k]).toFixed(1)}`).join(" ");
-  const col = colour === "GREEN" ? "var(--long)" : "var(--short)";
-  return `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Price and Hull line, last ${tail.length} bars"><polyline fill="none" stroke="var(--text-muted)" stroke-width="1.4" opacity="0.75" points="${line("c")}"/><polyline fill="none" stroke="${col}" stroke-width="2.6" stroke-linejoin="round" points="${line("h")}"/></svg>`;
+function chart(v, trades) {
+  const tail = v.tail; if (!tail || tail.length < 2) return "";
+  const W=460, H=185, PL=42, PR=10, PT=10, PB=20;
+  const p = v.position;
+  const markers = [];
+  if (p) markers.push({t: p.entry_time.slice(5,16), price: p.entry_price, kind:"entry", dir: p.dir});
+  (trades||[]).forEach(tr => {
+    markers.push({t: tr.entry_time.slice(5,16), price: tr.entry, kind:"entry", dir: tr.dir});
+    markers.push({t: tr.exit_time.slice(5,16), price: tr.exit, kind:"exit", pnl: tr.net_pts});
+  });
+  const vals = tail.flatMap(pt => [pt.c, pt.h]).concat(markers.map(m => m.price));
+  const lo = Math.min(...vals), hi = Math.max(...vals), sp = (hi-lo) || 1;
+  const x = i => PL + i*(W-PL-PR)/(tail.length-1);
+  const y = val => H-PB - (val-lo)*(H-PT-PB)/sp;
+  const xOfTime = t => { const i = tail.findIndex(pt => pt.t === t); return i >= 0 ? x(i) : null; };
+  const line = k => tail.map((pt,i) => `${x(i).toFixed(1)},${y(pt[k]).toFixed(1)}`).join(" ");
+  const col = v.colour === "GREEN" ? "var(--long)" : "var(--short)";
+  const grid = [hi, (hi+lo)/2, lo].map(val =>
+    `<line x1="${PL}" x2="${W-PR}" y1="${y(val).toFixed(1)}" y2="${y(val).toFixed(1)}" stroke="var(--gridline)" stroke-width="1"/>
+     <text x="${PL-5}" y="${(y(val)+3).toFixed(1)}" font-size="9" text-anchor="end" fill="var(--text-muted)">${val.toFixed(1)}</text>`).join("");
+  const tIdx = [0, Math.floor((tail.length-1)/2), tail.length-1];
+  const anchors = ["start", "middle", "end"];
+  const timeAxis = tIdx.map((i,k) =>
+    `<text x="${x(i).toFixed(1)}" y="${H-5}" font-size="9" text-anchor="${anchors[k]}" fill="var(--text-muted)">${esc(tail[i].t.slice(3))}</text>`).join("");
+  const markerSvg = markers.map(m => {
+    const mx = xOfTime(m.t); if (mx === null) return "";
+    const my = y(m.price), isEntry = m.kind === "entry";
+    const mcol = isEntry ? (m.dir === "LONG" ? "var(--long)" : "var(--short)") : (m.pnl >= 0 ? "var(--good)" : "var(--critical)");
+    const above = my < H/2;
+    const label = isEntry ? `${m.dir} ${m.price}` : `EXIT ${fmt(m.pnl)}`;
+    return `<line x1="${mx.toFixed(1)}" x2="${mx.toFixed(1)}" y1="${PT}" y2="${H-PB}" stroke="${mcol}" stroke-width="1" stroke-dasharray="3,2" opacity="0.5"/>
+      <circle cx="${mx.toFixed(1)}" cy="${my.toFixed(1)}" r="3.6" fill="${mcol}" stroke="var(--surface-1)" stroke-width="1.2"/>
+      <text x="${mx.toFixed(1)}" y="${(above ? my - 8 : my + 15).toFixed(1)}" font-size="9" font-weight="700" text-anchor="middle" fill="${mcol}">${esc(label)}</text>`;
+  }).join("");
+  const lastI = tail.length - 1;
+  const nowDot = `<circle cx="${x(lastI).toFixed(1)}" cy="${y(tail[lastI].c).toFixed(1)}" r="3" fill="var(--text-primary)"/>`;
+  return `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Price and Hull line with entry/exit markers, last ${tail.length} bars">
+    ${grid}
+    <polyline fill="none" stroke="var(--text-muted)" stroke-width="1.3" opacity="0.7" points="${line("c")}"/>
+    <polyline fill="none" stroke="${col}" stroke-width="2.4" stroke-linejoin="round" points="${line("h")}"/>
+    ${markerSvg}
+    ${nowDot}
+    ${timeAxis}
+  </svg>`;
 }
 function btBlock(b) {
   if (!b) return "";
@@ -141,7 +178,7 @@ function btBlock(b) {
     <div><b class="${cls(b.net_rs)}">${rs(b.net_rs)}</b><span>Net P&amp;L</span></div><div><b>${b.trades}</b><span>Trades</span></div><div><b>${b.win_pct}%</b><span>Win rate</span></div>
     <div><b>${b.pf}</b><span>Profit factor</span></div><div><b class="bad">${rs(b.max_dd_rs)}</b><span>Max DD</span></div><div><b class="${cls(b.oos_total.net_pts)}">${b.oos_total.pf}</b><span>PF 2021–25</span></div></div></div>`;
 }
-function card(sym, mode, v, ltp, bt) {
+function card(sym, mode, v, ltp, bt, trades) {
   const p = v.position, dir = p ? p.dir : "FLAT";
   const pnlTxt = p ? `${fmt(p.unrealized_net_pts)} pts · ${rs(p.unrealized_rs)}` : "—";
   const meta = p ? `since ${esc(p.entry_time.slice(5,16))} @ ${p.entry_price}` : "waiting for the first Hull flip after paper start";
@@ -157,7 +194,7 @@ function card(sym, mode, v, ltp, bt) {
       <div class="stat"><div class="v">${v.closed_trades}</div><div class="k">Closed trades</div></div>
       <div class="stat"><div class="v">${wr}</div><div class="k">Win rate</div></div>
     </div>
-    <div class="chart">${spark(v.tail, v.colour)}</div>
+    <div class="chart">${chart(v, trades)}</div>
     <div class="note">Hull ${v.hull} vs ${v.hull_2_bars_ago} two bars ago · ${v.colour} since ${esc(v.colour_since.slice(5,16))} · last closed bar ${esc(v.last_completed_bar.slice(5))} · index ${ltp}</div>
     ${pend}
     ${btBlock(bt)}
@@ -174,6 +211,7 @@ async function refresh() {
     document.getElementById("tick").textContent = "last tick " + s.last_tick.replace("T"," ").slice(5,16) + " IST";
     document.getElementById("err").innerHTML = (s.errors||[]).length ? `<div class="banner err">Data error: ${esc(s.errors.join(" | "))}</div>` : "";
     if (!window.BT) { try { window.BT = (await (await fetch("backtest_data.json")).json()).strategies; } catch (e) { window.BT = {}; } }
+    if (!window.TRADES) { try { window.TRADES = await (await fetch("trades_history.json")).json(); } catch (e) { window.TRADES = []; } }
     const all = Object.values(s.instruments).flatMap(i => Object.values(i.strategies));
     const closed = all.reduce((a,x) => a + x.closed_trades, 0), wins = all.reduce((a,x) => a + x.wins, 0);
     document.getElementById("kpis").innerHTML = `
@@ -183,7 +221,8 @@ async function refresh() {
       <div class="kpi v2"><div class="k">Closed trades</div><div class="v">${closed}</div><div class="s">win rate ${closed ? Math.round(100*wins/closed) + "%" : "—"}</div></div>
       <div class="kpi"><div class="k">Paper start</div><div class="v" style="font-size:1.35rem">${esc(s.paper_start)}</div><div class="s">backtest: 33–42% win rate expected</div></div>`;
     document.getElementById("cards").innerHTML = Object.entries(s.instruments).flatMap(([sym, i]) =>
-      ["HMA","EHMA"].map(m => card(sym, m, i.strategies[m], i.ltp, BT[sym + " " + m]))).join("");
+      ["HMA","EHMA"].map(m => card(sym, m, i.strategies[m], i.ltp, BT[sym + " " + m],
+        TRADES.filter(r => r.strategy === sym + " " + m)))).join("");
   } catch (e) {
     document.getElementById("err").innerHTML = `<div class="banner err">Could not load live_state.json — ${esc(e.message)}</div>`;
   }
