@@ -1,9 +1,9 @@
 {
- "engine_status": "data_error",
+ "engine_status": "running",
  "paper_start": "2026-09-28",
  "hull_length": 55,
  "timeframe": "15m",
- "last_tick": "2026-09-28T12:54:50",
+ "last_tick": "2026-09-28T12:59:08",
  "lots": {
   "NIFTY": 65,
   "SENSEX": 20
@@ -11,37 +11,32 @@
  "cost_per_side_pct": 0.01,
  "instruments": {
   "NIFTY": {
-   "ltp": 22829.3,
-   "last_1m": "2026-09-28 12:53:00",
+   "ltp": 22830.1,
+   "last_1m": "2026-09-28 12:59:00",
    "strategies": {
     "HMA": {
      "mode": "HMA",
      "colour": "RED",
      "colour_since": "2026-09-28 09:30:00",
-     "hull": 22856.73,
-     "hull_2_bars_ago": 22885.17,
+     "hull": 22843.97,
+     "hull_2_bars_ago": 22870.39,
      "pending_signal": null,
      "position": {
       "dir": "SHORT",
       "entry_time": "2026-09-28 09:45:00",
       "entry_price": 22857.9,
-      "ltp": 22829.3,
-      "unrealized_pts": 28.6,
-      "unrealized_net_pts": 24.03,
-      "unrealized_rs": 1562.0
+      "ltp": 22830.1,
+      "unrealized_pts": 27.8,
+      "unrealized_net_pts": 23.23,
+      "unrealized_rs": 1510.0
      },
      "closed_trades": 0,
      "wins": 0,
      "realized_net_pts": 0.0,
      "realized_net_rs": 0.0,
-     "total_net_pts": 24.03,
-     "total_net_rs": 1562.0,
+     "total_net_pts": 23.23,
+     "total_net_rs": 1510.0,
      "tail": [
-      {
-       "t": "09-24 10:15",
-       "c": 23210.55,
-       "h": 23397.75
-      },
       {
        "t": "09-24 10:30",
        "c": 23218.5,
@@ -336,38 +331,38 @@
        "t": "09-28 12:30",
        "c": 22838.45,
        "h": 22856.73
+      },
+      {
+       "t": "09-28 12:45",
+       "c": 22830.1,
+       "h": 22843.97
       }
      ],
-     "last_completed_bar": "2026-09-28 12:30"
+     "last_completed_bar": "2026-09-28 12:45"
     },
     "EHMA": {
      "mode": "EHMA",
      "colour": "RED",
      "colour_since": "2026-09-28 09:30:00",
-     "hull": 22873.27,
-     "hull_2_bars_ago": 22895.27,
+     "hull": 22863.35,
+     "hull_2_bars_ago": 22883.83,
      "pending_signal": null,
      "position": {
       "dir": "SHORT",
       "entry_time": "2026-09-28 09:45:00",
       "entry_price": 22857.9,
-      "ltp": 22829.3,
-      "unrealized_pts": 28.6,
-      "unrealized_net_pts": 24.03,
-      "unrealized_rs": 1562.0
+      "ltp": 22830.1,
+      "unrealized_pts": 27.8,
+      "unrealized_net_pts": 23.23,
+      "unrealized_rs": 1510.0
      },
      "closed_trades": 0,
      "wins": 0,
      "realized_net_pts": 0.0,
      "realized_net_rs": 0.0,
-     "total_net_pts": 24.03,
-     "total_net_rs": 1562.0,
+     "total_net_pts": 23.23,
+     "total_net_rs": 1510.0,
      "tail": [
-      {
-       "t": "09-24 10:15",
-       "c": 23210.55,
-       "h": 23388.67
-      },
       {
        "t": "09-24 10:30",
        "c": 23218.5,
@@ -662,44 +657,44 @@
        "t": "09-28 12:30",
        "c": 22838.45,
        "h": 22873.27
+      },
+      {
+       "t": "09-28 12:45",
+       "c": 22830.1,
+       "h": 22863.35
       }
      ],
-     "last_completed_bar": "2026-09-28 12:30"
+     "last_completed_bar": "2026-09-28 12:45"
     }
    }
   },
   "SENSEX": {
-   "ltp": 72921.88,
-   "last_1m": "2026-09-28 12:54:00",
+   "ltp": 72917.13,
+   "last_1m": "2026-09-28 12:59:00",
    "strategies": {
     "HMA": {
      "mode": "HMA",
      "colour": "RED",
      "colour_since": "2026-09-28 09:30:00",
-     "hull": 73007.64,
-     "hull_2_bars_ago": 73100.14,
+     "hull": 72966.15,
+     "hull_2_bars_ago": 73052.03,
      "pending_signal": null,
      "position": {
       "dir": "SHORT",
       "entry_time": "2026-09-28 09:45:00",
       "entry_price": 72988.52,
-      "ltp": 72921.88,
-      "unrealized_pts": 66.64,
-      "unrealized_net_pts": 52.05,
-      "unrealized_rs": 1041.0
+      "ltp": 72917.13,
+      "unrealized_pts": 71.39,
+      "unrealized_net_pts": 56.8,
+      "unrealized_rs": 1136.0
      },
      "closed_trades": 0,
      "wins": 0,
      "realized_net_pts": 0.0,
      "realized_net_rs": 0.0,
-     "total_net_pts": 52.05,
-     "total_net_rs": 1041.0,
+     "total_net_pts": 56.8,
+     "total_net_rs": 1136.0,
      "tail": [
-      {
-       "t": "09-24 10:15",
-       "c": 74100.17,
-       "h": 74705.59
-      },
       {
        "t": "09-24 10:30",
        "c": 74114.34,
@@ -994,38 +989,38 @@
        "t": "09-28 12:30",
        "c": 72946.46,
        "h": 73007.64
+      },
+      {
+       "t": "09-28 12:45",
+       "c": 72917.13,
+       "h": 72966.15
       }
      ],
-     "last_completed_bar": "2026-09-28 12:30"
+     "last_completed_bar": "2026-09-28 12:45"
     },
     "EHMA": {
      "mode": "EHMA",
      "colour": "RED",
      "colour_since": "2026-09-28 09:30:00",
-     "hull": 73051.41,
-     "hull_2_bars_ago": 73121.21,
+     "hull": 73020.08,
+     "hull_2_bars_ago": 73084.83,
      "pending_signal": null,
      "position": {
       "dir": "SHORT",
       "entry_time": "2026-09-28 09:45:00",
       "entry_price": 72988.52,
-      "ltp": 72921.88,
-      "unrealized_pts": 66.64,
-      "unrealized_net_pts": 52.05,
-      "unrealized_rs": 1041.0
+      "ltp": 72917.13,
+      "unrealized_pts": 71.39,
+      "unrealized_net_pts": 56.8,
+      "unrealized_rs": 1136.0
      },
      "closed_trades": 0,
      "wins": 0,
      "realized_net_pts": 0.0,
      "realized_net_rs": 0.0,
-     "total_net_pts": 52.05,
-     "total_net_rs": 1041.0,
+     "total_net_pts": 56.8,
+     "total_net_rs": 1136.0,
      "tail": [
-      {
-       "t": "09-24 10:15",
-       "c": 74100.17,
-       "h": 74690.06
-      },
       {
        "t": "09-24 10:30",
        "c": 74114.34,
@@ -1320,17 +1315,20 @@
        "t": "09-28 12:30",
        "c": 72946.46,
        "h": 73051.41
+      },
+      {
+       "t": "09-28 12:45",
+       "c": 72917.13,
+       "h": 73020.08
       }
      ],
-     "last_completed_bar": "2026-09-28 12:30"
+     "last_completed_bar": "2026-09-28 12:45"
     }
    }
   }
  },
- "errors": [
-  "NIFTY: {'status': 'failure', 'remarks': 'HTTPSConnectionPool(host=\\'api.dhan.co\\', port=443): Max retries exceeded with url: /v2/charts/intraday (Caused by NameResolutionError(\"<urllib3.connection.HTTPSConne"
- ],
- "total_net_rs": 5206.0,
+ "errors": [],
+ "total_net_rs": 5292.0,
  "realized_net_rs": 0.0,
  "open_positions": 4
 }
