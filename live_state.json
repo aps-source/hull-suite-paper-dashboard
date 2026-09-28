@@ -3,7 +3,7 @@
  "paper_start": "2026-09-28",
  "hull_length": 55,
  "timeframe": "15m",
- "last_tick": "2026-09-28T17:28:22",
+ "last_tick": "2026-09-28T17:50:33",
  "lots": {
   "NIFTY": 65,
   "SENSEX": 20
@@ -12,14 +12,14 @@
  "instruments": {
   "NIFTY": {
    "ltp": 22780.25,
-   "last_1m": "2026-09-28 17:28:00",
+   "last_1m": "2026-09-28 17:50:00",
    "strategies": {
     "HMA": {
      "mode": "HMA",
      "colour": "RED",
      "colour_since": "2026-09-28 09:30:00",
-     "hull": 22738.83,
-     "hull_2_bars_ago": 22747.45,
+     "hull": 22736.51,
+     "hull_2_bars_ago": 22742.41,
      "pending_signal": null,
      "position": {
       "dir": "SHORT",
@@ -37,11 +37,6 @@
      "total_net_pts": 73.09,
      "total_net_rs": 4751.0,
      "tail": [
-      {
-       "t": "09-24 13:45",
-       "c": 23057.5,
-       "h": 23157.04
-      },
       {
        "t": "09-24 14:00",
        "c": 23077.75,
@@ -336,16 +331,21 @@
        "t": "09-28 17:00",
        "c": 22780.25,
        "h": 22738.83
+      },
+      {
+       "t": "09-28 17:15",
+       "c": 22780.25,
+       "h": 22736.51
       }
      ],
-     "last_completed_bar": "2026-09-28 17:00"
+     "last_completed_bar": "2026-09-28 17:15"
     },
     "EHMA": {
      "mode": "EHMA",
      "colour": "RED",
      "colour_since": "2026-09-28 09:30:00",
-     "hull": 22772.96,
-     "hull_2_bars_ago": 22784.7,
+     "hull": 22767.72,
+     "hull_2_bars_ago": 22778.63,
      "pending_signal": null,
      "position": {
       "dir": "SHORT",
@@ -363,11 +363,6 @@
      "total_net_pts": 73.09,
      "total_net_rs": 4751.0,
      "tail": [
-      {
-       "t": "09-24 13:45",
-       "c": 23057.5,
-       "h": 23217.74
-      },
       {
        "t": "09-24 14:00",
        "c": 23077.75,
@@ -662,9 +657,14 @@
        "t": "09-28 17:00",
        "c": 22780.25,
        "h": 22772.96
+      },
+      {
+       "t": "09-28 17:15",
+       "c": 22780.25,
+       "h": 22767.72
       }
      ],
-     "last_completed_bar": "2026-09-28 17:00"
+     "last_completed_bar": "2026-09-28 17:15"
     }
    }
   },
