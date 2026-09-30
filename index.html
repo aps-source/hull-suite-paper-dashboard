@@ -105,6 +105,20 @@
   .real-strat .n { font-weight:700; font-size:0.8rem; }
   .real-strat .p { font-size:0.92rem; font-weight:800; margin-top:0.15rem; }
   .real-strat .m { font-size:0.7rem; color:var(--text-muted); }
+  .health { background:var(--surface-1); border:1px solid var(--border); border-radius:1rem; padding:0.85rem 1.1rem; box-shadow:var(--shadow); margin-bottom:0.8rem; }
+  .health .hh { display:flex; align-items:center; justify-content:space-between; margin-bottom:0.3rem; }
+  .health .hh b { font-size:0.8rem; letter-spacing:0.04em; text-transform:uppercase; color:var(--text-secondary); }
+  .health .pill { font-size:0.7rem; font-weight:800; padding:0.2rem 0.7rem; border-radius:999px; }
+  .health .pill.ok { background:color-mix(in srgb,var(--good) 18%,var(--surface-1)); color:var(--good); }
+  .health .pill.bad { background:color-mix(in srgb,var(--critical) 18%,var(--surface-1)); color:var(--critical); }
+  .health .row { display:flex; align-items:center; gap:0.55rem; padding:0.38rem 0; font-size:0.84rem; border-top:1px solid var(--gridline); }
+  .health .row:first-of-type { border-top:none; }
+  .health .row .ic { flex:none; width:1.05rem; height:1.05rem; border-radius:50%; display:grid; place-items:center; font-size:0.65rem; font-weight:800; color:#fff; }
+  .health .row .ic.ok { background:var(--good); } .health .row .ic.bad { background:var(--critical); }
+  .events { background:var(--surface-1); border:1px solid var(--border); border-radius:1rem; padding:0.85rem 1.1rem; box-shadow:var(--shadow); margin-bottom:1.1rem; font-size:0.82rem; }
+  .events b { font-size:0.8rem; letter-spacing:0.04em; text-transform:uppercase; color:var(--text-secondary); display:block; margin-bottom:0.4rem; }
+  .events .ev { padding:0.3rem 0; border-top:1px solid var(--gridline); color:var(--text-secondary); }
+  .events .ev:first-of-type { border-top:none; }
   .foot { font-size:0.8rem; color:var(--text-muted); margin-top:1.4rem; line-height:1.6; }
 </style>
 </head>
@@ -184,6 +198,45 @@ function chart(v, trades) {
     ${timeAxis}
   </svg>`;
 }
+function healthCard(s, r) {
+  if (!r) return `<div class="health"><div class="hh"><b>Start-of-day checklist</b><span class="pill bad">CHECK NEEDED</span></div>
+    <div class="row"><span class="ic bad">!</span>Could not load live_real_state.json — real engine may not be running</div></div>`;
+  const age = (Date.now() - new Date(s.last_tick + "+05:30").getTime()) / 60000;
+  const lastEv = (r.recent_events && r.recent_events.length) ? r.recent_events[r.recent_events.length - 1] : null;
+  const lastOrderOk = !lastEv || lastEv.order_ok !== false;
+  const checks = [
+    ["Both instruments ticking (last tick ≤ 10 min old)", age <= 10],
+    ["Not paused (PAUSE.flag absent)", !r.paused],
+    ["Armed for real orders (AUTO_TRADING.on present)", !!r.auto_trading],
+    ["No data errors this tick", !(s.errors || []).length],
+    ["No error on most recent order attempt", lastOrderOk],
+  ];
+  const allOk = checks.every(c => c[1]);
+  return `<div class="health"><div class="hh"><b>Start-of-day checklist</b><span class="pill ${allOk ? "ok" : "bad"}">${allOk ? "ALL CLEAR" : "CHECK NEEDED"}</span></div>
+    ${checks.map(([label, ok]) => `<div class="row"><span class="ic ${ok ? "ok" : "bad"}">${ok ? "✓" : "!"}</span>${esc(label)}</div>`).join("")}</div>`;
+}
+function eventLine(e) {
+  const t = e.logged_at ? esc(e.logged_at.slice(5, 16)) : "";
+  if (e.action) {
+    const a = e.action, k = esc(a.strategy_key || ""), kind = esc(a.kind || "");
+    if (e.order_ok === true) return `${t} — <b>${kind} ${k}: PLACED</b>${e.recorded_entry_price ? ` @ ${e.recorded_entry_price}` : ""}${e.realized_pnl_rupees !== undefined ? ` (P&amp;L ${rs(e.realized_pnl_rupees)})` : ""}`;
+    if (e.order_ok === false) return `${t} — <b class="bad">${kind} ${k}: FAILED</b>`;
+    if (e.outcome === "unknown") return `${t} — <b class="bad">${kind} ${k}: OUTCOME UNKNOWN</b> — check the Dhan order book`;
+    return `${t} — ${kind} ${k}`;
+  }
+  if (e.event === "AUTO_HELD") return `${t} — held: ${esc(e.reason || "")}`;
+  if (e.event === "AUTO_BLOCKED") return `${t} — <b class="bad">blocked</b>: ${esc(e.reason || "")}`;
+  if (e.event === "AUTO_DROPPED") return `${t} — dropped (${esc(e.reason || "")})`;
+  if (e.event === "POSITION_CLOSED_EXTERNALLY") return `${t} — ${esc(e.strategy_key || "")}: broker closed externally`;
+  if (e.event === "AUTO_EXECUTOR_ERROR") return `${t} — <b class="bad">executor error</b>: ${esc(e.error || "")}`;
+  return `${t} — ${esc(JSON.stringify(e)).slice(0, 100)}`;
+}
+function eventsCard(r) {
+  const evs = (r && r.recent_events) || [];
+  if (!evs.length) return `<div class="events"><b>Recent order activity</b><div class="ev">No order attempts yet — nothing has met entry conditions since arming.</div></div>`;
+  const rows = evs.slice(-10).reverse().map(e => `<div class="ev">${eventLine(e)}</div>`).join("");
+  return `<div class="events"><b>Recent order activity (last ${Math.min(10, evs.length)})</b>${rows}</div>`;
+}
 function realBanner(r) {
   if (!r) return "";
   const bannerCls = r.auto_trading && !r.paused ? "" : "off";
@@ -239,10 +292,9 @@ async function refresh() {
     document.getElementById("status").innerHTML = pill;
     document.getElementById("tick").textContent = "last tick " + s.last_tick.replace("T"," ").slice(5,16) + " IST";
     document.getElementById("err").innerHTML = (s.errors||[]).length ? `<div class="banner err">Data error: ${esc(s.errors.join(" | "))}</div>` : "";
-    try {
-      const real = await (await fetch("live_real_state.json?t=" + Date.now(), {cache:"no-store"})).json();
-      document.getElementById("real").innerHTML = realBanner(real);
-    } catch (e) { document.getElementById("real").innerHTML = ""; }
+    let real = null;
+    try { real = await (await fetch("live_real_state.json?t=" + Date.now(), {cache:"no-store"})).json(); } catch (e) { /* handled by null-check below */ }
+    document.getElementById("real").innerHTML = healthCard(s, real) + realBanner(real) + eventsCard(real);
     if (!window.BT) { try { window.BT = (await (await fetch("backtest_data.json")).json()).strategies; } catch (e) { window.BT = {}; } }
     if (!window.TRADES) { try { window.TRADES = await (await fetch("trades_history.json")).json(); } catch (e) { window.TRADES = []; } }
     const all = Object.values(s.instruments).flatMap(i => Object.values(i.strategies));
