@@ -3,7 +3,7 @@
  "paper_start": "2026-09-28",
  "hull_length": 55,
  "timeframe": "15m",
- "last_tick": "2026-09-30T17:38:51",
+ "last_tick": "2026-09-30T17:43:58",
  "lots": {
   "NIFTY": 65,
   "SENSEX": 20
@@ -12,14 +12,14 @@
  "instruments": {
   "NIFTY": {
    "ltp": 22620.45,
-   "last_1m": "2026-09-30 17:38:00",
+   "last_1m": "2026-09-30 17:44:00",
    "strategies": {
     "HMA": {
      "mode": "HMA",
      "colour": "RED",
      "colour_since": "2026-09-30 14:15:00",
-     "hull": 22643.4,
-     "hull_2_bars_ago": 22659.3,
+     "hull": 22636.3,
+     "hull_2_bars_ago": 22651.05,
      "pending_signal": null,
      "position": {
       "dir": "SHORT",
@@ -37,11 +37,6 @@
      "total_net_pts": 115.07,
      "total_net_rs": 7479.0,
      "tail": [
-      {
-       "t": "09-29 10:30",
-       "c": 22613.05,
-       "h": 22671.11
-      },
       {
        "t": "09-29 10:45",
        "c": 22617.05,
@@ -336,16 +331,21 @@
        "t": "09-30 17:15",
        "c": 22620.45,
        "h": 22643.4
+      },
+      {
+       "t": "09-30 17:30",
+       "c": 22620.45,
+       "h": 22636.3
       }
      ],
-     "last_completed_bar": "2026-09-30 17:15"
+     "last_completed_bar": "2026-09-30 17:30"
     },
     "EHMA": {
      "mode": "EHMA",
      "colour": "RED",
      "colour_since": "2026-09-30 14:30:00",
-     "hull": 22640.69,
-     "hull_2_bars_ago": 22650.49,
+     "hull": 22636.34,
+     "hull_2_bars_ago": 22645.4,
      "pending_signal": null,
      "position": {
       "dir": "SHORT",
@@ -363,11 +363,6 @@
      "total_net_pts": 12.24,
      "total_net_rs": 796.0,
      "tail": [
-      {
-       "t": "09-29 10:30",
-       "c": 22613.05,
-       "h": 22683.05
-      },
       {
        "t": "09-29 10:45",
        "c": 22617.05,
@@ -662,9 +657,14 @@
        "t": "09-30 17:15",
        "c": 22620.45,
        "h": 22640.69
+      },
+      {
+       "t": "09-30 17:30",
+       "c": 22620.45,
+       "h": 22636.34
       }
      ],
-     "last_completed_bar": "2026-09-30 17:15"
+     "last_completed_bar": "2026-09-30 17:30"
     }
    }
   },
