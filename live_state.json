@@ -1,9 +1,9 @@
 {
- "engine_status": "running",
+ "engine_status": "data_error",
  "paper_start": "2026-09-28",
  "hull_length": 55,
  "timeframe": "15m",
- "last_tick": "2026-09-30T13:50:18",
+ "last_tick": "2026-09-30T13:55:42",
  "lots": {
   "NIFTY": 65,
   "SENSEX": 20
@@ -11,8 +11,8 @@
  "cost_per_side_pct": 0.01,
  "instruments": {
   "NIFTY": {
-   "ltp": 22719.75,
-   "last_1m": "2026-09-30 13:50:00",
+   "ltp": 22727.8,
+   "last_1m": "2026-09-30 13:54:00",
    "strategies": {
     "HMA": {
      "mode": "HMA",
@@ -25,17 +25,17 @@
       "dir": "LONG",
       "entry_time": "2026-09-29 15:00:00",
       "entry_price": 22673.1,
-      "ltp": 22719.75,
-      "unrealized_pts": 46.65,
-      "unrealized_net_pts": 42.11,
-      "unrealized_rs": 2737.0
+      "ltp": 22727.8,
+      "unrealized_pts": 54.7,
+      "unrealized_net_pts": 50.16,
+      "unrealized_rs": 3260.0
      },
      "closed_trades": 3,
      "wins": 1,
      "realized_net_pts": 132.38,
      "realized_net_rs": 8605.0,
-     "total_net_pts": 174.49,
-     "total_net_rs": 11342.0,
+     "total_net_pts": 182.54,
+     "total_net_rs": 11865.0,
      "tail": [
       {
        "t": "09-28 14:45",
@@ -351,17 +351,17 @@
       "dir": "LONG",
       "entry_time": "2026-09-29 15:30:00",
       "entry_price": 22716.2,
-      "ltp": 22719.75,
-      "unrealized_pts": 3.55,
-      "unrealized_net_pts": -0.99,
-      "unrealized_rs": -65.0
+      "ltp": 22727.8,
+      "unrealized_pts": 11.6,
+      "unrealized_net_pts": 7.06,
+      "unrealized_rs": 459.0
      },
      "closed_trades": 1,
      "wins": 1,
      "realized_net_pts": 137.14,
      "realized_net_rs": 8914.0,
-     "total_net_pts": 136.15,
-     "total_net_rs": 8850.0,
+     "total_net_pts": 144.2,
+     "total_net_rs": 9373.0,
      "tail": [
       {
        "t": "09-28 14:45",
@@ -669,8 +669,8 @@
    }
   },
   "SENSEX": {
-   "ltp": 72755.08,
-   "last_1m": "2026-09-30 13:50:00",
+   "ltp": 72800.96,
+   "last_1m": "2026-09-30 13:55:00",
    "strategies": {
     "HMA": {
      "mode": "HMA",
@@ -683,17 +683,17 @@
       "dir": "LONG",
       "entry_time": "2026-09-29 14:45:00",
       "entry_price": 72418.0,
-      "ltp": 72755.08,
-      "unrealized_pts": 337.08,
-      "unrealized_net_pts": 322.56,
-      "unrealized_rs": 6451.0
+      "ltp": 72800.96,
+      "unrealized_pts": 382.96,
+      "unrealized_net_pts": 368.44,
+      "unrealized_rs": 7369.0
      },
      "closed_trades": 1,
      "wins": 1,
      "realized_net_pts": 555.98,
      "realized_net_rs": 11120.0,
-     "total_net_pts": 878.54,
-     "total_net_rs": 17571.0,
+     "total_net_pts": 924.42,
+     "total_net_rs": 18488.0,
      "tail": [
       {
        "t": "09-28 13:45",
@@ -1009,17 +1009,17 @@
       "dir": "LONG",
       "entry_time": "2026-09-29 15:30:00",
       "entry_price": 72529.07,
-      "ltp": 72755.08,
-      "unrealized_pts": 226.01,
-      "unrealized_net_pts": 211.48,
-      "unrealized_rs": 4230.0
+      "ltp": 72800.96,
+      "unrealized_pts": 271.89,
+      "unrealized_net_pts": 257.36,
+      "unrealized_rs": 5147.0
      },
      "closed_trades": 1,
      "wins": 1,
      "realized_net_pts": 444.9,
      "realized_net_rs": 8898.0,
-     "total_net_pts": 656.38,
-     "total_net_rs": 13128.0,
+     "total_net_pts": 702.26,
+     "total_net_rs": 14045.0,
      "tail": [
       {
        "t": "09-28 13:45",
@@ -1327,8 +1327,10 @@
    }
   }
  },
- "errors": [],
- "total_net_rs": 50891.0,
+ "errors": [
+  "NIFTY: {'status': 'failure', 'remarks': {'error_code': 'DH-907', 'error_type': 'Data_Error', 'error_message': 'System is unable to fetch data due to incorrect parameters or no data present'}, 'data': ''}"
+ ],
+ "total_net_rs": 53771.0,
  "realized_net_rs": 37537.0,
  "open_positions": 4
 }
