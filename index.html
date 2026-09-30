@@ -95,6 +95,16 @@
   .bt .g div b { display:block; font-size:0.98rem; } .bt .g div span { font-size:0.68rem; color:var(--text-muted); text-transform:uppercase; letter-spacing:0.05em; font-weight:700; }
   .banner { margin-bottom:1rem; padding:0.8rem 1.1rem; border-radius:0.9rem; font-weight:600; font-size:0.9rem; border:1px solid var(--border); background:var(--surface-1); }
   .banner.err { background:color-mix(in srgb,var(--critical) 12%,var(--surface-1)); color:var(--critical); }
+  .real-banner { margin-bottom:0.8rem; padding:0.9rem 1.1rem; border-radius:1rem; display:flex; align-items:center; justify-content:space-between; gap:1rem 1.4rem; flex-wrap:wrap; color:#fff;
+    background:linear-gradient(120deg,#7c2d12,#b91c1c 60%,#dc2626); box-shadow:0 6px 22px rgba(185,28,28,0.28); }
+  .real-banner.off { background:linear-gradient(120deg,var(--slate-1),var(--slate-2)); box-shadow:none; }
+  .real-banner .lbl { font-size:0.7rem; text-transform:uppercase; letter-spacing:0.08em; opacity:0.85; font-weight:700; }
+  .real-banner .big { font-size:1.3rem; font-weight:800; }
+  .real-strats { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:0.6rem; margin-bottom:1.1rem; }
+  .real-strat { background:var(--surface-1); border:1px solid var(--border); border-radius:0.8rem; padding:0.6rem 0.8rem; box-shadow:var(--shadow); }
+  .real-strat .n { font-weight:700; font-size:0.8rem; }
+  .real-strat .p { font-size:0.92rem; font-weight:800; margin-top:0.15rem; }
+  .real-strat .m { font-size:0.7rem; color:var(--text-muted); }
   .foot { font-size:0.8rem; color:var(--text-muted); margin-top:1.4rem; line-height:1.6; }
 </style>
 </head>
@@ -102,7 +112,7 @@
 <header class="hero">
   <div class="hero-inner">
     <div class="brand"><div class="logo">〰</div>
-      <div><h1>Hull Suite — Paper Trading</h1><div class="tag">NIFTY + SENSEX · HMA &amp; EHMA (length 55) · 15-min · positional</div></div></div>
+      <div><h1>Hull Suite</h1><div class="tag">NIFTY + SENSEX · HMA &amp; EHMA (length 55) · 15-min · positional · paper (below) + real futures (top)</div></div></div>
     <div class="hero-right">
       <span id="status"></span><span class="hero-pill" id="tick">…</span>
       <a class="btn" href="trades.html">Day-wise trades &amp; P&amp;L →</a><a class="btn" href="backtest.html">Backtest data →</a>
@@ -113,9 +123,11 @@
 </header>
 <main class="page">
   <div id="err"></div>
+  <div id="real"></div>
+  <h2 style="font-size:0.95rem;margin:0 0 0.6rem;color:var(--text-secondary)">Paper trading (simulated fills, for reference)</h2>
   <div class="kpis" id="kpis"></div>
   <div class="grid" id="cards"></div>
-  <div class="foot">Read-only page: it cannot place, modify or cancel any order — it only displays what the paper engine computed. Paper P&amp;L is on the index (spot) in points, with 0.01% cost per side; ₹ = points × lot size (NIFTY 65, SENSEX 20). Refreshes every 30 seconds from <code>live_state.json</code>.</div>
+  <div class="foot">This page cannot place, modify or cancel any order itself — it only displays state written by the engines. The <b>real trading</b> panel above reflects the live futures engine (NIFTY 65 / SENSEX 20 qty per strategy, product MARGIN); it places real orders only while armed (<code>AUTO_TRADING.on</code>), subject to a Rs 5,000/day combined loss cap and a 2-consecutive-loss breaker per strategy. The <b>paper</b> cards below are a simulated, cost-free-of-slippage reference on index points; ₹ = points × lot size. Refreshes every 30 seconds.</div>
 </main>
 <script>
 const STATE_URL = "live_state.json";
@@ -172,6 +184,23 @@ function chart(v, trades) {
     ${timeAxis}
   </svg>`;
 }
+function realBanner(r) {
+  if (!r) return "";
+  const bannerCls = r.auto_trading && !r.paused ? "" : "off";
+  const status = r.paused ? "PAUSED — new entries blocked, exits still fire"
+    : (r.auto_trading ? "ARMED — placing real orders" : "NOT ARMED — signals detected, no real orders");
+  const strats = Object.entries(r.strategies || {}).map(([k, s]) => {
+    const p = s.position;
+    const label = p ? `${esc(p.direction)} @ ${p.entry_ltp}` : "flat";
+    return `<div class="real-strat"><div class="n">${esc(k.replace("_", " "))}</div><div class="p">${label}</div>
+      <div class="m">${s.day_losses} loss${s.day_losses === 1 ? "" : "es"} today</div></div>`;
+  }).join("");
+  return `<div class="real-banner ${bannerCls}">
+      <div><div class="lbl">Real trading · NIFTY 65 / SENSEX 20 qty per strategy</div><div class="big">${esc(status)}</div></div>
+      <div style="text-align:right"><div class="lbl">Combined P&amp;L today</div><div class="big">${rs(r.combined_daily_pnl_rupees)}</div></div>
+    </div>
+    <div class="real-strats">${strats}</div>`;
+}
 function btBlock(b) {
   if (!b) return "";
   return `<div class="bt"><div class="t"><span>Backtest reference · 2026 YTD (1 lot)</span><a href="backtest.html">Full backtest →</a></div><div class="g">
@@ -210,6 +239,10 @@ async function refresh() {
     document.getElementById("status").innerHTML = pill;
     document.getElementById("tick").textContent = "last tick " + s.last_tick.replace("T"," ").slice(5,16) + " IST";
     document.getElementById("err").innerHTML = (s.errors||[]).length ? `<div class="banner err">Data error: ${esc(s.errors.join(" | "))}</div>` : "";
+    try {
+      const real = await (await fetch("live_real_state.json?t=" + Date.now(), {cache:"no-store"})).json();
+      document.getElementById("real").innerHTML = realBanner(real);
+    } catch (e) { document.getElementById("real").innerHTML = ""; }
     if (!window.BT) { try { window.BT = (await (await fetch("backtest_data.json")).json()).strategies; } catch (e) { window.BT = {}; } }
     if (!window.TRADES) { try { window.TRADES = await (await fetch("trades_history.json")).json(); } catch (e) { window.TRADES = []; } }
     const all = Object.values(s.instruments).flatMap(i => Object.values(i.strategies));
