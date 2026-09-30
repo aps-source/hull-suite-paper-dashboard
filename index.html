@@ -119,6 +119,25 @@
   .events b { font-size:0.8rem; letter-spacing:0.04em; text-transform:uppercase; color:var(--text-secondary); display:block; margin-bottom:0.4rem; }
   .events .ev { padding:0.3rem 0; border-top:1px solid var(--gridline); color:var(--text-secondary); }
   .events .ev:first-of-type { border-top:none; }
+  .sig-card { background:var(--surface-1); border:1px solid var(--border); border-radius:1.1rem; box-shadow:var(--shadow); padding:0.9rem 1rem 1rem; }
+  .sig-card .sh { font-size:0.9rem; font-weight:800; margin-bottom:0.6rem; }
+  .sig-card .sh .sym { display:inline-block; padding:0.08rem 0.5rem; border-radius:999px; color:#fff; font-size:0.72rem; margin-right:0.4rem; }
+  .sig-cols { display:grid; grid-template-columns:1fr 1fr; gap:0 1rem; }
+  .sig-col .ch { display:flex; align-items:center; justify-content:space-between; font-weight:800; font-size:0.82rem; margin-bottom:0.3rem; }
+  .sig-col.long .ch { color:var(--long); } .sig-col.short .ch { color:var(--short); }
+  .sig-col .frac { font-size:0.7rem; font-weight:700; background:var(--surface-2); border-radius:999px; padding:0.05rem 0.5rem; color:var(--text-muted); }
+  .sig-bar { height:5px; border-radius:999px; background:var(--gridline); overflow:hidden; margin-bottom:0.55rem; display:flex; gap:2px; }
+  .sig-bar i { flex:1; background:var(--gridline); border-radius:2px; }
+  .sig-bar i.on.long { background:var(--long); } .sig-bar i.on.short { background:var(--short); }
+  .sig-row { display:flex; gap:0.4rem; font-size:0.78rem; padding:0.22rem 0; color:var(--text-secondary); }
+  .sig-row .ic { flex:none; width:0.9rem; }
+  .sig-row.on { color:var(--text-primary); font-weight:700; }
+  .sig-ref { display:flex; flex-wrap:wrap; gap:0.4rem; margin-top:0.7rem; }
+  .sig-ref span { font-size:0.72rem; background:var(--surface-2); border-radius:999px; padding:0.18rem 0.6rem; color:var(--text-secondary); }
+  .sig-ref b { color:var(--text-primary); }
+  .sig-gates { margin-top:0.7rem; padding-top:0.6rem; border-top:1px solid var(--gridline); font-size:0.78rem; }
+  .sig-gates .g { display:flex; gap:0.4rem; padding:0.16rem 0; }
+  .sig-gates .g .ic { flex:none; width:0.9rem; }
   .foot { font-size:0.8rem; color:var(--text-muted); margin-top:1.4rem; line-height:1.6; }
 </style>
 </head>
@@ -138,6 +157,7 @@
 <main class="page">
   <div id="err"></div>
   <div id="real"></div>
+  <div class="grid" id="sigChecklist" style="margin-bottom:1.1rem"></div>
   <h2 style="font-size:0.95rem;margin:0 0 0.6rem;color:var(--text-secondary)">Paper trading (simulated fills, for reference)</h2>
   <div class="kpis" id="kpis"></div>
   <div class="grid" id="cards"></div>
@@ -254,6 +274,39 @@ function realBanner(r) {
     </div>
     <div class="real-strats">${strats}</div>`;
 }
+function signalChecklist(sym, mode, v, ltp, real) {
+  const key = `${sym}_${mode}`, rs_ = (real && real.strategies && real.strategies[key]) || {position: null, day_losses: 0};
+  const longOn = v.colour === "GREEN", shortOn = v.colour === "RED";
+  const longFlip = v.pending_signal === "LONG", shortFlip = v.pending_signal === "SHORT";
+  const col = (label, on, flip, cls) => `<div class="sig-col ${cls}">
+      <div class="ch">${cls === "long" ? "Long" : "Short"}<span class="frac">${(on?1:0)+(flip?1:0)}/2</span></div>
+      <div class="sig-bar"><i class="${on?`on ${cls}`:""}"></i><i class="${flip?`on ${cls}`:""}"></i></div>
+      <div class="sig-row ${on?"on":""}"><span class="ic">${on?"✓":"·"}</span>Hull currently ${cls === "long" ? "GREEN (above 2 bars ago)" : "RED (below 2 bars ago)"}</div>
+      <div class="sig-row ${flip?"on":""}"><span class="ic">${flip?"✓":"·"}</span>Fresh flip this bar (the actual entry trigger)</div>
+    </div>`;
+  const pos = rs_.position;
+  const capHit = real && real.combined_daily_pnl_rupees <= -5000;
+  const breakerHit = rs_.day_losses >= 2;
+  const now = istNow(), inWindow = now.mins >= 560 && now.mins <= 915; // 09:20-15:15 IST
+  const gates = [
+    [`Combined daily loss cap not hit (Rs.5,000 across all 4)`, !capHit],
+    [`2-consecutive-loss breaker not tripped for this strategy (${rs_.day_losses}/2)`, !breakerHit],
+    [`Within auto-entry window 09:20-15:15 IST`, inWindow],
+  ];
+  return `<div class="sig-card">
+    <div class="sh"><span class="sym ${sym}">${sym}</span>${mode} — signal &amp; order-readiness</div>
+    <div class="sig-cols">${col("Long", longOn, longFlip, "long")}${col("Short", shortOn, shortFlip, "short")}</div>
+    <div class="sig-ref">
+      <span>LTP <b>${ltp}</b></span>
+      <span>Hull <b>${v.hull}</b></span><span>2 bars ago <b>${v.hull_2_bars_ago}</b></span>
+      <span>Colour since <b>${esc(v.colour_since.slice(5,16))}</b></span><span>as of <b>${esc(v.last_completed_bar.slice(5))}</b></span>
+    </div>
+    <div class="sig-gates">
+      <div style="font-weight:700;margin-bottom:0.2rem">${pos ? `Position: <span class="${pos.dir==='LONG'?'good':'bad'}">${pos.dir} since ${esc(pos.entry_time.slice(5,16))} @ ${pos.entry_ltp}</span> — exits on the opposite flip` : "No open real position — entry fires on the next fresh flip, subject to the gates below"}</div>
+      ${gates.map(([label, ok]) => `<div class="g"><span class="ic ${ok?"good":"bad"}">${ok?"✓":"✗"}</span>${label}</div>`).join("")}
+    </div>
+  </div>`;
+}
 function btBlock(b) {
   if (!b) return "";
   return `<div class="bt"><div class="t"><span>Backtest reference · 2026 YTD (1 lot)</span><a href="backtest.html">Full backtest →</a></div><div class="g">
@@ -295,6 +348,8 @@ async function refresh() {
     let real = null;
     try { real = await (await fetch("live_real_state.json?t=" + Date.now(), {cache:"no-store"})).json(); } catch (e) { /* handled by null-check below */ }
     document.getElementById("real").innerHTML = healthCard(s, real) + realBanner(real) + eventsCard(real);
+    document.getElementById("sigChecklist").innerHTML = Object.entries(s.instruments).flatMap(([sym, i]) =>
+      ["HMA","EHMA"].map(m => signalChecklist(sym, m, i.strategies[m], i.ltp, real))).join("");
     if (!window.BT) { try { window.BT = (await (await fetch("backtest_data.json")).json()).strategies; } catch (e) { window.BT = {}; } }
     if (!window.TRADES) { try { window.TRADES = await (await fetch("trades_history.json")).json(); } catch (e) { window.TRADES = []; } }
     const all = Object.values(s.instruments).flatMap(i => Object.values(i.strategies));
