@@ -3,7 +3,7 @@
  "paper_start": "2026-09-28",
  "hull_length": 55,
  "timeframe": "15m",
- "last_tick": "2026-10-03T19:00:47",
+ "last_tick": "2026-10-03T19:05:56",
  "lots": {
   "NIFTY": 65,
   "SENSEX": 20
@@ -1328,8 +1328,8 @@
   }
  },
  "errors": [
-  "NIFTY: {'status': 'failure', 'remarks': {'error_code': 'DH-901', 'error_type': 'Invalid_Authentication', 'error_message': 'Client ID or user generated access token is invalid or expired.'}, 'data': ''}",
-  "SENSEX: {'status': 'failure', 'remarks': {'error_code': 'DH-901', 'error_type': 'Invalid_Authentication', 'error_message': 'Client ID or user generated access token is invalid or expired.'}, 'data': ''}"
+  "NIFTY: {'status': 'failure', 'remarks': \"HTTPSConnectionPool(host='api.dhan.co', port=443): Max retries exceeded with url: /v2/charts/intraday (Caused by SSLError(SSLEOFError(8, '[SSL: UNEXPECTED_EOF_WHILE_R",
+  "SENSEX: {'status': 'failure', 'remarks': \"HTTPSConnectionPool(host='api.dhan.co', port=443): Max retries exceeded with url: /v2/charts/intraday (Caused by SSLError(SSLEOFError(8, '[SSL: UNEXPECTED_EOF_WHILE_R"
  ],
  "total_net_rs": 69500.0,
  "realized_net_rs": 50813.0,
