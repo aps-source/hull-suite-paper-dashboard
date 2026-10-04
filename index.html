@@ -158,7 +158,7 @@
   <div id="err"></div>
   <div id="real"></div>
   <div class="grid" id="sigChecklist" style="margin-bottom:1.1rem"></div>
-  <h2 style="font-size:0.95rem;margin:0 0 0.6rem;color:var(--text-secondary)">Paper trading (simulated fills, for reference)</h2>
+  <h2 style="font-size:0.95rem;margin:0 0 0.6rem;color:var(--text-secondary)">Live positions &amp; P&amp;L (real futures orders)</h2>
   <div class="kpis" id="kpis"></div>
   <div class="grid" id="cards"></div>
   <div class="foot">This page cannot place, modify or cancel any order itself — it only displays state written by the engines. The <b>real trading</b> panel above reflects the live futures engine (NIFTY 65 / SENSEX 20 qty per strategy, product MARGIN); it places real orders only while armed (<code>AUTO_TRADING.on</code>), subject to a Rs 5,000/day combined loss cap and a 2-consecutive-loss breaker per strategy. The <b>paper</b> cards below are a simulated, cost-free-of-slippage reference on index points; ₹ = points × lot size. Refreshes every 30 seconds.</div>
@@ -313,26 +313,35 @@ function btBlock(b) {
     <div><b class="${cls(b.net_rs)}">${rs(b.net_rs)}</b><span>Net P&amp;L</span></div><div><b>${b.trades}</b><span>Trades</span></div><div><b>${b.win_pct}%</b><span>Win rate</span></div>
     <div><b>${b.pf}</b><span>Profit factor</span></div><div><b class="bad">${rs(b.max_dd_rs)}</b><span>Max DD</span></div><div><b class="${cls(b.oos_total.net_pts)}">${b.oos_total.pf}</b><span>PF 2021–25</span></div></div></div>`;
 }
-function card(sym, mode, v, ltp, bt, trades) {
-  const p = v.position, dir = p ? p.dir : "FLAT";
-  const pnlTxt = p ? `${fmt(p.unrealized_net_pts)} pts · ${rs(p.unrealized_rs)}` : "—";
-  const meta = p ? `since ${esc(p.entry_time.slice(5,16))} @ ${p.entry_price}` : "waiting for the first Hull flip after paper start";
-  const wr = v.closed_trades ? Math.round(100*v.wins/v.closed_trades) + "%" : "—";
-  const pend = v.pending_signal ? `<div class="note"><b>Signal on the latest close: ${esc(v.pending_signal)}</b> — fills at the next bar's open.</div>` : "";
+const tIso = s => String(s).replace("T", " ");
+function liveStrat(real, key) {
+  const closed = ((real && real.recent_events) || []).filter(e => e.action && e.action.kind === "EXIT" && e.action.strategy_key === key && e.order_ok === true);
+  const realized = closed.reduce((a, e) => a + (e.realized_pnl_rupees || 0), 0);
+  return {closed, realized, wins: closed.filter(e => (e.realized_pnl_rupees || 0) > 0).length};
+}
+function liveCard(sym, mode, v, ltp, real) {
+  const key = `${sym}_${mode}`, lp = ((real && real.strategies && real.strategies[key]) || {}).position || null;
+  const agg = liveStrat(real, key);
+  const sg = lp ? (lp.direction === "LONG" ? 1 : -1) : 0;
+  const unreal = lp && ltp ? (ltp - lp.entry_ltp) * sg * lp.quantity : 0;
+  const total = agg.realized + unreal, dir = lp ? lp.direction : "FLAT";
+  const wr = agg.closed.length ? Math.round(100 * agg.wins / agg.closed.length) + "%" : "—";
+  const meta = lp ? `since ${esc(tIso(lp.entry_time).slice(5,16))} @ ${lp.entry_ltp} · qty ${lp.quantity}` : "no real position — waiting for a fresh Hull flip";
+  const chartV = {...v, position: lp ? {dir: lp.direction, entry_time: tIso(lp.entry_time), entry_price: lp.entry_ltp} : null};
+  const trades = agg.closed.map(e => { const p = e.action.position, s2 = p.direction === "LONG" ? 1 : -1;
+    return {dir: p.direction, entry_time: tIso(p.entry_time), entry: p.entry_ltp, exit_time: tIso(e.logged_at), exit: e.recorded_exit_price, net_pts: (e.recorded_exit_price - p.entry_ltp) * s2}; });
   return `<section class="card">
     <div class="card-h"><div class="name"><span class="sym ${sym}">${sym}</span>${mode}</div><span class="hull-badge ${v.colour}">HULL ${v.colour}</span></div>
-    <div class="decision ${dir}"><div><div class="lbl">Position</div><div class="act">${dir}</div><div class="meta">${meta}</div></div>
-      <div class="pnl"><div class="lbl">Open P&amp;L</div><div class="big">${p ? fmt(p.unrealized_net_pts) : "—"}</div><div class="meta">${p ? rs(p.unrealized_rs) : ""}</div></div></div>
+    <div class="decision ${dir}"><div><div class="lbl">Real position</div><div class="act">${dir}</div><div class="meta">${meta}</div></div>
+      <div class="pnl"><div class="lbl">Open P&amp;L</div><div class="big">${lp ? rs(unreal) : "—"}</div><div class="meta">${lp && ltp ? fmt((ltp - lp.entry_ltp) * sg) + " pts" : ""}</div></div></div>
     <div class="stats">
-      <div class="stat"><div class="v ${cls(v.total_net_rs)}">${rs(v.total_net_rs)}</div><div class="k">Total P&amp;L</div></div>
-      <div class="stat"><div class="v ${cls(v.realized_net_rs)}">${rs(v.realized_net_rs)}</div><div class="k">Realized</div></div>
-      <div class="stat"><div class="v">${v.closed_trades}</div><div class="k">Closed trades</div></div>
+      <div class="stat"><div class="v ${cls(total)}">${rs(total)}</div><div class="k">Total P&amp;L</div></div>
+      <div class="stat"><div class="v ${cls(agg.realized)}">${rs(agg.realized)}</div><div class="k">Realized</div></div>
+      <div class="stat"><div class="v">${agg.closed.length}</div><div class="k">Closed trades</div></div>
       <div class="stat"><div class="v">${wr}</div><div class="k">Win rate</div></div>
     </div>
-    <div class="chart">${chart(v, trades)}</div>
+    <div class="chart">${chart(chartV, trades)}</div>
     <div class="note">Hull ${v.hull} vs ${v.hull_2_bars_ago} two bars ago · ${v.colour} since ${esc(v.colour_since.slice(5,16))} · last closed bar ${esc(v.last_completed_bar.slice(5))} · index ${ltp}</div>
-    ${pend}
-    ${btBlock(bt)}
   </section>`;
 }
 async function refresh() {
@@ -350,19 +359,21 @@ async function refresh() {
     document.getElementById("real").innerHTML = healthCard(s, real) + realBanner(real) + eventsCard(real);
     document.getElementById("sigChecklist").innerHTML = Object.entries(s.instruments).flatMap(([sym, i]) =>
       ["HMA","EHMA"].map(m => signalChecklist(sym, m, i.strategies[m], i.ltp, real))).join("");
-    if (!window.BT) { try { window.BT = (await (await fetch("backtest_data.json")).json()).strategies; } catch (e) { window.BT = {}; } }
-    if (!window.TRADES) { try { window.TRADES = await (await fetch("trades_history.json")).json(); } catch (e) { window.TRADES = []; } }
-    const all = Object.values(s.instruments).flatMap(i => Object.values(i.strategies));
-    const closed = all.reduce((a,x) => a + x.closed_trades, 0), wins = all.reduce((a,x) => a + x.wins, 0);
+    const cells = Object.entries(s.instruments).flatMap(([sym, i]) => ["HMA","EHMA"].map(m => ({sym, m, v: i.strategies[m], ltp: i.ltp})));
+    const aggs = cells.map(c => liveStrat(real, `${c.sym}_${c.m}`));
+    const realized = aggs.reduce((a, x) => a + x.realized, 0), closedN = aggs.reduce((a, x) => a + x.closed.length, 0), winsN = aggs.reduce((a, x) => a + x.wins, 0);
+    const openN = cells.filter(c => ((real && real.strategies && real.strategies[`${c.sym}_${c.m}`]) || {}).position).length;
+    const unrealAll = cells.reduce((a, c) => {
+      const lp = ((real && real.strategies && real.strategies[`${c.sym}_${c.m}`]) || {}).position;
+      return a + (lp && c.ltp ? (c.ltp - lp.entry_ltp) * (lp.direction === "LONG" ? 1 : -1) * lp.quantity : 0); }, 0);
+    const totalAll = realized + unrealAll;
     document.getElementById("kpis").innerHTML = `
-      <div class="kpi ${s.total_net_rs>=0?"g":"b"}"><div class="k">Total paper P&amp;L</div><div class="v ${cls(s.total_net_rs)}">${rs(s.total_net_rs)}</div><div class="s">all 4 strategies, incl. open</div></div>
-      <div class="kpi"><div class="k">Realized</div><div class="v ${cls(s.realized_net_rs)}">${rs(s.realized_net_rs)}</div><div class="s">closed trades only</div></div>
-      <div class="kpi v1"><div class="k">Open positions</div><div class="v">${s.open_positions}/4</div><div class="s">1 lot each</div></div>
-      <div class="kpi v2"><div class="k">Closed trades</div><div class="v">${closed}</div><div class="s">win rate ${closed ? Math.round(100*wins/closed) + "%" : "—"}</div></div>
-      <div class="kpi"><div class="k">Paper start</div><div class="v" style="font-size:1.35rem">${esc(s.paper_start)}</div><div class="s">backtest: 33–42% win rate expected</div></div>`;
-    document.getElementById("cards").innerHTML = Object.entries(s.instruments).flatMap(([sym, i]) =>
-      ["HMA","EHMA"].map(m => card(sym, m, i.strategies[m], i.ltp, BT[sym + " " + m],
-        TRADES.filter(r => r.strategy === sym + " " + m)))).join("");
+      <div class="kpi ${totalAll>=0?"g":"b"}"><div class="k">Total live P&amp;L</div><div class="v ${cls(totalAll)}">${rs(totalAll)}</div><div class="s">realized + open, real orders only</div></div>
+      <div class="kpi"><div class="k">Realized</div><div class="v ${cls(realized)}">${rs(realized)}</div><div class="s">closed real trades</div></div>
+      <div class="kpi v1"><div class="k">Open positions</div><div class="v">${openN}/4</div><div class="s">1 lot each</div></div>
+      <div class="kpi v2"><div class="k">Closed trades</div><div class="v">${closedN}</div><div class="s">win rate ${closedN ? Math.round(100*winsN/closedN) + "%" : "—"}</div></div>
+      <div class="kpi"><div class="k">Trading day</div><div class="v" style="font-size:1.35rem">${esc(real ? real.trading_day || "—" : "—")}</div><div class="s">${real && real.auto_trading ? "armed" : "not armed"}</div></div>`;
+    document.getElementById("cards").innerHTML = cells.map(c => liveCard(c.sym, c.m, c.v, c.ltp, real)).join("");
   } catch (e) {
     document.getElementById("err").innerHTML = `<div class="banner err">Could not load live_state.json — ${esc(e.message)}</div>`;
   }
