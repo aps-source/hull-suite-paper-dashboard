@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-06T14:45:02",
+ "generated": "2026-10-06T14:46:23",
  "auto_trading": true,
  "paused": false,
  "trading_day": "2026-10-06",
@@ -23,102 +23,6 @@
   }
  },
  "recent_events": [
-  {
-   "event": "AUTO_DROPPED",
-   "action": {
-    "kind": "ENTRY",
-    "strategy_key": "NIFTY_EHMA",
-    "symbol": "NIFTY",
-    "mode": "EHMA",
-    "direction": "LONG",
-    "quantity": 65,
-    "contract": {
-     "symbol": "NIFTY",
-     "security_id": "48704",
-     "trading_symbol": "NIFTY-Oct2026-FUT",
-     "expiry": "2026-10-27",
-     "lot": 65,
-     "exchange_segment": "NSE_FNO",
-     "ltp": 22774.5
-    },
-    "signal_time": "2026-10-05 13:15:00",
-    "created_at": "2026-10-06T14:35:17"
-   },
-   "reason": "stale signal (1520 min old, limit 20)",
-   "logged_at": "2026-10-06T14:35:24.585365"
-  },
-  {
-   "event": "AUTO_DROPPED",
-   "action": {
-    "kind": "ENTRY",
-    "strategy_key": "SENSEX_HMA",
-    "symbol": "SENSEX",
-    "mode": "HMA",
-    "direction": "LONG",
-    "quantity": 20,
-    "contract": {
-     "symbol": "SENSEX",
-     "security_id": "864571",
-     "trading_symbol": "SENSEX-Oct2026-FUT",
-     "expiry": "2026-10-29",
-     "lot": 20,
-     "exchange_segment": "BSE_FNO",
-     "ltp": 73187.55
-    },
-    "signal_time": "2026-10-05 09:15:00",
-    "created_at": "2026-10-06T14:35:19"
-   },
-   "reason": "stale signal (1760 min old, limit 20)",
-   "logged_at": "2026-10-06T14:35:25.297358"
-  },
-  {
-   "event": "AUTO_DROPPED",
-   "action": {
-    "kind": "ENTRY",
-    "strategy_key": "SENSEX_EHMA",
-    "symbol": "SENSEX",
-    "mode": "EHMA",
-    "direction": "LONG",
-    "quantity": 20,
-    "contract": {
-     "symbol": "SENSEX",
-     "security_id": "864571",
-     "trading_symbol": "SENSEX-Oct2026-FUT",
-     "expiry": "2026-10-29",
-     "lot": 20,
-     "exchange_segment": "BSE_FNO",
-     "ltp": 73187.55
-    },
-    "signal_time": "2026-10-05 13:45:00",
-    "created_at": "2026-10-06T14:35:21"
-   },
-   "reason": "stale signal (1490 min old, limit 20)",
-   "logged_at": "2026-10-06T14:35:25.969484"
-  },
-  {
-   "event": "AUTO_DROPPED",
-   "action": {
-    "kind": "ENTRY",
-    "strategy_key": "NIFTY_HMA",
-    "symbol": "NIFTY",
-    "mode": "HMA",
-    "direction": "LONG",
-    "quantity": 65,
-    "contract": {
-     "symbol": "NIFTY",
-     "security_id": "48704",
-     "trading_symbol": "NIFTY-Oct2026-FUT",
-     "expiry": "2026-10-27",
-     "lot": 65,
-     "exchange_segment": "NSE_FNO",
-     "ltp": 22778.8
-    },
-    "signal_time": "2026-10-01 16:45:00",
-    "created_at": "2026-10-06T14:36:28"
-   },
-   "reason": "stale signal (7072 min old, limit 20)",
-   "logged_at": "2026-10-06T14:36:46.219917"
-  },
   {
    "event": "AUTO_DROPPED",
    "action": {
@@ -742,6 +646,102 @@
    },
    "reason": "stale signal (1500 min old, limit 20)",
    "logged_at": "2026-10-06T14:45:00.528683"
+  },
+  {
+   "event": "AUTO_DROPPED",
+   "action": {
+    "kind": "ENTRY",
+    "strategy_key": "NIFTY_HMA",
+    "symbol": "NIFTY",
+    "mode": "HMA",
+    "direction": "LONG",
+    "quantity": 65,
+    "contract": {
+     "symbol": "NIFTY",
+     "security_id": "48704",
+     "trading_symbol": "NIFTY-Oct2026-FUT",
+     "expiry": "2026-10-27",
+     "lot": 65,
+     "exchange_segment": "NSE_FNO",
+     "ltp": 22776.8
+    },
+    "signal_time": "2026-10-01 16:45:00",
+    "created_at": "2026-10-06T14:46:03"
+   },
+   "reason": "stale signal (7081 min old, limit 20)",
+   "logged_at": "2026-10-06T14:46:20.368188"
+  },
+  {
+   "event": "AUTO_DROPPED",
+   "action": {
+    "kind": "ENTRY",
+    "strategy_key": "NIFTY_EHMA",
+    "symbol": "NIFTY",
+    "mode": "EHMA",
+    "direction": "LONG",
+    "quantity": 65,
+    "contract": {
+     "symbol": "NIFTY",
+     "security_id": "48704",
+     "trading_symbol": "NIFTY-Oct2026-FUT",
+     "expiry": "2026-10-27",
+     "lot": 65,
+     "exchange_segment": "NSE_FNO",
+     "ltp": 22778.0
+    },
+    "signal_time": "2026-10-05 13:15:00",
+    "created_at": "2026-10-06T14:46:11"
+   },
+   "reason": "stale signal (1531 min old, limit 20)",
+   "logged_at": "2026-10-06T14:46:21.051744"
+  },
+  {
+   "event": "AUTO_DROPPED",
+   "action": {
+    "kind": "ENTRY",
+    "strategy_key": "SENSEX_HMA",
+    "symbol": "SENSEX",
+    "mode": "HMA",
+    "direction": "LONG",
+    "quantity": 20,
+    "contract": {
+     "symbol": "SENSEX",
+     "security_id": "864571",
+     "trading_symbol": "SENSEX-Oct2026-FUT",
+     "expiry": "2026-10-29",
+     "lot": 20,
+     "exchange_segment": "BSE_FNO",
+     "ltp": 73186.95
+    },
+    "signal_time": "2026-10-05 09:15:00",
+    "created_at": "2026-10-06T14:46:15"
+   },
+   "reason": "stale signal (1771 min old, limit 20)",
+   "logged_at": "2026-10-06T14:46:21.814340"
+  },
+  {
+   "event": "AUTO_DROPPED",
+   "action": {
+    "kind": "ENTRY",
+    "strategy_key": "SENSEX_EHMA",
+    "symbol": "SENSEX",
+    "mode": "EHMA",
+    "direction": "LONG",
+    "quantity": 20,
+    "contract": {
+     "symbol": "SENSEX",
+     "security_id": "864571",
+     "trading_symbol": "SENSEX-Oct2026-FUT",
+     "expiry": "2026-10-29",
+     "lot": 20,
+     "exchange_segment": "BSE_FNO",
+     "ltp": 73186.95
+    },
+    "signal_time": "2026-10-05 13:45:00",
+    "created_at": "2026-10-06T14:46:17"
+   },
+   "reason": "stale signal (1501 min old, limit 20)",
+   "logged_at": "2026-10-06T14:46:22.517457"
   }
  ]
 }
