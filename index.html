@@ -139,6 +139,14 @@
   .sig-gates .g { display:flex; gap:0.4rem; padding:0.16rem 0; }
   .sig-gates .g .ic { flex:none; width:0.9rem; }
   .foot { font-size:0.8rem; color:var(--text-muted); margin-top:1.4rem; line-height:1.6; }
+  .opt-banner { margin:1.1rem 0 0.8rem; padding:0.9rem 1.1rem; border-radius:1rem; display:flex; align-items:center; justify-content:space-between; gap:1rem 1.4rem; flex-wrap:wrap; color:#fff;
+    background:linear-gradient(120deg,#4338ca,#7c3aed 60%,#8b5cf6); box-shadow:0 6px 22px rgba(124,58,237,0.28); }
+  .opt-banner .lbl { font-size:0.7rem; text-transform:uppercase; letter-spacing:0.08em; opacity:0.85; font-weight:700; }
+  .opt-banner .big { font-size:1.3rem; font-weight:800; }
+  .opt-strats { display:grid; grid-template-columns:repeat(auto-fit,minmax(170px,1fr)); gap:0.6rem; margin-bottom:0.3rem; }
+  .opt-strat { background:var(--surface-1); border:1px solid var(--border); border-radius:0.8rem; padding:0.6rem 0.8rem; box-shadow:var(--shadow); }
+  .opt-strat .n { font-weight:700; font-size:0.8rem; } .opt-strat .p { font-size:0.9rem; font-weight:800; margin-top:0.15rem; }
+  .opt-strat .m { font-size:0.7rem; color:var(--text-muted); }
 </style>
 </head>
 <body>
@@ -158,7 +166,8 @@
   <div id="err"></div>
   <div id="real"></div>
   <div class="grid" id="sigChecklist" style="margin-bottom:1.1rem"></div>
-  <h2 style="font-size:0.95rem;margin:0 0 0.6rem;color:var(--text-secondary)">Live positions &amp; P&amp;L (real futures orders)</h2>
+  <div id="optPaper"></div>
+  <h2 style="font-size:0.95rem;margin:0 0 0.6rem;color:var(--text-secondary)">Index-points paper (legacy, since 2026-09-28 — superseded by option paper above)</h2>
   <div class="kpis" id="kpis"></div>
   <div class="grid" id="cards"></div>
   <div class="foot">This page cannot place, modify or cancel any order itself — it only displays state written by the engines. The <b>real trading</b> panel above reflects the live futures engine (NIFTY 65 / SENSEX 20 qty per strategy, product MARGIN); it places real orders only while armed (<code>AUTO_TRADING.on</code>), subject to a Rs 5,000/day combined loss cap and a 2-consecutive-loss breaker per strategy. The <b>paper</b> cards below are a simulated, cost-free-of-slippage reference on index points; ₹ = points × lot size. Refreshes every 30 seconds.</div>
@@ -257,6 +266,24 @@ function eventsCard(r) {
   if (!evs.length) return `<div class="events"><b>Recent order activity</b><div class="ev">No order attempts yet — nothing has met entry conditions since arming.</div></div>`;
   const rows = evs.slice(-10).reverse().map(e => `<div class="ev">${eventLine(e)}</div>`).join("");
   return `<div class="events"><b>Recent order activity (last ${Math.min(10, evs.length)})</b>${rows}</div>`;
+}
+function optPaperSection(optState, optHist) {
+  if (!optState) return "";
+  const closed = optHist || [];
+  const realized = closed.reduce((a, x) => a + (x.net_rs || 0), 0);
+  const wins = closed.filter(x => (x.net_rs || 0) > 0).length;
+  const strats = Object.entries(optState).map(([k, s]) => {
+    const p = s.position;
+    const label = p ? `${esc(p.direction)} @ ${p.entry_ltp}` : "flat";
+    return `<div class="opt-strat"><div class="n">${esc(k.replace("_", " "))}</div><div class="p">${label}</div>
+      <div class="m">${esc((p && p.trading_symbol) || "")}</div></div>`;
+  }).join("");
+  return `<div class="opt-banner">
+      <div><div class="lbl">Paper trading · real option premiums, ATM (HMA) / 1 ITM (EHMA) · since 2026-10-07</div><div class="big">Simulated — no real orders</div></div>
+      <div style="text-align:right"><div class="lbl">Realized P&amp;L</div><div class="big">${rs(realized)}</div></div>
+    </div>
+    <div class="opt-strats">${strats}</div>
+    <div class="note" style="margin:0.3rem 0 1rem">${closed.length} closed trade${closed.length===1?"":"s"}${closed.length?`, ${Math.round(100*wins/closed.length)}% win rate`:""}. Real live premiums, same strike selection as the real engine — never places an order.</div>`;
 }
 function realBanner(r) {
   if (!r) return "";
@@ -360,6 +387,10 @@ async function refresh() {
     document.getElementById("real").innerHTML = healthCard(s, real) + realBanner(real) + eventsCard(real);
     document.getElementById("sigChecklist").innerHTML = Object.entries(s.instruments).flatMap(([sym, i]) =>
       ["HMA","EHMA"].map(m => signalChecklist(sym, m, i.strategies[m], i.ltp, real))).join("");
+    let optState = null, optHist = [];
+    try { optState = await (await fetch("option_paper_state.json?t=" + Date.now(), {cache:"no-store"})).json(); } catch (e) {}
+    try { optHist = await (await fetch("option_paper_history.json?t=" + Date.now(), {cache:"no-store"})).json(); } catch (e) {}
+    document.getElementById("optPaper").innerHTML = optPaperSection(optState, optHist);
     const cells = Object.entries(s.instruments).flatMap(([sym, i]) => ["HMA","EHMA"].map(m => ({sym, m, v: i.strategies[m], ltp: i.ltp})));
     const aggs = cells.map(c => liveStrat(real, `${c.sym}_${c.m}`));
     const realized = aggs.reduce((a, x) => a + x.realized, 0), closedN = aggs.reduce((a, x) => a + x.closed.length, 0), winsN = aggs.reduce((a, x) => a + x.wins, 0);
