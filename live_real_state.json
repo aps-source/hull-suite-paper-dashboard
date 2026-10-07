@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-07T12:35:39",
+ "generated": "2026-10-07T12:41:11",
  "auto_trading": true,
  "paused": false,
  "trading_day": "2026-10-07",
@@ -27,146 +27,6 @@
   }
  },
  "recent_events": [
-  {
-   "event": "AUTO_DROPPED",
-   "action": {
-    "kind": "ENTRY",
-    "strategy_key": "NIFTY_EHMA",
-    "symbol": "NIFTY",
-    "mode": "EHMA",
-    "direction": "SHORT",
-    "quantity": 65,
-    "contract": {
-     "symbol": "NIFTY",
-     "security_id": "44621",
-     "trading_symbol": "NIFTY-Oct2026-22700-PE",
-     "expiry": "2026-10-13",
-     "strike": 22700.0,
-     "option_type": "PE",
-     "lot": 65,
-     "exchange_segment": "NSE_FNO",
-     "ltp": 143.2,
-     "otm_steps": 0,
-     "spot": 22695.15
-    },
-    "signal_time": "2026-10-07 10:00:00",
-    "created_at": "2026-10-07T11:06:08"
-   },
-   "reason": "stale signal (66 min old, limit 20)",
-   "logged_at": "2026-10-07T11:06:16.348681"
-  },
-  {
-   "event": "AUTO_DROPPED",
-   "action": {
-    "kind": "ENTRY",
-    "strategy_key": "SENSEX_HMA",
-    "symbol": "SENSEX",
-    "mode": "HMA",
-    "direction": "SHORT",
-    "quantity": 20,
-    "contract": {
-     "symbol": "SENSEX",
-     "security_id": "888946",
-     "trading_symbol": "SENSEX-Oct2026-73000-PE",
-     "expiry": "2026-10-08",
-     "strike": 73000.0,
-     "option_type": "PE",
-     "lot": 20,
-     "exchange_segment": "BSE_FNO",
-     "ltp": 317.65,
-     "otm_steps": 0,
-     "spot": 72950.56
-    },
-    "signal_time": "2026-10-07 09:45:00",
-    "created_at": "2026-10-07T11:06:10"
-   },
-   "reason": "stale signal (81 min old, limit 20)",
-   "logged_at": "2026-10-07T11:06:17.068687"
-  },
-  {
-   "event": "AUTO_DROPPED",
-   "action": {
-    "kind": "ENTRY",
-    "strategy_key": "SENSEX_EHMA",
-    "symbol": "SENSEX",
-    "mode": "EHMA",
-    "direction": "SHORT",
-    "quantity": 20,
-    "contract": {
-     "symbol": "SENSEX",
-     "security_id": "888946",
-     "trading_symbol": "SENSEX-Oct2026-73000-PE",
-     "expiry": "2026-10-08",
-     "strike": 73000.0,
-     "option_type": "PE",
-     "lot": 20,
-     "exchange_segment": "BSE_FNO",
-     "ltp": 314.75,
-     "otm_steps": 0,
-     "spot": 72950.56
-    },
-    "signal_time": "2026-10-07 10:00:00",
-    "created_at": "2026-10-07T11:06:13"
-   },
-   "reason": "stale signal (66 min old, limit 20)",
-   "logged_at": "2026-10-07T11:06:17.808537"
-  },
-  {
-   "event": "AUTO_DROPPED",
-   "action": {
-    "kind": "ENTRY",
-    "strategy_key": "NIFTY_HMA",
-    "symbol": "NIFTY",
-    "mode": "HMA",
-    "direction": "SHORT",
-    "quantity": 65,
-    "contract": {
-     "symbol": "NIFTY",
-     "security_id": "44621",
-     "trading_symbol": "NIFTY-Oct2026-22700-PE",
-     "expiry": "2026-10-13",
-     "strike": 22700.0,
-     "option_type": "PE",
-     "lot": 65,
-     "exchange_segment": "NSE_FNO",
-     "ltp": 140.5,
-     "otm_steps": 0,
-     "spot": 22707.5
-    },
-    "signal_time": "2026-10-07 09:45:00",
-    "created_at": "2026-10-07T11:07:17"
-   },
-   "reason": "stale signal (83 min old, limit 20)",
-   "logged_at": "2026-10-07T11:07:38.588577"
-  },
-  {
-   "event": "AUTO_DROPPED",
-   "action": {
-    "kind": "ENTRY",
-    "strategy_key": "NIFTY_EHMA",
-    "symbol": "NIFTY",
-    "mode": "EHMA",
-    "direction": "SHORT",
-    "quantity": 65,
-    "contract": {
-     "symbol": "NIFTY",
-     "security_id": "44621",
-     "trading_symbol": "NIFTY-Oct2026-22700-PE",
-     "expiry": "2026-10-13",
-     "strike": 22700.0,
-     "option_type": "PE",
-     "lot": 65,
-     "exchange_segment": "NSE_FNO",
-     "ltp": 142.0,
-     "otm_steps": 0,
-     "spot": 22707.5
-    },
-    "signal_time": "2026-10-07 10:00:00",
-    "created_at": "2026-10-07T11:07:21"
-   },
-   "reason": "stale signal (68 min old, limit 20)",
-   "logged_at": "2026-10-07T11:07:39.225816"
-  },
   {
    "event": "AUTO_DROPPED",
    "action": {
@@ -969,6 +829,146 @@
    },
    "reason": "2-loss breaker tripped for SENSEX_EHMA",
    "logged_at": "2026-10-07T12:35:39.243088"
+  },
+  {
+   "event": "AUTO_HELD",
+   "action": {
+    "kind": "ENTRY",
+    "strategy_key": "SENSEX_EHMA",
+    "symbol": "SENSEX",
+    "mode": "EHMA",
+    "direction": "SHORT",
+    "quantity": 20,
+    "contract": {
+     "symbol": "SENSEX",
+     "security_id": "889350",
+     "trading_symbol": "SENSEX-Oct2026-72800-PE",
+     "expiry": "2026-10-08",
+     "strike": 72800.0,
+     "option_type": "PE",
+     "lot": 20,
+     "exchange_segment": "BSE_FNO",
+     "ltp": 295.5,
+     "otm_steps": 0,
+     "spot": 72796.01
+    },
+    "signal_time": "2026-10-07 12:30:00",
+    "created_at": "2026-10-07T12:31:23"
+   },
+   "reason": "2-loss breaker tripped for SENSEX_EHMA",
+   "logged_at": "2026-10-07T12:36:41.866899"
+  },
+  {
+   "event": "AUTO_HELD",
+   "action": {
+    "kind": "ENTRY",
+    "strategy_key": "SENSEX_EHMA",
+    "symbol": "SENSEX",
+    "mode": "EHMA",
+    "direction": "SHORT",
+    "quantity": 20,
+    "contract": {
+     "symbol": "SENSEX",
+     "security_id": "889350",
+     "trading_symbol": "SENSEX-Oct2026-72800-PE",
+     "expiry": "2026-10-08",
+     "strike": 72800.0,
+     "option_type": "PE",
+     "lot": 20,
+     "exchange_segment": "BSE_FNO",
+     "ltp": 295.5,
+     "otm_steps": 0,
+     "spot": 72796.01
+    },
+    "signal_time": "2026-10-07 12:30:00",
+    "created_at": "2026-10-07T12:31:23"
+   },
+   "reason": "2-loss breaker tripped for SENSEX_EHMA",
+   "logged_at": "2026-10-07T12:38:01.953234"
+  },
+  {
+   "event": "AUTO_HELD",
+   "action": {
+    "kind": "ENTRY",
+    "strategy_key": "SENSEX_EHMA",
+    "symbol": "SENSEX",
+    "mode": "EHMA",
+    "direction": "SHORT",
+    "quantity": 20,
+    "contract": {
+     "symbol": "SENSEX",
+     "security_id": "889350",
+     "trading_symbol": "SENSEX-Oct2026-72800-PE",
+     "expiry": "2026-10-08",
+     "strike": 72800.0,
+     "option_type": "PE",
+     "lot": 20,
+     "exchange_segment": "BSE_FNO",
+     "ltp": 295.5,
+     "otm_steps": 0,
+     "spot": 72796.01
+    },
+    "signal_time": "2026-10-07 12:30:00",
+    "created_at": "2026-10-07T12:31:23"
+   },
+   "reason": "2-loss breaker tripped for SENSEX_EHMA",
+   "logged_at": "2026-10-07T12:39:05.784450"
+  },
+  {
+   "event": "AUTO_HELD",
+   "action": {
+    "kind": "ENTRY",
+    "strategy_key": "SENSEX_EHMA",
+    "symbol": "SENSEX",
+    "mode": "EHMA",
+    "direction": "SHORT",
+    "quantity": 20,
+    "contract": {
+     "symbol": "SENSEX",
+     "security_id": "889350",
+     "trading_symbol": "SENSEX-Oct2026-72800-PE",
+     "expiry": "2026-10-08",
+     "strike": 72800.0,
+     "option_type": "PE",
+     "lot": 20,
+     "exchange_segment": "BSE_FNO",
+     "ltp": 295.5,
+     "otm_steps": 0,
+     "spot": 72796.01
+    },
+    "signal_time": "2026-10-07 12:30:00",
+    "created_at": "2026-10-07T12:31:23"
+   },
+   "reason": "2-loss breaker tripped for SENSEX_EHMA",
+   "logged_at": "2026-10-07T12:40:07.643526"
+  },
+  {
+   "event": "AUTO_HELD",
+   "action": {
+    "kind": "ENTRY",
+    "strategy_key": "SENSEX_EHMA",
+    "symbol": "SENSEX",
+    "mode": "EHMA",
+    "direction": "SHORT",
+    "quantity": 20,
+    "contract": {
+     "symbol": "SENSEX",
+     "security_id": "889350",
+     "trading_symbol": "SENSEX-Oct2026-72800-PE",
+     "expiry": "2026-10-08",
+     "strike": 72800.0,
+     "option_type": "PE",
+     "lot": 20,
+     "exchange_segment": "BSE_FNO",
+     "ltp": 295.5,
+     "otm_steps": 0,
+     "spot": 72796.01
+    },
+    "signal_time": "2026-10-07 12:30:00",
+    "created_at": "2026-10-07T12:31:23"
+   },
+   "reason": "2-loss breaker tripped for SENSEX_EHMA",
+   "logged_at": "2026-10-07T12:41:10.732742"
   }
  ]
 }
