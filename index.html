@@ -237,6 +237,7 @@ function healthCard(s, r) {
 }
 function eventLine(e) {
   const t = e.logged_at ? esc(e.logged_at.slice(5, 16)) : "";
+  if (e.event === "AUTO_DROPPED" && e.action) return `${t} — <b>${esc(e.action.kind || "")} ${esc(e.action.strategy_key || "")}: dropped</b> (${esc(e.reason || "")}) — no order`;
   if (e.action) {
     const a = e.action, k = esc(a.strategy_key || ""), kind = esc(a.kind || "");
     if (e.order_ok === true) return `${t} — <b>${kind} ${k}: PLACED</b>${e.recorded_entry_price ? ` @ ${e.recorded_entry_price}` : ""}${e.realized_pnl_rupees !== undefined ? ` (P&amp;L ${rs(e.realized_pnl_rupees)})` : ""}`;
