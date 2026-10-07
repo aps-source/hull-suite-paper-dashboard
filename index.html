@@ -268,19 +268,19 @@ function eventsCard(r) {
   return `<div class="events"><b>Recent order activity (last ${Math.min(10, evs.length)})</b>${rows}</div>`;
 }
 function optPaperSection(optState, optHist) {
-  if (!optState) return "";
+  if (!optState || !optState.strategies) return "";
   const closed = optHist || [];
-  const realized = closed.reduce((a, x) => a + (x.net_rs || 0), 0);
   const wins = closed.filter(x => (x.net_rs || 0) > 0).length;
-  const strats = Object.entries(optState).map(([k, s]) => {
+  const capHit = optState.combined_daily_pnl_rupees <= -5000;
+  const strats = Object.entries(optState.strategies).map(([k, s]) => {
     const p = s.position;
     const label = p ? `${esc(p.direction)} @ ${p.entry_ltp}` : "flat";
     return `<div class="opt-strat"><div class="n">${esc(k.replace("_", " "))}</div><div class="p">${label}</div>
-      <div class="m">${esc((p && p.trading_symbol) || "")}</div></div>`;
+      <div class="m">${esc((p && p.trading_symbol) || "")} · ${s.day_losses || 0} loss${s.day_losses===1?"":"es"} today</div></div>`;
   }).join("");
   return `<div class="opt-banner">
-      <div><div class="lbl">Paper trading · real option premiums, ATM (HMA) / 1 ITM (EHMA) · since 2026-10-07</div><div class="big">Simulated — no real orders</div></div>
-      <div style="text-align:right"><div class="lbl">Realized P&amp;L</div><div class="big">${rs(realized)}</div></div>
+      <div><div class="lbl">Paper trading · real option premiums, same gates as real (stale drop, windows, breaker, cap) · since 2026-10-07</div><div class="big">Simulated — no real orders${capHit?" · daily cap hit":""}</div></div>
+      <div style="text-align:right"><div class="lbl">Realized P&amp;L today</div><div class="big">${rs(optState.combined_daily_pnl_rupees || 0)}</div></div>
     </div>
     <div class="opt-strats">${strats}</div>
     <div class="note" style="margin:0.3rem 0 1rem">${closed.length} closed trade${closed.length===1?"":"s"}${closed.length?`, ${Math.round(100*wins/closed.length)}% win rate`:""}. Real live premiums, same strike selection as the real engine — never places an order.</div>`;
