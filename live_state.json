@@ -3,7 +3,7 @@
  "paper_start": "2026-09-28",
  "hull_length": 55,
  "timeframe": "15m",
- "last_tick": "2026-10-07T19:24:31",
+ "last_tick": "2026-10-07T19:29:46",
  "lots": {
   "NIFTY": 65,
   "SENSEX": 20
@@ -12,14 +12,14 @@
  "instruments": {
   "NIFTY": {
    "ltp": 22603.05,
-   "last_1m": "2026-10-07 19:24:00",
+   "last_1m": "2026-10-07 19:29:00",
    "strategies": {
     "HMA": {
      "mode": "HMA",
      "colour": "RED",
      "colour_since": "2026-10-07 09:30:00",
-     "hull": 22589.33,
-     "hull_2_bars_ago": 22596.71,
+     "hull": 22586.62,
+     "hull_2_bars_ago": 22592.68,
      "pending_signal": null,
      "position": {
       "dir": "SHORT",
@@ -37,11 +37,6 @@
      "total_net_pts": 514.97,
      "total_net_rs": 33473.0,
      "tail": [
-      {
-       "t": "10-05 15:45",
-       "c": 22555.75,
-       "h": 22541.83
-      },
       {
        "t": "10-05 16:00",
        "c": 22555.75,
@@ -336,16 +331,21 @@
        "t": "10-07 19:00",
        "c": 22603.05,
        "h": 22589.33
+      },
+      {
+       "t": "10-07 19:15",
+       "c": 22603.05,
+       "h": 22586.62
       }
      ],
-     "last_completed_bar": "2026-10-07 19:00"
+     "last_completed_bar": "2026-10-07 19:15"
     },
     "EHMA": {
      "mode": "EHMA",
      "colour": "RED",
      "colour_since": "2026-10-07 09:45:00",
-     "hull": 22636.49,
-     "hull_2_bars_ago": 22644.14,
+     "hull": 22633.06,
+     "hull_2_bars_ago": 22640.18,
      "pending_signal": null,
      "position": {
       "dir": "SHORT",
@@ -363,11 +363,6 @@
      "total_net_pts": 355.05,
      "total_net_rs": 23078.0,
      "tail": [
-      {
-       "t": "10-05 15:45",
-       "c": 22555.75,
-       "h": 22493.46
-      },
       {
        "t": "10-05 16:00",
        "c": 22555.75,
@@ -662,9 +657,14 @@
        "t": "10-07 19:00",
        "c": 22603.05,
        "h": 22636.49
+      },
+      {
+       "t": "10-07 19:15",
+       "c": 22603.05,
+       "h": 22633.06
       }
      ],
-     "last_completed_bar": "2026-10-07 19:00"
+     "last_completed_bar": "2026-10-07 19:15"
     }
    }
   },
