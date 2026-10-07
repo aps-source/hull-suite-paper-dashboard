@@ -38,13 +38,19 @@
   .filters button.on { background:var(--accent); color:#fff; border-color:var(--accent); }
   .empty { padding:1.3rem 1.1rem; color:var(--text-muted); }
   .chart { padding:0.6rem 1rem 0.8rem; } .chart svg { width:100%; height:auto; display:block; }
+  .real-head { background:linear-gradient(120deg,#7c2d12,#b91c1c 60%,#dc2626); color:#fff; padding:0.7rem 1.1rem; font-weight:800; font-size:0.85rem; text-transform:uppercase; letter-spacing:0.05em; }
+  .paper-head { background:var(--surface-2); color:var(--text-secondary); padding:0.7rem 1.1rem; font-weight:700; font-size:0.85rem; text-transform:uppercase; letter-spacing:0.05em; border-top:3px solid var(--border); margin-top:1.4rem; border-radius:1.1rem 1.1rem 0 0; }
 </style>
 </head>
 <body>
 <header class="hero"><div class="hero-inner">
-  <div><h1>Hull Suite — Day-wise Trades</h1><div class="tag">Paper trades, grouped by exit date · net of 0.01% cost per side · ₹ = points × lot (NIFTY 65, SENSEX 20)</div></div>
+  <div><h1>Hull Suite — Day-wise Trades</h1><div class="tag">Real orders first, paper simulation below for reference · ₹ = points × lot (NIFTY 65, SENSEX 20)</div></div>
   <span style="display:flex;gap:8px;flex-wrap:wrap"><a class="btn" href="index.html">← Live dashboard</a><a class="btn" href="backtest.html">Backtest →</a></span></div></header>
 <main class="page">
+  <div class="real-head">Real trades — actual filled orders on your Dhan account</div>
+  <div class="card"><h2>Real trade log</h2><div class="scroll" id="reallog"></div></div>
+
+  <div class="paper-head">Paper simulation — NOT real fills, index-points reference only</div>
   <div class="card"><h2>Strategy summary</h2><div class="scroll" id="summary"></div></div>
   <div class="card"><h2>Cumulative net P&amp;L (₹, all strategies)</h2><div class="chart" id="equity"></div></div>
   <div class="card"><h2>Trades</h2><div class="filters" id="filters"></div><div class="scroll" id="log"></div></div>
@@ -89,10 +95,26 @@ function log() {
   });
   document.getElementById("log").innerHTML = h + "</tbody></table>";
 }
+function realLog(real) {
+  if (!real || !real.length) { document.getElementById("reallog").innerHTML = '<div class="empty">No real trades closed yet.</div>'; return; }
+  const t = real.slice().sort((a,b) => b.exit_time.localeCompare(a.exit_time));
+  const days = {}; t.forEach(x => (days[x.exit_time.slice(0,10)] ||= []).push(x));
+  let h = `<table><thead><tr><th>Strategy</th><th>Side</th><th>Contract</th><th>Entry</th><th class="r">Entry px</th><th>Exit</th><th class="r">Exit px</th><th class="r">Net ₹</th></tr></thead><tbody>`;
+  Object.keys(days).sort().reverse().forEach(d => {
+    const g = days[d], r = g.reduce((a,x)=>a+(x.net_rs||0),0);
+    h += `<tr class="day"><td colspan="7">${esc(d)} · ${g.length} trade${g.length>1?"s":""}</td><td class="r ${cls(r)}">${rs(r)}</td></tr>`;
+    g.forEach(x => h += `<tr><td class="tagd">${esc(x.strategy)}</td><td class="tagd ${x.dir}">${esc(x.dir)}</td><td>${esc(x.symbol||"")}</td>` +
+      `<td>${esc((x.entry_time||"").replace("T"," ").slice(5,16))}</td><td class="r">${x.entry}</td>` +
+      `<td>${esc((x.exit_time||"").replace("T"," ").slice(5,16))}</td><td class="r">${x.exit}</td><td class="r ${cls(x.net_rs)}">${rs(x.net_rs||0)}</td></tr>`);
+  });
+  document.getElementById("reallog").innerHTML = h + "</tbody></table>";
+}
 async function load() {
   try { ALL = await (await fetch("trades_history.json?t=" + Date.now(), {cache:"no-store"})).json(); }
   catch (e) { document.getElementById("log").innerHTML = `<div class="empty">Could not load trades_history.json — ${esc(e.message)}</div>`; return; }
   summary(); equity(); filters(); log();
+  try { realLog(await (await fetch("real_trades_history.json?t=" + Date.now(), {cache:"no-store"})).json()); }
+  catch (e) { document.getElementById("reallog").innerHTML = `<div class="empty">Could not load real_trades_history.json — ${esc(e.message)}</div>`; }
 }
 load(); setInterval(load, 60000);
 </script>
