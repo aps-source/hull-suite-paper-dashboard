@@ -166,11 +166,11 @@
   <div id="err"></div>
   <div id="real"></div>
   <div class="grid" id="sigChecklist" style="margin-bottom:1.1rem"></div>
-  <div id="optPaper"></div>
-  <h2 style="font-size:0.95rem;margin:0 0 0.6rem;color:var(--text-secondary)">Index-points paper (legacy, since 2026-09-28 — superseded by option paper above)</h2>
+  <h2 style="font-size:0.95rem;margin:1.1rem 0 0.6rem;color:var(--text-secondary)">Real trading — detail (chart, entry/exit, stats per strategy)</h2>
   <div class="kpis" id="kpis"></div>
   <div class="grid" id="cards"></div>
-  <div class="foot">This page cannot place, modify or cancel any order itself — it only displays state written by the engines. The <b>real trading</b> panel above reflects the live futures engine (NIFTY 65 / SENSEX 20 qty per strategy, product MARGIN); it places real orders only while armed (<code>AUTO_TRADING.on</code>), subject to a Rs 5,000/day combined loss cap and a 2-consecutive-loss breaker per strategy. The <b>paper</b> cards below are a simulated, cost-free-of-slippage reference on index points; ₹ = points × lot size. Refreshes every 30 seconds.</div>
+  <div id="optPaper"></div>
+  <div class="foot">This page cannot place, modify or cancel any order itself — it only displays state written by the engines. The <b>real trading</b> panel above reflects the live options engine (NIFTY 65 / SENSEX 20 qty per strategy, product MARGIN); it places real orders only while armed (<code>AUTO_TRADING.on</code>), subject to a Rs 5,000/day combined loss cap and a 2-consecutive-loss breaker per strategy. The <b>paper trading</b> panel simulates the same option premiums and strike selection without ever placing an order. Refreshes every 30 seconds.</div>
 </main>
 <script>
 const STATE_URL = "live_state.json";
