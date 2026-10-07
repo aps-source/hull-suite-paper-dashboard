@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-07T10:10:28",
+ "generated": "2026-10-07T10:13:58",
  "auto_trading": true,
  "paused": false,
  "trading_day": "2026-10-07",
@@ -23,294 +23,6 @@
   }
  },
  "recent_events": [
-  {
-   "event": "AUTO_HELD",
-   "action": {
-    "kind": "ENTRY",
-    "strategy_key": "NIFTY_EHMA",
-    "symbol": "NIFTY",
-    "mode": "EHMA",
-    "direction": "SHORT",
-    "quantity": 65,
-    "contract": {
-     "symbol": "NIFTY",
-     "security_id": "48704",
-     "trading_symbol": "NIFTY-Oct2026-FUT",
-     "expiry": "2026-10-27",
-     "lot": 65,
-     "exchange_segment": "NSE_FNO",
-     "ltp": 22658.1
-    },
-    "signal_time": "2026-10-07 10:00:00",
-    "created_at": "2026-10-07T10:01:42"
-   },
-   "reason": "insufficient balance for Rs.1,472,776 + 10% buffer",
-   "logged_at": "2026-10-07T10:02:49.921617"
-  },
-  {
-   "event": "AUTO_HELD",
-   "action": {
-    "kind": "ENTRY",
-    "strategy_key": "SENSEX_EHMA",
-    "symbol": "SENSEX",
-    "mode": "EHMA",
-    "direction": "SHORT",
-    "quantity": 20,
-    "contract": {
-     "symbol": "SENSEX",
-     "security_id": "864571",
-     "trading_symbol": "SENSEX-Oct2026-FUT",
-     "expiry": "2026-10-29",
-     "lot": 20,
-     "exchange_segment": "BSE_FNO",
-     "ltp": 72927.0
-    },
-    "signal_time": "2026-10-07 10:00:00",
-    "created_at": "2026-10-07T10:01:44"
-   },
-   "reason": "insufficient balance for Rs.1,458,540 + 10% buffer",
-   "logged_at": "2026-10-07T10:02:49.948155"
-  },
-  {
-   "event": "AUTO_HELD",
-   "action": {
-    "kind": "ENTRY",
-    "strategy_key": "NIFTY_HMA",
-    "symbol": "NIFTY",
-    "mode": "HMA",
-    "direction": "SHORT",
-    "quantity": 65,
-    "contract": {
-     "symbol": "NIFTY",
-     "security_id": "48704",
-     "trading_symbol": "NIFTY-Oct2026-FUT",
-     "expiry": "2026-10-27",
-     "lot": 65,
-     "exchange_segment": "NSE_FNO",
-     "ltp": 22666.1
-    },
-    "signal_time": "2026-10-07 09:45:00",
-    "created_at": "2026-10-07T09:46:40"
-   },
-   "reason": "insufficient balance for Rs.1,473,296 + 10% buffer",
-   "logged_at": "2026-10-07T10:03:52.316696"
-  },
-  {
-   "event": "AUTO_HELD",
-   "action": {
-    "kind": "ENTRY",
-    "strategy_key": "SENSEX_HMA",
-    "symbol": "SENSEX",
-    "mode": "HMA",
-    "direction": "SHORT",
-    "quantity": 20,
-    "contract": {
-     "symbol": "SENSEX",
-     "security_id": "864571",
-     "trading_symbol": "SENSEX-Oct2026-FUT",
-     "expiry": "2026-10-29",
-     "lot": 20,
-     "exchange_segment": "BSE_FNO",
-     "ltp": 72912.25
-    },
-    "signal_time": "2026-10-07 09:45:00",
-    "created_at": "2026-10-07T09:46:46"
-   },
-   "reason": "insufficient balance for Rs.1,458,245 + 10% buffer",
-   "logged_at": "2026-10-07T10:03:52.341935"
-  },
-  {
-   "event": "AUTO_HELD",
-   "action": {
-    "kind": "ENTRY",
-    "strategy_key": "NIFTY_EHMA",
-    "symbol": "NIFTY",
-    "mode": "EHMA",
-    "direction": "SHORT",
-    "quantity": 65,
-    "contract": {
-     "symbol": "NIFTY",
-     "security_id": "48704",
-     "trading_symbol": "NIFTY-Oct2026-FUT",
-     "expiry": "2026-10-27",
-     "lot": 65,
-     "exchange_segment": "NSE_FNO",
-     "ltp": 22658.1
-    },
-    "signal_time": "2026-10-07 10:00:00",
-    "created_at": "2026-10-07T10:01:42"
-   },
-   "reason": "insufficient balance for Rs.1,472,776 + 10% buffer",
-   "logged_at": "2026-10-07T10:03:52.367336"
-  },
-  {
-   "event": "AUTO_HELD",
-   "action": {
-    "kind": "ENTRY",
-    "strategy_key": "SENSEX_EHMA",
-    "symbol": "SENSEX",
-    "mode": "EHMA",
-    "direction": "SHORT",
-    "quantity": 20,
-    "contract": {
-     "symbol": "SENSEX",
-     "security_id": "864571",
-     "trading_symbol": "SENSEX-Oct2026-FUT",
-     "expiry": "2026-10-29",
-     "lot": 20,
-     "exchange_segment": "BSE_FNO",
-     "ltp": 72927.0
-    },
-    "signal_time": "2026-10-07 10:00:00",
-    "created_at": "2026-10-07T10:01:44"
-   },
-   "reason": "insufficient balance for Rs.1,458,540 + 10% buffer",
-   "logged_at": "2026-10-07T10:03:52.393162"
-  },
-  {
-   "event": "AUTO_HELD",
-   "action": {
-    "kind": "ENTRY",
-    "strategy_key": "NIFTY_HMA",
-    "symbol": "NIFTY",
-    "mode": "HMA",
-    "direction": "SHORT",
-    "quantity": 65,
-    "contract": {
-     "symbol": "NIFTY",
-     "security_id": "48704",
-     "trading_symbol": "NIFTY-Oct2026-FUT",
-     "expiry": "2026-10-27",
-     "lot": 65,
-     "exchange_segment": "NSE_FNO",
-     "ltp": 22666.1
-    },
-    "signal_time": "2026-10-07 09:45:00",
-    "created_at": "2026-10-07T09:46:40"
-   },
-   "reason": "insufficient balance for Rs.1,473,296 + 10% buffer",
-   "logged_at": "2026-10-07T10:04:54.777037"
-  },
-  {
-   "event": "AUTO_HELD",
-   "action": {
-    "kind": "ENTRY",
-    "strategy_key": "SENSEX_HMA",
-    "symbol": "SENSEX",
-    "mode": "HMA",
-    "direction": "SHORT",
-    "quantity": 20,
-    "contract": {
-     "symbol": "SENSEX",
-     "security_id": "864571",
-     "trading_symbol": "SENSEX-Oct2026-FUT",
-     "expiry": "2026-10-29",
-     "lot": 20,
-     "exchange_segment": "BSE_FNO",
-     "ltp": 72912.25
-    },
-    "signal_time": "2026-10-07 09:45:00",
-    "created_at": "2026-10-07T09:46:46"
-   },
-   "reason": "insufficient balance for Rs.1,458,245 + 10% buffer",
-   "logged_at": "2026-10-07T10:04:54.811633"
-  },
-  {
-   "event": "AUTO_HELD",
-   "action": {
-    "kind": "ENTRY",
-    "strategy_key": "NIFTY_EHMA",
-    "symbol": "NIFTY",
-    "mode": "EHMA",
-    "direction": "SHORT",
-    "quantity": 65,
-    "contract": {
-     "symbol": "NIFTY",
-     "security_id": "48704",
-     "trading_symbol": "NIFTY-Oct2026-FUT",
-     "expiry": "2026-10-27",
-     "lot": 65,
-     "exchange_segment": "NSE_FNO",
-     "ltp": 22658.1
-    },
-    "signal_time": "2026-10-07 10:00:00",
-    "created_at": "2026-10-07T10:01:42"
-   },
-   "reason": "insufficient balance for Rs.1,472,776 + 10% buffer",
-   "logged_at": "2026-10-07T10:04:54.838081"
-  },
-  {
-   "event": "AUTO_HELD",
-   "action": {
-    "kind": "ENTRY",
-    "strategy_key": "SENSEX_EHMA",
-    "symbol": "SENSEX",
-    "mode": "EHMA",
-    "direction": "SHORT",
-    "quantity": 20,
-    "contract": {
-     "symbol": "SENSEX",
-     "security_id": "864571",
-     "trading_symbol": "SENSEX-Oct2026-FUT",
-     "expiry": "2026-10-29",
-     "lot": 20,
-     "exchange_segment": "BSE_FNO",
-     "ltp": 72927.0
-    },
-    "signal_time": "2026-10-07 10:00:00",
-    "created_at": "2026-10-07T10:01:44"
-   },
-   "reason": "insufficient balance for Rs.1,458,540 + 10% buffer",
-   "logged_at": "2026-10-07T10:04:54.864201"
-  },
-  {
-   "event": "AUTO_DROPPED",
-   "action": {
-    "kind": "ENTRY",
-    "strategy_key": "NIFTY_HMA",
-    "symbol": "NIFTY",
-    "mode": "HMA",
-    "direction": "SHORT",
-    "quantity": 65,
-    "contract": {
-     "symbol": "NIFTY",
-     "security_id": "48704",
-     "trading_symbol": "NIFTY-Oct2026-FUT",
-     "expiry": "2026-10-27",
-     "lot": 65,
-     "exchange_segment": "NSE_FNO",
-     "ltp": 22666.1
-    },
-    "signal_time": "2026-10-07 09:45:00",
-    "created_at": "2026-10-07T09:46:40"
-   },
-   "reason": "stale signal (21 min old, limit 20)",
-   "logged_at": "2026-10-07T10:05:57.110307"
-  },
-  {
-   "event": "AUTO_DROPPED",
-   "action": {
-    "kind": "ENTRY",
-    "strategy_key": "SENSEX_HMA",
-    "symbol": "SENSEX",
-    "mode": "HMA",
-    "direction": "SHORT",
-    "quantity": 20,
-    "contract": {
-     "symbol": "SENSEX",
-     "security_id": "864571",
-     "trading_symbol": "SENSEX-Oct2026-FUT",
-     "expiry": "2026-10-29",
-     "lot": 20,
-     "exchange_segment": "BSE_FNO",
-     "ltp": 72912.25
-    },
-    "signal_time": "2026-10-07 09:45:00",
-    "created_at": "2026-10-07T09:46:46"
-   },
-   "reason": "stale signal (21 min old, limit 20)",
-   "logged_at": "2026-10-07T10:05:57.760512"
-  },
   {
    "event": "AUTO_HELD",
    "action": {
@@ -742,6 +454,302 @@
    },
    "reason": "stale signal (25 min old, limit 20)",
    "logged_at": "2026-10-07T10:10:28.028660"
+  },
+  {
+   "event": "AUTO_HELD",
+   "action": {
+    "kind": "ENTRY",
+    "strategy_key": "NIFTY_EHMA",
+    "symbol": "NIFTY",
+    "mode": "EHMA",
+    "direction": "SHORT",
+    "quantity": 65,
+    "contract": {
+     "symbol": "NIFTY",
+     "security_id": "48704",
+     "trading_symbol": "NIFTY-Oct2026-FUT",
+     "expiry": "2026-10-27",
+     "lot": 65,
+     "exchange_segment": "NSE_FNO",
+     "ltp": 22658.1
+    },
+    "signal_time": "2026-10-07 10:00:00",
+    "created_at": "2026-10-07T10:01:42"
+   },
+   "reason": "insufficient balance for Rs.1,472,776 + 10% buffer",
+   "logged_at": "2026-10-07T10:11:34.526931"
+  },
+  {
+   "event": "AUTO_HELD",
+   "action": {
+    "kind": "ENTRY",
+    "strategy_key": "SENSEX_EHMA",
+    "symbol": "SENSEX",
+    "mode": "EHMA",
+    "direction": "SHORT",
+    "quantity": 20,
+    "contract": {
+     "symbol": "SENSEX",
+     "security_id": "864571",
+     "trading_symbol": "SENSEX-Oct2026-FUT",
+     "expiry": "2026-10-29",
+     "lot": 20,
+     "exchange_segment": "BSE_FNO",
+     "ltp": 72927.0
+    },
+    "signal_time": "2026-10-07 10:00:00",
+    "created_at": "2026-10-07T10:01:44"
+   },
+   "reason": "insufficient balance for Rs.1,458,540 + 10% buffer",
+   "logged_at": "2026-10-07T10:11:34.555712"
+  },
+  {
+   "event": "AUTO_DROPPED",
+   "action": {
+    "kind": "ENTRY",
+    "strategy_key": "NIFTY_HMA",
+    "symbol": "NIFTY",
+    "mode": "HMA",
+    "direction": "SHORT",
+    "quantity": 65,
+    "contract": {
+     "symbol": "NIFTY",
+     "security_id": "48704",
+     "trading_symbol": "NIFTY-Oct2026-FUT",
+     "expiry": "2026-10-27",
+     "lot": 65,
+     "exchange_segment": "NSE_FNO",
+     "ltp": 22668.0
+    },
+    "signal_time": "2026-10-07 09:45:00",
+    "created_at": "2026-10-07T10:11:29"
+   },
+   "reason": "stale signal (27 min old, limit 20)",
+   "logged_at": "2026-10-07T10:11:34.557242"
+  },
+  {
+   "event": "AUTO_DROPPED",
+   "action": {
+    "kind": "ENTRY",
+    "strategy_key": "SENSEX_HMA",
+    "symbol": "SENSEX",
+    "mode": "HMA",
+    "direction": "SHORT",
+    "quantity": 20,
+    "contract": {
+     "symbol": "SENSEX",
+     "security_id": "864571",
+     "trading_symbol": "SENSEX-Oct2026-FUT",
+     "expiry": "2026-10-29",
+     "lot": 20,
+     "exchange_segment": "BSE_FNO",
+     "ltp": 72927.0
+    },
+    "signal_time": "2026-10-07 09:45:00",
+    "created_at": "2026-10-07T10:11:32"
+   },
+   "reason": "stale signal (27 min old, limit 20)",
+   "logged_at": "2026-10-07T10:11:35.185581"
+  },
+  {
+   "event": "AUTO_HELD",
+   "action": {
+    "kind": "ENTRY",
+    "strategy_key": "NIFTY_EHMA",
+    "symbol": "NIFTY",
+    "mode": "EHMA",
+    "direction": "SHORT",
+    "quantity": 65,
+    "contract": {
+     "symbol": "NIFTY",
+     "security_id": "48704",
+     "trading_symbol": "NIFTY-Oct2026-FUT",
+     "expiry": "2026-10-27",
+     "lot": 65,
+     "exchange_segment": "NSE_FNO",
+     "ltp": 22658.1
+    },
+    "signal_time": "2026-10-07 10:00:00",
+    "created_at": "2026-10-07T10:01:42"
+   },
+   "reason": "insufficient balance for Rs.1,472,776 + 10% buffer",
+   "logged_at": "2026-10-07T10:12:41.697488"
+  },
+  {
+   "event": "AUTO_HELD",
+   "action": {
+    "kind": "ENTRY",
+    "strategy_key": "SENSEX_EHMA",
+    "symbol": "SENSEX",
+    "mode": "EHMA",
+    "direction": "SHORT",
+    "quantity": 20,
+    "contract": {
+     "symbol": "SENSEX",
+     "security_id": "864571",
+     "trading_symbol": "SENSEX-Oct2026-FUT",
+     "expiry": "2026-10-29",
+     "lot": 20,
+     "exchange_segment": "BSE_FNO",
+     "ltp": 72927.0
+    },
+    "signal_time": "2026-10-07 10:00:00",
+    "created_at": "2026-10-07T10:01:44"
+   },
+   "reason": "insufficient balance for Rs.1,458,540 + 10% buffer",
+   "logged_at": "2026-10-07T10:12:41.721766"
+  },
+  {
+   "event": "AUTO_DROPPED",
+   "action": {
+    "kind": "ENTRY",
+    "strategy_key": "NIFTY_HMA",
+    "symbol": "NIFTY",
+    "mode": "HMA",
+    "direction": "SHORT",
+    "quantity": 65,
+    "contract": {
+     "symbol": "NIFTY",
+     "security_id": "48704",
+     "trading_symbol": "NIFTY-Oct2026-FUT",
+     "expiry": "2026-10-27",
+     "lot": 65,
+     "exchange_segment": "NSE_FNO",
+     "ltp": 22672.0
+    },
+    "signal_time": "2026-10-07 09:45:00",
+    "created_at": "2026-10-07T10:12:36"
+   },
+   "reason": "stale signal (28 min old, limit 20)",
+   "logged_at": "2026-10-07T10:12:41.742322"
+  },
+  {
+   "event": "AUTO_DROPPED",
+   "action": {
+    "kind": "ENTRY",
+    "strategy_key": "SENSEX_HMA",
+    "symbol": "SENSEX",
+    "mode": "HMA",
+    "direction": "SHORT",
+    "quantity": 20,
+    "contract": {
+     "symbol": "SENSEX",
+     "security_id": "864571",
+     "trading_symbol": "SENSEX-Oct2026-FUT",
+     "expiry": "2026-10-29",
+     "lot": 20,
+     "exchange_segment": "BSE_FNO",
+     "ltp": 72927.5
+    },
+    "signal_time": "2026-10-07 09:45:00",
+    "created_at": "2026-10-07T10:12:39"
+   },
+   "reason": "stale signal (28 min old, limit 20)",
+   "logged_at": "2026-10-07T10:12:42.367966"
+  },
+  {
+   "event": "AUTO_HELD",
+   "action": {
+    "kind": "ENTRY",
+    "strategy_key": "NIFTY_EHMA",
+    "symbol": "NIFTY",
+    "mode": "EHMA",
+    "direction": "SHORT",
+    "quantity": 65,
+    "contract": {
+     "symbol": "NIFTY",
+     "security_id": "48704",
+     "trading_symbol": "NIFTY-Oct2026-FUT",
+     "expiry": "2026-10-27",
+     "lot": 65,
+     "exchange_segment": "NSE_FNO",
+     "ltp": 22658.1
+    },
+    "signal_time": "2026-10-07 10:00:00",
+    "created_at": "2026-10-07T10:01:42"
+   },
+   "reason": "insufficient balance for Rs.1,472,776 + 10% buffer",
+   "logged_at": "2026-10-07T10:13:55.540026"
+  },
+  {
+   "event": "AUTO_HELD",
+   "action": {
+    "kind": "ENTRY",
+    "strategy_key": "SENSEX_EHMA",
+    "symbol": "SENSEX",
+    "mode": "EHMA",
+    "direction": "SHORT",
+    "quantity": 20,
+    "contract": {
+     "symbol": "SENSEX",
+     "security_id": "864571",
+     "trading_symbol": "SENSEX-Oct2026-FUT",
+     "expiry": "2026-10-29",
+     "lot": 20,
+     "exchange_segment": "BSE_FNO",
+     "ltp": 72927.0
+    },
+    "signal_time": "2026-10-07 10:00:00",
+    "created_at": "2026-10-07T10:01:44"
+   },
+   "reason": "insufficient balance for Rs.1,458,540 + 10% buffer",
+   "logged_at": "2026-10-07T10:13:56.215989"
+  },
+  {
+   "event": "AUTO_DROPPED",
+   "action": {
+    "kind": "ENTRY",
+    "strategy_key": "NIFTY_HMA",
+    "symbol": "NIFTY",
+    "mode": "HMA",
+    "direction": "SHORT",
+    "quantity": 65,
+    "contract": {
+     "symbol": "NIFTY",
+     "security_id": "44617",
+     "trading_symbol": "NIFTY-Oct2026-22600-PE",
+     "expiry": "2026-10-13",
+     "strike": 22600.0,
+     "option_type": "PE",
+     "lot": 65,
+     "exchange_segment": "NSE_FNO",
+     "ltp": 148.45,
+     "otm_steps": 0,
+     "spot": 22618.95
+    },
+    "signal_time": "2026-10-07 09:45:00",
+    "created_at": "2026-10-07T10:13:50"
+   },
+   "reason": "stale signal (29 min old, limit 20)",
+   "logged_at": "2026-10-07T10:13:56.837173"
+  },
+  {
+   "event": "AUTO_DROPPED",
+   "action": {
+    "kind": "ENTRY",
+    "strategy_key": "SENSEX_HMA",
+    "symbol": "SENSEX",
+    "mode": "HMA",
+    "direction": "SHORT",
+    "quantity": 20,
+    "contract": {
+     "symbol": "SENSEX",
+     "security_id": "889144",
+     "trading_symbol": "SENSEX-Oct2026-72700-PE",
+     "expiry": "2026-10-08",
+     "strike": 72700.0,
+     "option_type": "PE",
+     "lot": 20,
+     "exchange_segment": "BSE_FNO",
+     "ltp": 345.5,
+     "otm_steps": 0,
+     "spot": 72667.4
+    },
+    "signal_time": "2026-10-07 09:45:00",
+    "created_at": "2026-10-07T10:13:52"
+   },
+   "reason": "stale signal (29 min old, limit 20)",
+   "logged_at": "2026-10-07T10:13:57.473311"
   }
  ]
 }
