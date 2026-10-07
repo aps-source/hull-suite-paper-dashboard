@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-07T12:41:11",
+ "generated": "2026-10-07T12:44:17",
  "auto_trading": true,
  "paused": false,
  "trading_day": "2026-10-07",
@@ -27,142 +27,6 @@
   }
  },
  "recent_events": [
-  {
-   "event": "AUTO_DROPPED",
-   "action": {
-    "kind": "ENTRY",
-    "strategy_key": "SENSEX_HMA",
-    "symbol": "SENSEX",
-    "mode": "HMA",
-    "direction": "SHORT",
-    "quantity": 20,
-    "contract": {
-     "symbol": "SENSEX",
-     "security_id": "888946",
-     "trading_symbol": "SENSEX-Oct2026-73000-PE",
-     "expiry": "2026-10-08",
-     "strike": 73000.0,
-     "option_type": "PE",
-     "lot": 20,
-     "exchange_segment": "BSE_FNO",
-     "ltp": 308.55,
-     "otm_steps": 0,
-     "spot": 72987.51
-    },
-    "signal_time": "2026-10-07 09:45:00",
-    "created_at": "2026-10-07T11:07:23"
-   },
-   "reason": "stale signal (83 min old, limit 20)",
-   "logged_at": "2026-10-07T11:07:39.989545"
-  },
-  {
-   "event": "AUTO_DROPPED",
-   "action": {
-    "kind": "ENTRY",
-    "strategy_key": "SENSEX_EHMA",
-    "symbol": "SENSEX",
-    "mode": "EHMA",
-    "direction": "SHORT",
-    "quantity": 20,
-    "contract": {
-     "symbol": "SENSEX",
-     "security_id": "888946",
-     "trading_symbol": "SENSEX-Oct2026-73000-PE",
-     "expiry": "2026-10-08",
-     "strike": 73000.0,
-     "option_type": "PE",
-     "lot": 20,
-     "exchange_segment": "BSE_FNO",
-     "ltp": 309.1,
-     "otm_steps": 0,
-     "spot": 72987.51
-    },
-    "signal_time": "2026-10-07 10:00:00",
-    "created_at": "2026-10-07T11:07:32"
-   },
-   "reason": "stale signal (68 min old, limit 20)",
-   "logged_at": "2026-10-07T11:07:40.654246"
-  },
-  {
-   "action": {
-    "kind": "ENTRY",
-    "strategy_key": "SENSEX_EHMA",
-    "symbol": "SENSEX",
-    "mode": "EHMA",
-    "direction": "LONG",
-    "quantity": 20,
-    "contract": {
-     "symbol": "SENSEX",
-     "security_id": "889061",
-     "trading_symbol": "SENSEX-Oct2026-72900-CE",
-     "expiry": "2026-10-08",
-     "strike": 72900.0,
-     "option_type": "CE",
-     "lot": 20,
-     "exchange_segment": "BSE_FNO",
-     "ltp": 250.9,
-     "otm_steps": 0,
-     "spot": 72892.92
-    },
-    "signal_time": "2026-10-07 11:30:00",
-    "created_at": "2026-10-07T11:31:53",
-    "tag": "hE-SENSEX_EHMA-52917",
-    "placing_since": "2026-10-07T11:31:57.041496"
-   },
-   "order_response": {
-    "status": "success",
-    "remarks": "",
-    "data": {
-     "orderId": "34926100715408",
-     "orderStatus": "TRANSIT"
-    }
-   },
-   "order_ok": true,
-   "fill_check": {
-    "status": "success",
-    "remarks": "",
-    "data": [
-     {
-      "dhanClientId": "1108524760",
-      "orderId": "34926100715408",
-      "exchangeOrderId": "1791352739426667196",
-      "correlationId": "hE-SENSEX_EHMA-52917",
-      "orderStatus": "TRADED",
-      "transactionType": "BUY",
-      "exchangeSegment": "BSE_FNO",
-      "productType": "MARGIN",
-      "orderType": "LIMIT",
-      "validity": "DAY",
-      "tradingSymbol": "SENSEX-Oct2026-72900-CE",
-      "securityId": "889061",
-      "quantity": 20,
-      "disclosedQuantity": 0,
-      "price": 274.25,
-      "triggerPrice": 0.0,
-      "afterMarketOrder": false,
-      "boProfitValue": 0.0,
-      "boStopLossValue": 0.0,
-      "legName": "NA",
-      "createTime": "2026-10-07 11:31:57",
-      "updateTime": "2026-10-07 11:31:57",
-      "exchangeTime": "2026-10-07 11:31:57",
-      "drvExpiryDate": "2026-10-08",
-      "drvOptionType": "CALL",
-      "drvStrikePrice": 72900.0,
-      "omsErrorCode": "0",
-      "omsErrorDescription": "TRADE CONFIRMED",
-      "algoId": "0",
-      "remainingQuantity": 0,
-      "averageTradedPrice": 249.0,
-      "filledQty": 20
-     }
-    ]
-   },
-   "recorded_entry_price": 249.0,
-   "confirmed_by_user": false,
-   "auto": true,
-   "logged_at": "2026-10-07T11:31:58.108862"
-  },
   {
    "action": {
     "kind": "EXIT",
@@ -969,6 +833,90 @@
    },
    "reason": "2-loss breaker tripped for SENSEX_EHMA",
    "logged_at": "2026-10-07T12:41:10.732742"
+  },
+  {
+   "event": "AUTO_HELD",
+   "action": {
+    "kind": "ENTRY",
+    "strategy_key": "SENSEX_EHMA",
+    "symbol": "SENSEX",
+    "mode": "EHMA",
+    "direction": "SHORT",
+    "quantity": 20,
+    "contract": {
+     "symbol": "SENSEX",
+     "security_id": "889350",
+     "trading_symbol": "SENSEX-Oct2026-72800-PE",
+     "expiry": "2026-10-08",
+     "strike": 72800.0,
+     "option_type": "PE",
+     "lot": 20,
+     "exchange_segment": "BSE_FNO",
+     "ltp": 295.5,
+     "otm_steps": 0,
+     "spot": 72796.01
+    },
+    "signal_time": "2026-10-07 12:30:00",
+    "created_at": "2026-10-07T12:31:23"
+   },
+   "reason": "2-loss breaker tripped for SENSEX_EHMA",
+   "logged_at": "2026-10-07T12:42:12.524716"
+  },
+  {
+   "event": "AUTO_HELD",
+   "action": {
+    "kind": "ENTRY",
+    "strategy_key": "SENSEX_EHMA",
+    "symbol": "SENSEX",
+    "mode": "EHMA",
+    "direction": "SHORT",
+    "quantity": 20,
+    "contract": {
+     "symbol": "SENSEX",
+     "security_id": "889350",
+     "trading_symbol": "SENSEX-Oct2026-72800-PE",
+     "expiry": "2026-10-08",
+     "strike": 72800.0,
+     "option_type": "PE",
+     "lot": 20,
+     "exchange_segment": "BSE_FNO",
+     "ltp": 295.5,
+     "otm_steps": 0,
+     "spot": 72796.01
+    },
+    "signal_time": "2026-10-07 12:30:00",
+    "created_at": "2026-10-07T12:31:23"
+   },
+   "reason": "2-loss breaker tripped for SENSEX_EHMA",
+   "logged_at": "2026-10-07T12:43:14.724440"
+  },
+  {
+   "event": "AUTO_HELD",
+   "action": {
+    "kind": "ENTRY",
+    "strategy_key": "SENSEX_EHMA",
+    "symbol": "SENSEX",
+    "mode": "EHMA",
+    "direction": "SHORT",
+    "quantity": 20,
+    "contract": {
+     "symbol": "SENSEX",
+     "security_id": "889350",
+     "trading_symbol": "SENSEX-Oct2026-72800-PE",
+     "expiry": "2026-10-08",
+     "strike": 72800.0,
+     "option_type": "PE",
+     "lot": 20,
+     "exchange_segment": "BSE_FNO",
+     "ltp": 295.5,
+     "otm_steps": 0,
+     "spot": 72796.01
+    },
+    "signal_time": "2026-10-07 12:30:00",
+    "created_at": "2026-10-07T12:31:23"
+   },
+   "reason": "2-loss breaker tripped for SENSEX_EHMA",
+   "logged_at": "2026-10-07T12:44:16.450127"
   }
  ]
 }
