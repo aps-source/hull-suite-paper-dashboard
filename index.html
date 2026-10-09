@@ -281,30 +281,25 @@ function eventsCard(r) {
   const rows = evs.slice(-10).reverse().map(e => `<div class="ev">${eventLine(e)}</div>`).join("");
   return `<div class="events"><b>Recent order activity (last ${Math.min(10, evs.length)})</b>${rows}</div>`;
 }
-function signalsVsTradesTable() {
-  fetch("signals_vs_trades.json?t=" + Date.now()).then(r => r.json()).then(sigs => {
-    const t = sigs.slice().sort((a,b) => b.entry_time.localeCompare(a.entry_time));
+function signalTradeDetailTable() {
+  fetch("signal_trade_detail.json?t=" + Date.now()).then(r => r.json()).then(rows => {
+    const t = rows.slice().sort((a,b) => b.signal_entry_time.localeCompare(a.signal_entry_time));
     const stCls = s => s === "PLACED" ? "good" : s === "NOT ATTEMPTED" ? "muted" : "bad";
-    document.getElementById("signals").innerHTML = `<table><thead><tr><th>Strategy</th><th>Side</th><th>Signal entry</th><th class="r">Index</th><th>Signal exit</th><th>Status</th><th>Note</th></tr></thead><tbody>${
-      t.map(x => `<tr><td class="tagd">${esc(x.strategy)}</td><td class="${x.dir}">${x.dir}</td><td>${esc(x.entry_time.slice(0,16))}</td><td class="r">${x.entry_index}</td><td>${esc(x.exit_time.slice(0,16))}${x.reason==="OPEN"?" (open)":""}</td><td class="tagd ${stCls(x.status)}">${esc(x.status)}</td><td>${esc(x.note)}</td></tr>`).join("")}</tbody></table>`;
-  }).catch(e => { document.getElementById("signals").innerHTML = `<div style="padding:1rem">Could not load signals_vs_trades.json — ${esc(e.message)}</div>`; });
-}
-function pnlComparisonTable() {
-  fetch("pnl_comparison.json?t=" + Date.now()).then(r => r.json()).then(rows => {
-    if (!rows.length) { document.getElementById("pnlcomp").innerHTML = `<div style="padding:1rem">No closed strategy or real trades yet.</div>`; return; }
-    const t = rows.slice().sort((a,b) => (b.entry_time||b.real_entry_time||"").localeCompare(a.entry_time||a.real_entry_time||""));
-    document.getElementById("pnlcomp").innerHTML = `<table><thead><tr><th>Strategy</th><th>Side</th><th>Strike</th>
-      <th>Strategy entry</th><th class="r">Premium</th><th>Strategy exit</th><th class="r">Premium</th><th class="r">Strategy ₹</th>
-      <th>Real entry</th><th class="r">Premium</th><th>Real exit</th><th class="r">Premium</th><th class="r">Real ₹</th><th class="r">Diff ₹</th></tr></thead><tbody>${
-      t.map(x => `<tr><td class="tagd">${esc(x.strategy)}</td><td class="${x.dir}">${esc(x.dir)}</td><td class="r">${x.strike ?? "—"}</td>
-        <td>${x.entry_time ? esc(x.entry_time.slice(5,16)) : "—"}</td><td class="r">${x.entry_premium ?? "—"}</td>
-        <td>${x.exit_time ? esc(x.exit_time.replace("T"," ").slice(5,16)) : "—"}</td><td class="r">${x.exit_premium ?? "—"}</td>
-        <td class="r ${cls(x.strategy_net_rs)}">${x.strategy_net_rs != null ? rs(x.strategy_net_rs) : "—"}</td>
+    document.getElementById("signals").innerHTML = `<table><thead><tr><th>Strategy</th><th>Side</th><th class="r">Strike</th>
+      <th>Signal entry</th><th class="r">Index</th><th>Signal exit</th><th>Status</th><th>Note</th>
+      <th class="r">Paper entry</th><th class="r">Paper exit</th><th class="r">Paper ₹</th>
+      <th>Real entry</th><th class="r">prem</th><th>Real exit</th><th class="r">prem</th><th class="r">Real ₹</th><th class="r">Diff ₹</th></tr></thead><tbody>${
+      t.map(x => `<tr><td class="tagd">${esc(x.strategy)}</td><td class="${x.dir}">${x.dir}</td><td class="r">${x.strike ?? "—"}</td>
+        <td>${esc(x.signal_entry_time.slice(0,16))}</td><td class="r">${x.signal_entry_index}</td>
+        <td>${esc(x.signal_exit_time.slice(0,16))}${x.signal_reason==="OPEN"?" (open)":""}</td>
+        <td class="tagd ${stCls(x.status)}">${esc(x.status)}</td><td>${esc(x.note)}</td>
+        <td class="r">${x.paper_entry_premium ?? "—"}</td><td class="r">${x.paper_exit_premium ?? "—"}</td>
+        <td class="r ${cls(x.paper_net_rs)}">${x.paper_net_rs != null ? rs(x.paper_net_rs) : "—"}</td>
         <td>${x.real_entry_time ? esc(x.real_entry_time.replace("T"," ").slice(5,16)) : "—"}</td><td class="r">${x.real_entry_premium ?? "—"}</td>
         <td>${x.real_exit_time ? esc(x.real_exit_time.replace("T"," ").slice(5,16)) : "—"}</td><td class="r">${x.real_exit_premium ?? "—"}</td>
         <td class="r ${cls(x.real_net_rs)}">${x.real_net_rs != null ? rs(x.real_net_rs) : "—"}</td>
         <td class="r ${cls(x.diff_rs)}">${x.diff_rs != null ? rs(x.diff_rs) : "—"}</td></tr>`).join("")}</tbody></table>`;
-  }).catch(e => { document.getElementById("pnlcomp").innerHTML = `<div style="padding:1rem">Could not load pnl_comparison.json — ${esc(e.message)}</div>`; });
+  }).catch(e => { document.getElementById("signals").innerHTML = `<div style="padding:1rem">Could not load signal_trade_detail.json — ${esc(e.message)}</div>`; });
 }
 function optPaperSection(optState, optHist) {
   if (!optState || !optState.strategies) return "";
@@ -449,9 +444,9 @@ async function refresh() {
     document.getElementById("err").innerHTML = `<div class="banner err">Could not load live_state.json — ${esc(e.message)}</div>`;
   }
 }
-signalsVsTradesTable(); pnlComparisonTable();
+signalTradeDetailTable();
 refresh(); setInterval(refresh, 30000);
-setInterval(() => { signalsVsTradesTable(); pnlComparisonTable(); }, 30000);
+setInterval(signalTradeDetailTable, 30000);
 </script>
 </body>
 </html>
