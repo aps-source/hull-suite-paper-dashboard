@@ -286,7 +286,7 @@ function signalTradeDetailTable() {
     const t = rows.slice().sort((a,b) => b.signal_entry_time.localeCompare(a.signal_entry_time));
     const stCls = s => s === "PLACED" ? "good" : s === "NOT ATTEMPTED" ? "muted" : "bad";
     document.getElementById("signals").innerHTML = `<table><thead><tr><th>Strategy</th><th>Side</th>
-      <th>Signal entry</th><th class="r">Index</th><th>Signal exit</th><th>Status</th><th>Note</th>
+      <th>Signal entry</th><th class="r">Index</th><th>Strategy exit criteria (next flip, price-only)</th><th>Status</th><th>Note</th>
       <th class="r">Paper strike</th><th class="r">Paper entry</th><th class="r">Paper exit</th><th class="r">Paper ₹</th>
       <th class="r">Real strike</th><th>Real entry</th><th class="r">prem</th><th>Real exit</th><th class="r">prem</th><th class="r">Real ₹</th><th class="r">Diff ₹</th></tr></thead><tbody>${
       t.map(x => `<tr><td class="tagd">${esc(x.strategy)}</td><td class="${x.dir}">${x.dir}</td>
