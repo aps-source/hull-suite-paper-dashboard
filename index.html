@@ -178,18 +178,17 @@
   <div class="kpis" id="kpis"></div>
   <div class="grid" id="cards"></div>
   <div id="optPaper"></div>
-  <div class="tbl-card"><h2>Strategy signals vs actual trades &amp; P&amp;L (since go-live)</h2>
-    <div class="sub">Every signal Hull's logic generated, reconstructed straight from price data — never depends on a log, so it can't
-      miss a signal the live engine failed to act on. <b>Strategy exit criteria</b> is when the next opposite flip happens on
-      price alone — it does NOT mean paper or real actually exited then; check the Paper/Real columns for what was actually
-      held. <b class="good">PLACED</b> means a real order filled; anything else shows the exact reason it didn't. Where both a
-      paper (real premium) trade and a real trade exist for the same signal, Diff = paper net ₹ minus real net ₹. <b>Paper strike
-      blank</b> = paper itself never entered that signal; <b>Paper note</b> explains exactly why, using the same gates the paper
-      engine applies (stale/window/breaker/already-holding). Paper ₹ shows "(open)" for an unrealized, still-open position, no
-      suffix once closed. Blank strikes can't be backfilled after the fact — Dhan drops an option's price history once its
-      weekly expires, so an old missed signal's "what it would have cost" genuinely isn't recoverable, not just unshown.</div>
+  <div class="tbl-card"><h2>Real trade blotter — real money</h2>
+    <div class="tbl-scroll" id="realBlotter"></div></div>
+  <div class="tbl-card"><h2>Paper trade blotter — simulated, real option premiums, no order ever placed</h2>
+    <div class="tbl-scroll" id="paperBlotter"></div></div>
+  <div class="tbl-card"><h2>Signal audit — every Hull signal since go-live vs whether the real engine took it</h2>
+    <div class="sub">Price-only, reconstructed straight from the chart — can't miss a signal the live engine failed to act on
+      (balance/stale/API/breaker/anything else). <b class="good">TAKEN</b> = real order filled; <b class="bad">MISSED</b> shows
+      the exact logged reason, or "not attempted yet" if nothing was logged. Strike/entry/exit detail for a taken signal is in
+      the blotter above, joined by strategy + time.</div>
     <div class="tbl-scroll" id="signals"></div></div>
-  <div class="foot">This page cannot place, modify or cancel any order itself — it only displays state written by the engines. The <b>real trading</b> panel above reflects the live options engine (NIFTY 65 / SENSEX 20 qty per strategy, product MARGIN); it places real orders only while armed (<code>AUTO_TRADING.on</code>), subject to a Rs 5,000/day combined loss cap and a 2-consecutive-loss breaker per strategy. The <b>paper trading</b> panel simulates the same option premiums and strike selection without ever placing an order. Refreshes every 30 seconds.</div>
+  <div class="foot">This page cannot place, modify or cancel any order itself — it only displays state written by the engines. <b>Real trade blotter</b> reflects the live options engine (NIFTY 65 / SENSEX 20 qty per strategy, product MARGIN); it places real orders only while armed (<code>AUTO_TRADING.on</code>), subject to a Rs 5,000/day combined loss cap and a 2-consecutive-loss breaker per strategy. <b>Paper trade blotter</b> simulates the same option premiums and strike selection without ever placing an order. Refreshes every 30 seconds.</div>
 </main>
 <script>
 const STATE_URL = "live_state.json";
@@ -286,29 +285,28 @@ function eventsCard(r) {
   const rows = evs.slice(-10).reverse().map(e => `<div class="ev">${eventLine(e)}</div>`).join("");
   return `<div class="events"><b>Recent order activity (last ${Math.min(10, evs.length)})</b>${rows}</div>`;
 }
-function signalTradeDetailTable() {
-  fetch("signal_trade_detail.json?t=" + Date.now()).then(r => r.json()).then(rows => {
-    const t = rows.slice().sort((a,b) => b.signal_entry_time.localeCompare(a.signal_entry_time));
-    const stCls = s => s === "PLACED" ? "good" : s === "NOT ATTEMPTED" ? "muted" : "bad";
+function blotterTable(elId, file) {
+  fetch(file + "?t=" + Date.now()).then(r => r.json()).then(rows => {
+    document.getElementById(elId).innerHTML = rows.length ? `<table><thead><tr>
+      <th>Strategy</th><th>Side</th><th class="r">Strike</th><th class="r">Entry ₹</th><th>Entry time</th>
+      <th class="r">Exit ₹</th><th>Exit time</th><th class="r">P&amp;L</th><th>Status</th></tr></thead><tbody>${
+      rows.map(x => `<tr><td class="tagd">${esc(x.strategy)}</td><td class="${x.dir}">${x.dir}</td>
+        <td class="r">${x.strike ?? "—"}</td><td class="r">${x.entry_price ?? "—"}</td><td>${x.entry_time ? esc(x.entry_time.slice(0,16)) : "—"}</td>
+        <td class="r">${x.exit_price ?? "—"}</td><td>${x.exit_time ? esc(x.exit_time.slice(0,16)) : "—"}</td>
+        <td class="r ${cls(x.pnl_rs)}">${x.pnl_rs != null ? rs(x.pnl_rs) : "—"}</td>
+        <td class="tagd ${x.status === "OPEN" ? "" : (cls(x.pnl_rs) || "muted")}">${esc(x.status)}</td></tr>`).join("")
+      }</tbody></table>` : `<div style="padding:1rem" class="muted">No trades yet.</div>`;
+  }).catch(e => { document.getElementById(elId).innerHTML = `<div style="padding:1rem">Could not load ${file} — ${esc(e.message)}</div>`; });
+}
+function signalAuditTable() {
+  fetch("signal_audit.json?t=" + Date.now()).then(r => r.json()).then(rows => {
     document.getElementById("signals").innerHTML = `<table><thead><tr><th>Strategy</th><th>Side</th>
-      <th>Signal entry</th><th class="r">Index</th><th>Strategy exit criteria (next flip, price-only)</th><th>Status</th><th>Note</th>
-      <th class="r">Paper strike</th><th class="r">Paper entry</th><th class="r">Paper exit</th><th class="r">Paper ₹</th><th>Paper note</th>
-      <th class="r">Real strike</th><th>Real entry</th><th class="r">prem</th><th>Real exit</th><th class="r">prem</th><th class="r">Real ₹</th><th class="r">Diff ₹</th></tr></thead><tbody>${
-      t.map(x => `<tr><td class="tagd">${esc(x.strategy)}</td><td class="${x.dir}">${x.dir}</td>
-        <td>${esc(x.signal_entry_time.slice(0,16))}</td><td class="r">${x.signal_entry_index}</td>
-        <td>${esc(x.signal_exit_time.slice(0,16))}${x.signal_reason==="OPEN"?" (open)":""}</td>
-        <td class="tagd ${stCls(x.status)}">${esc(x.status)}</td><td>${esc(x.note)}</td>
-        <td class="r"${!x.paper_strike && x.paper_note ? ` title="${esc(x.paper_note)}"` : ""}>${x.paper_strike ?? "—"}</td>
-        <td class="r">${x.paper_entry_premium ?? "—"}</td>
-        <td class="r">${x.paper_open ? "open" : (x.paper_exit_premium ?? "—")}</td>
-        <td class="r ${cls(x.paper_net_rs)}">${x.paper_net_rs != null ? rs(x.paper_net_rs) + (x.paper_open ? " (open)" : "") : "—"}</td>
-        <td class="muted">${esc(x.paper_note || "")}</td>
-        <td class="r ${x.real_strike && x.paper_strike && x.real_strike !== x.paper_strike ? "bad" : ""}">${x.real_strike ?? "—"}</td>
-        <td>${x.real_entry_time ? esc(x.real_entry_time.replace("T"," ").slice(5,16)) : "—"}</td><td class="r">${x.real_entry_premium ?? "—"}</td>
-        <td>${x.real_exit_time ? esc(x.real_exit_time.replace("T"," ").slice(5,16)) : "—"}</td><td class="r">${x.real_exit_premium ?? "—"}</td>
-        <td class="r ${cls(x.real_net_rs)}">${x.real_net_rs != null ? rs(x.real_net_rs) : "—"}</td>
-        <td class="r ${cls(x.diff_rs)}">${x.diff_rs != null ? rs(x.diff_rs) : "—"}</td></tr>`).join("")}</tbody></table>`;
-  }).catch(e => { document.getElementById("signals").innerHTML = `<div style="padding:1rem">Could not load signal_trade_detail.json — ${esc(e.message)}</div>`; });
+      <th>Signal time</th><th class="r">Index</th><th>Status</th><th>Reason</th></tr></thead><tbody>${
+      rows.map(x => `<tr><td class="tagd">${esc(x.strategy)}</td><td class="${x.dir}">${x.dir}</td>
+        <td>${esc(x.signal_time.slice(0,16))}${!x.flip_time ? " (open)" : ""}</td><td class="r">${x.index_price}</td>
+        <td class="tagd ${x.taken === "TAKEN" ? "good" : "bad"}">${esc(x.taken)}</td><td class="muted">${esc(x.reason)}</td></tr>`).join("")
+      }</tbody></table>`;
+  }).catch(e => { document.getElementById("signals").innerHTML = `<div style="padding:1rem">Could not load signal_audit.json — ${esc(e.message)}</div>`; });
 }
 function optPaperSection(optState, optHist) {
   if (!optState || !optState.strategies) return "";
@@ -453,9 +451,14 @@ async function refresh() {
     document.getElementById("err").innerHTML = `<div class="banner err">Could not load live_state.json — ${esc(e.message)}</div>`;
   }
 }
-signalTradeDetailTable();
+function refreshTables() {
+  blotterTable("realBlotter", "real_blotter.json");
+  blotterTable("paperBlotter", "paper_blotter.json");
+  signalAuditTable();
+}
+refreshTables();
 refresh(); setInterval(refresh, 30000);
-setInterval(signalTradeDetailTable, 30000);
+setInterval(refreshTables, 30000);
 </script>
 </body>
 </html>
