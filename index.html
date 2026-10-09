@@ -183,7 +183,11 @@
       miss a signal the live engine failed to act on. <b>Strategy exit criteria</b> is when the next opposite flip happens on
       price alone — it does NOT mean paper or real actually exited then; check the Paper/Real columns for what was actually
       held. <b class="good">PLACED</b> means a real order filled; anything else shows the exact reason it didn't. Where both a
-      paper (real premium) trade and a real trade exist for the same signal, Diff = paper net ₹ minus real net ₹.</div>
+      paper (real premium) trade and a real trade exist for the same signal, Diff = paper net ₹ minus real net ₹. <b>Paper strike
+      blank</b> = paper itself never entered that signal; <b>Paper note</b> explains exactly why, using the same gates the paper
+      engine applies (stale/window/breaker/already-holding). Paper ₹ shows "(open)" for an unrealized, still-open position, no
+      suffix once closed. Blank strikes can't be backfilled after the fact — Dhan drops an option's price history once its
+      weekly expires, so an old missed signal's "what it would have cost" genuinely isn't recoverable, not just unshown.</div>
     <div class="tbl-scroll" id="signals"></div></div>
   <div class="foot">This page cannot place, modify or cancel any order itself — it only displays state written by the engines. The <b>real trading</b> panel above reflects the live options engine (NIFTY 65 / SENSEX 20 qty per strategy, product MARGIN); it places real orders only while armed (<code>AUTO_TRADING.on</code>), subject to a Rs 5,000/day combined loss cap and a 2-consecutive-loss breaker per strategy. The <b>paper trading</b> panel simulates the same option premiums and strike selection without ever placing an order. Refreshes every 30 seconds.</div>
 </main>
@@ -288,15 +292,17 @@ function signalTradeDetailTable() {
     const stCls = s => s === "PLACED" ? "good" : s === "NOT ATTEMPTED" ? "muted" : "bad";
     document.getElementById("signals").innerHTML = `<table><thead><tr><th>Strategy</th><th>Side</th>
       <th>Signal entry</th><th class="r">Index</th><th>Strategy exit criteria (next flip, price-only)</th><th>Status</th><th>Note</th>
-      <th class="r">Paper strike</th><th class="r">Paper entry</th><th class="r">Paper exit</th><th class="r">Paper ₹</th>
+      <th class="r">Paper strike</th><th class="r">Paper entry</th><th class="r">Paper exit</th><th class="r">Paper ₹</th><th>Paper note</th>
       <th class="r">Real strike</th><th>Real entry</th><th class="r">prem</th><th>Real exit</th><th class="r">prem</th><th class="r">Real ₹</th><th class="r">Diff ₹</th></tr></thead><tbody>${
       t.map(x => `<tr><td class="tagd">${esc(x.strategy)}</td><td class="${x.dir}">${x.dir}</td>
         <td>${esc(x.signal_entry_time.slice(0,16))}</td><td class="r">${x.signal_entry_index}</td>
         <td>${esc(x.signal_exit_time.slice(0,16))}${x.signal_reason==="OPEN"?" (open)":""}</td>
         <td class="tagd ${stCls(x.status)}">${esc(x.status)}</td><td>${esc(x.note)}</td>
-        <td class="r">${x.paper_strike ?? "—"}</td><td class="r">${x.paper_entry_premium ?? "—"}</td>
+        <td class="r"${!x.paper_strike && x.paper_note ? ` title="${esc(x.paper_note)}"` : ""}>${x.paper_strike ?? "—"}</td>
+        <td class="r">${x.paper_entry_premium ?? "—"}</td>
         <td class="r">${x.paper_open ? "open" : (x.paper_exit_premium ?? "—")}</td>
-        <td class="r ${cls(x.paper_net_rs)}">${x.paper_open ? '<span class="muted">unrealized</span>' : (x.paper_net_rs != null ? rs(x.paper_net_rs) : "—")}</td>
+        <td class="r ${cls(x.paper_net_rs)}">${x.paper_net_rs != null ? rs(x.paper_net_rs) + (x.paper_open ? " (open)" : "") : "—"}</td>
+        <td class="muted">${esc(x.paper_note || "")}</td>
         <td class="r ${x.real_strike && x.paper_strike && x.real_strike !== x.paper_strike ? "bad" : ""}">${x.real_strike ?? "—"}</td>
         <td>${x.real_entry_time ? esc(x.real_entry_time.replace("T"," ").slice(5,16)) : "—"}</td><td class="r">${x.real_entry_premium ?? "—"}</td>
         <td>${x.real_exit_time ? esc(x.real_exit_time.replace("T"," ").slice(5,16)) : "—"}</td><td class="r">${x.real_exit_premium ?? "—"}</td>
