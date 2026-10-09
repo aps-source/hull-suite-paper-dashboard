@@ -178,15 +178,12 @@
   <div class="kpis" id="kpis"></div>
   <div class="grid" id="cards"></div>
   <div id="optPaper"></div>
-  <div class="tbl-card"><h2>Strategy signals vs actual trades (since go-live)</h2>
+  <div class="tbl-card"><h2>Strategy signals vs actual trades &amp; P&amp;L (since go-live)</h2>
     <div class="sub">Every signal Hull's logic generated, reconstructed straight from price data — never depends on a log, so it can't
       miss a signal the live engine failed to act on. <b class="good">PLACED</b> means a real order filled; anything else shows
-      the exact reason it didn't.</div>
+      the exact reason it didn't. Where both a paper (real premium) trade and a real trade exist for the same signal, Diff =
+      paper net ₹ minus real net ₹ — execution slippage and delays show up here directly.</div>
     <div class="tbl-scroll" id="signals"></div></div>
-  <div class="tbl-card"><h2>P&amp;L: strategy (paper, real premiums) vs actual (real fills)</h2>
-    <div class="sub">Matched trade-for-trade by strategy + direction + entry time. Diff = what the strategy would have made minus what
-      actually got filled — execution slippage, delays and missed signals show up here directly.</div>
-    <div class="tbl-scroll" id="pnlcomp"></div></div>
   <div class="foot">This page cannot place, modify or cancel any order itself — it only displays state written by the engines. The <b>real trading</b> panel above reflects the live options engine (NIFTY 65 / SENSEX 20 qty per strategy, product MARGIN); it places real orders only while armed (<code>AUTO_TRADING.on</code>), subject to a Rs 5,000/day combined loss cap and a 2-consecutive-loss breaker per strategy. The <b>paper trading</b> panel simulates the same option premiums and strike selection without ever placing an order. Refreshes every 30 seconds.</div>
 </main>
 <script>
