@@ -1,9 +1,9 @@
 {
- "engine_status": "data_error",
+ "engine_status": "running",
  "paper_start": "2026-09-28",
  "hull_length": 55,
  "timeframe": "15m",
- "last_tick": "2026-10-09T10:11:40",
+ "last_tick": "2026-10-09T10:14:02",
  "lots": {
   "NIFTY": 65,
   "SENSEX": 20
@@ -11,37 +11,32 @@
  "cost_per_side_pct": 0.01,
  "instruments": {
   "NIFTY": {
-   "ltp": 22471.75,
-   "last_1m": "2026-10-09 10:10:00",
+   "ltp": 22488.7,
+   "last_1m": "2026-10-09 10:14:00",
    "strategies": {
     "HMA": {
      "mode": "HMA",
      "colour": "GREEN",
      "colour_since": "2026-10-09 09:45:00",
-     "hull": 22178.96,
-     "hull_2_bars_ago": 22169.38,
+     "hull": 22192.22,
+     "hull_2_bars_ago": 22171.16,
      "pending_signal": null,
      "position": {
       "dir": "LONG",
       "entry_time": "2026-10-09 10:00:00",
       "entry_price": 22460.1,
-      "ltp": 22471.75,
-      "unrealized_pts": 11.65,
-      "unrealized_net_pts": 7.16,
-      "unrealized_rs": 465.0
+      "ltp": 22488.7,
+      "unrealized_pts": 28.6,
+      "unrealized_net_pts": 24.11,
+      "unrealized_rs": 1567.0
      },
      "closed_trades": 7,
      "wins": 4,
      "realized_net_pts": 657.93,
      "realized_net_rs": 42765.0,
-     "total_net_pts": 665.09,
-     "total_net_rs": 43231.0,
+     "total_net_pts": 682.04,
+     "total_net_rs": 44333.0,
      "tail": [
-      {
-       "t": "10-07 09:15",
-       "c": 22624.0,
-       "h": 22780.62
-      },
       {
        "t": "10-07 09:30",
        "c": 22617.1,
@@ -336,38 +331,38 @@
        "t": "10-09 09:45",
        "c": 22459.95,
        "h": 22178.96
+      },
+      {
+       "t": "10-09 10:00",
+       "c": 22488.7,
+       "h": 22192.22
       }
      ],
-     "last_completed_bar": "2026-10-09 09:45"
+     "last_completed_bar": "2026-10-09 10:00"
     },
     "EHMA": {
      "mode": "EHMA",
      "colour": "GREEN",
      "colour_since": "2026-10-09 09:45:00",
-     "hull": 22254.25,
-     "hull_2_bars_ago": 22251.5,
+     "hull": 22261.48,
+     "hull_2_bars_ago": 22250.72,
      "pending_signal": null,
      "position": {
       "dir": "LONG",
       "entry_time": "2026-10-09 10:00:00",
       "entry_price": 22460.1,
-      "ltp": 22471.75,
-      "unrealized_pts": 11.65,
-      "unrealized_net_pts": 7.16,
-      "unrealized_rs": 465.0
+      "ltp": 22488.7,
+      "unrealized_pts": 28.6,
+      "unrealized_net_pts": 24.11,
+      "unrealized_rs": 1567.0
      },
      "closed_trades": 7,
      "wins": 5,
      "realized_net_pts": 498.01,
      "realized_net_rs": 32371.0,
-     "total_net_pts": 505.17,
-     "total_net_rs": 32836.0,
+     "total_net_pts": 522.12,
+     "total_net_rs": 33938.0,
      "tail": [
-      {
-       "t": "10-07 09:15",
-       "c": 22624.0,
-       "h": 22743.75
-      },
       {
        "t": "10-07 09:30",
        "c": 22617.1,
@@ -662,44 +657,44 @@
        "t": "10-09 09:45",
        "c": 22459.95,
        "h": 22254.25
+      },
+      {
+       "t": "10-09 10:00",
+       "c": 22488.7,
+       "h": 22261.48
       }
      ],
-     "last_completed_bar": "2026-10-09 09:45"
+     "last_completed_bar": "2026-10-09 10:00"
     }
    }
   },
   "SENSEX": {
-   "ltp": 72367.4,
-   "last_1m": "2026-10-09 10:11:00",
+   "ltp": 72367.99,
+   "last_1m": "2026-10-09 10:14:00",
    "strategies": {
     "HMA": {
      "mode": "HMA",
      "colour": "GREEN",
      "colour_since": "2026-10-09 09:45:00",
-     "hull": 71409.91,
-     "hull_2_bars_ago": 71374.73,
+     "hull": 71453.19,
+     "hull_2_bars_ago": 71383.14,
      "pending_signal": null,
      "position": {
       "dir": "LONG",
       "entry_time": "2026-10-09 10:00:00",
       "entry_price": 72277.2,
-      "ltp": 72367.4,
-      "unrealized_pts": 90.2,
-      "unrealized_net_pts": 75.74,
-      "unrealized_rs": 1515.0
+      "ltp": 72367.99,
+      "unrealized_pts": 90.79,
+      "unrealized_net_pts": 76.33,
+      "unrealized_rs": 1527.0
      },
      "closed_trades": 5,
      "wins": 4,
      "realized_net_pts": 1230.63,
      "realized_net_rs": 24613.0,
-     "total_net_pts": 1306.37,
-     "total_net_rs": 26127.0,
+     "total_net_pts": 1306.96,
+     "total_net_rs": 26139.0,
      "tail": [
-      {
-       "t": "10-06 16:15",
-       "c": 73067.81,
-       "h": 73117.16
-      },
       {
        "t": "10-06 16:30",
        "c": 73067.81,
@@ -994,38 +989,38 @@
        "t": "10-09 09:45",
        "c": 72278.63,
        "h": 71409.91
+      },
+      {
+       "t": "10-09 10:00",
+       "c": 72367.99,
+       "h": 71453.19
       }
      ],
-     "last_completed_bar": "2026-10-09 09:45"
+     "last_completed_bar": "2026-10-09 10:00"
     },
     "EHMA": {
      "mode": "EHMA",
      "colour": "GREEN",
      "colour_since": "2026-10-09 09:45:00",
-     "hull": 71644.68,
-     "hull_2_bars_ago": 71631.69,
+     "hull": 71668.88,
+     "hull_2_bars_ago": 71631.66,
      "pending_signal": null,
      "position": {
       "dir": "LONG",
       "entry_time": "2026-10-09 10:00:00",
       "entry_price": 72277.2,
-      "ltp": 72367.4,
-      "unrealized_pts": 90.2,
-      "unrealized_net_pts": 75.74,
-      "unrealized_rs": 1515.0
+      "ltp": 72367.99,
+      "unrealized_pts": 90.79,
+      "unrealized_net_pts": 76.33,
+      "unrealized_rs": 1527.0
      },
      "closed_trades": 9,
      "wins": 3,
      "realized_net_pts": -83.56,
      "realized_net_rs": -1671.0,
-     "total_net_pts": -7.82,
-     "total_net_rs": -156.0,
+     "total_net_pts": -7.23,
+     "total_net_rs": -145.0,
      "tail": [
-      {
-       "t": "10-06 16:15",
-       "c": 73067.81,
-       "h": 72976.37
-      },
       {
        "t": "10-06 16:30",
        "c": 73067.81,
@@ -1320,17 +1315,20 @@
        "t": "10-09 09:45",
        "c": 72278.63,
        "h": 71644.68
+      },
+      {
+       "t": "10-09 10:00",
+       "c": 72367.99,
+       "h": 71668.88
       }
      ],
-     "last_completed_bar": "2026-10-09 09:45"
+     "last_completed_bar": "2026-10-09 10:00"
     }
    }
   }
  },
- "errors": [
-  "NIFTY: {'status': 'failure', 'remarks': 'HTTPSConnectionPool(host=\\'api.dhan.co\\', port=443): Max retries exceeded with url: /v2/charts/intraday (Caused by NameResolutionError(\"<urllib3.connection.HTTPSConne"
- ],
- "total_net_rs": 102038.0,
+ "errors": [],
+ "total_net_rs": 104265.0,
  "realized_net_rs": 98078.0,
  "open_positions": 4
 }
