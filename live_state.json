@@ -1,9 +1,9 @@
 {
- "engine_status": "data_error",
+ "engine_status": "running",
  "paper_start": "2026-09-28",
  "hull_length": 55,
  "timeframe": "15m",
- "last_tick": "2026-10-09T08:48:31",
+ "last_tick": "2026-10-09T08:53:52",
  "lots": {
   "NIFTY": 65,
   "SENSEX": 20
@@ -1327,10 +1327,7 @@
    }
   }
  },
- "errors": [
-  "NIFTY: {'status': 'failure', 'remarks': {'error_code': 'DH-901', 'error_type': 'Invalid_Authentication', 'error_message': 'Client ID or user generated access token is invalid or expired.'}, 'data': ''}",
-  "SENSEX: {'status': 'failure', 'remarks': {'error_code': 'DH-901', 'error_type': 'Invalid_Authentication', 'error_message': 'Client ID or user generated access token is invalid or expired.'}, 'data': ''}"
- ],
+ "errors": [],
  "total_net_rs": 155121.0,
  "realized_net_rs": 61277.0,
  "open_positions": 4
