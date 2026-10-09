@@ -66,6 +66,13 @@
   <div class="card"><h2>Monthly net P&amp;L, 2026 (points, by exit month)</h2><div class="scroll" id="monthly"></div></div>
   <div class="card"><h2>Out-of-sample by year, 2021–2025 (points)</h2><div class="scroll" id="oos"></div></div>
   <div class="card"><h2>2026 backtest trades</h2><div class="filters" id="filters"></div><div class="scroll tall" id="log"></div></div>
+  <div class="card"><h2>Strategy signals, live (since go-live) — what Hull's logic says, independent of execution</h2>
+    <div style="padding:0.7rem 1.1rem 0;font-size:0.84rem;color:var(--text-secondary)">
+      Reconstructed straight from price data (same engine.run() the live/paper engines use) — never depends on a log, so it can't miss
+      a signal the live engine failed to act on (balance, stale signal, API, internet, token, IP, or any other reason).
+      Compare against "Actual trades" below: a signal with no matching real trade means something blocked execution.</div>
+    <div class="scroll tall" id="signals"></div></div>
+  <div class="card"><h2>Actual trades, real fills (since go-live)</h2><div class="scroll tall" id="realtrades"></div></div>
   <div class="foot" id="foot"></div>
 </main>
 <script>
@@ -117,12 +124,28 @@ function log() {
   document.getElementById("log").innerHTML = `<table><thead><tr><th>Strategy</th><th>Side</th><th>Entry</th><th class="r">Entry px</th><th>Exit</th><th class="r">Exit px</th><th class="r">Net pts</th><th class="r">Net ₹</th></tr></thead><tbody>${
     t.map(x => `<tr><td class="tagd">${esc(x.n)}</td><td class="${x.dir}">${x.dir}</td><td>${esc(x.entry_time.slice(0,16))}</td><td class="r">${x.entry}</td><td>${esc(x.exit_time.slice(0,16))}${x.open ? " (open)" : ""}</td><td class="r">${x.exit}</td><td class="r ${cls(x.net_pts)}">${fmt(x.net_pts)}</td><td class="r ${cls(x.rs)}">${rs(x.rs)}</td></tr>`).join("")}</tbody></table>`;
 }
+function signalsTable() {
+  fetch("strategy_signals.json?t=" + Date.now()).then(r => r.json()).then(sigs => {
+    const t = sigs.slice().sort((a,b) => b.entry_time.localeCompare(a.entry_time));
+    document.getElementById("signals").innerHTML = `<table><thead><tr><th>Strategy</th><th>Side</th><th>Signal entry</th><th class="r">Index</th><th>Signal exit</th><th class="r">Index</th><th>Reason</th></tr></thead><tbody>${
+      t.map(x => `<tr><td class="tagd">${esc(x.strategy)}</td><td class="${x.dir}">${x.dir}</td><td>${esc(x.entry_time.slice(0,16))}</td><td class="r">${x.entry_index}</td><td>${esc(x.exit_time.slice(0,16))}${x.reason==="OPEN"?" (open)":""}</td><td class="r">${x.exit_index}</td><td>${esc(x.reason)}</td></tr>`).join("")}</tbody></table>`;
+  }).catch(e => { document.getElementById("signals").innerHTML = `<div style="padding:1rem">Could not load strategy_signals.json — ${esc(e.message)}</div>`; });
+}
+function realTable() {
+  fetch("real_trades_history.json?t=" + Date.now()).then(r => r.json()).then(t => {
+    if (!t.length) { document.getElementById("realtrades").innerHTML = `<div style="padding:1rem">No real trades closed yet.</div>`; return; }
+    const s = t.slice().sort((a,b) => b.exit_time.localeCompare(a.exit_time));
+    document.getElementById("realtrades").innerHTML = `<table><thead><tr><th>Strategy</th><th>Side</th><th>Contract</th><th>Entry</th><th class="r">Entry px</th><th>Exit</th><th class="r">Exit px</th><th class="r">Net ₹</th></tr></thead><tbody>${
+      s.map(x => `<tr><td class="tagd">${esc(x.strategy)}</td><td class="${x.dir}">${esc(x.dir)}</td><td>${esc(x.symbol||"")}</td><td>${esc((x.entry_time||"").replace("T"," ").slice(5,16))}</td><td class="r">${x.entry}</td><td>${esc((x.exit_time||"").replace("T"," ").slice(5,16))}</td><td class="r">${x.exit}</td><td class="r ${cls(x.net_rs)}">${rs(x.net_rs||0)}</td></tr>`).join("")}</tbody></table>`;
+  }).catch(e => { document.getElementById("realtrades").innerHTML = `<div style="padding:1rem">Could not load real_trades_history.json — ${esc(e.message)}</div>`; });
+}
 (async () => {
   try { D = await (await fetch("backtest_data.json?t=" + Date.now())).json(); }
   catch (e) { document.querySelector(".page").innerHTML = `<div class="card"><h2>Error</h2><div class="verdict"><div class="body">Could not load backtest_data.json — ${esc(e.message)}</div></div></div>`; return; }
   document.getElementById("params").textContent = D.params;
   document.getElementById("foot").innerHTML = `Buy &amp; hold over the same 2026 window: NIFTY <b class="${cls(D.buy_hold.NIFTY)}">${fmt(D.buy_hold.NIFTY,0)}</b> pts, SENSEX <b class="${cls(D.buy_hold.SENSEX)}">${fmt(D.buy_hold.SENSEX,0)}</b> pts — a falling market, which is why shorts did most of the work. Results are on the index (spot), not futures or options, so slippage, margin and premium are not modelled. Generated ${esc(D.generated)}. Past results do not predict future results.`;
   summary(); equity(); monthly(); oos(); filters(); log();
+  signalsTable(); realTable();
 })();
 </script>
 </body>
