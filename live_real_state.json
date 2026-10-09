@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-09T19:39:06",
+ "generated": "2026-10-09T19:44:14",
  "auto_trading": true,
  "paused": false,
  "trading_day": "2026-10-09",
@@ -27,35 +27,6 @@
   }
  },
  "recent_events": [
-  {
-   "event": "AUTO_DROPPED",
-   "action": {
-    "kind": "ENTRY",
-    "strategy_key": "NIFTY_HMA",
-    "symbol": "NIFTY",
-    "mode": "HMA",
-    "direction": "LONG",
-    "quantity": 65,
-    "contract": {
-     "symbol": "NIFTY",
-     "security_id": "44612",
-     "trading_symbol": "NIFTY-Oct2026-22500-CE",
-     "expiry": "2026-10-13",
-     "strike": 22500.0,
-     "option_type": "CE",
-     "lot": 65,
-     "exchange_segment": "NSE_FNO",
-     "ltp": 122.85,
-     "moneyness_steps": 0,
-     "moneyness": "ATM",
-     "spot": 22478.25
-    },
-    "signal_time": "2026-10-09 10:00:00",
-    "created_at": "2026-10-09T11:43:14"
-   },
-   "reason": "stale signal (103 min old, limit 20)",
-   "logged_at": "2026-10-09T11:43:28.177756"
-  },
   {
    "event": "AUTO_DROPPED",
    "action": {
@@ -875,6 +846,14 @@
     "ENTRY NIFTY_HMA"
    ],
    "logged_at": "2026-10-09T19:39:06.029721"
+  },
+  {
+   "event": "AUTO_BLOCKED",
+   "reason": "getIP call failed (network or client error)",
+   "held": [
+    "ENTRY NIFTY_HMA"
+   ],
+   "logged_at": "2026-10-09T19:44:14.426924"
   }
  ]
 }
