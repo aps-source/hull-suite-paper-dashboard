@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-09T22:42:11",
+ "generated": "2026-10-09T22:47:13",
  "auto_trading": true,
  "paused": false,
  "trading_day": "2026-10-09",
@@ -27,14 +27,6 @@
   }
  },
  "recent_events": [
-  {
-   "event": "AUTO_BLOCKED",
-   "reason": "getIP call failed (network or client error)",
-   "held": [
-    "ENTRY NIFTY_HMA"
-   ],
-   "logged_at": "2026-10-09T20:15:05.115791"
-  },
   {
    "event": "AUTO_BLOCKED",
    "reason": "getIP call failed (network or client error)",
@@ -728,6 +720,35 @@
    },
    "reason": "outside the auto-entry window 09:20-15:15",
    "logged_at": "2026-10-09T22:42:11.305874"
+  },
+  {
+   "event": "AUTO_HELD",
+   "action": {
+    "kind": "ENTRY",
+    "strategy_key": "NIFTY_HMA",
+    "symbol": "NIFTY",
+    "mode": "HMA",
+    "direction": "SHORT",
+    "quantity": 65,
+    "contract": {
+     "symbol": "NIFTY",
+     "security_id": "44601",
+     "trading_symbol": "NIFTY-Oct2026-22350-PE",
+     "expiry": "2026-10-13",
+     "strike": 22350.0,
+     "option_type": "PE",
+     "lot": 65,
+     "exchange_segment": "NSE_FNO",
+     "ltp": 37.15,
+     "moneyness_steps": 3,
+     "moneyness": "3 OTM",
+     "spot": 22520.45
+    },
+    "signal_time": "2026-10-09 17:30:00",
+    "created_at": "2026-10-09T17:31:28"
+   },
+   "reason": "outside the auto-entry window 09:20-15:15",
+   "logged_at": "2026-10-09T22:47:12.946966"
   }
  ]
 }
