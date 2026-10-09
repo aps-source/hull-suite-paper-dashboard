@@ -285,16 +285,17 @@ function signalTradeDetailTable() {
   fetch("signal_trade_detail.json?t=" + Date.now()).then(r => r.json()).then(rows => {
     const t = rows.slice().sort((a,b) => b.signal_entry_time.localeCompare(a.signal_entry_time));
     const stCls = s => s === "PLACED" ? "good" : s === "NOT ATTEMPTED" ? "muted" : "bad";
-    document.getElementById("signals").innerHTML = `<table><thead><tr><th>Strategy</th><th>Side</th><th class="r">Strike</th>
+    document.getElementById("signals").innerHTML = `<table><thead><tr><th>Strategy</th><th>Side</th>
       <th>Signal entry</th><th class="r">Index</th><th>Signal exit</th><th>Status</th><th>Note</th>
-      <th class="r">Paper entry</th><th class="r">Paper exit</th><th class="r">Paper ₹</th>
-      <th>Real entry</th><th class="r">prem</th><th>Real exit</th><th class="r">prem</th><th class="r">Real ₹</th><th class="r">Diff ₹</th></tr></thead><tbody>${
-      t.map(x => `<tr><td class="tagd">${esc(x.strategy)}</td><td class="${x.dir}">${x.dir}</td><td class="r">${x.strike ?? "—"}</td>
+      <th class="r">Paper strike</th><th class="r">Paper entry</th><th class="r">Paper exit</th><th class="r">Paper ₹</th>
+      <th class="r">Real strike</th><th>Real entry</th><th class="r">prem</th><th>Real exit</th><th class="r">prem</th><th class="r">Real ₹</th><th class="r">Diff ₹</th></tr></thead><tbody>${
+      t.map(x => `<tr><td class="tagd">${esc(x.strategy)}</td><td class="${x.dir}">${x.dir}</td>
         <td>${esc(x.signal_entry_time.slice(0,16))}</td><td class="r">${x.signal_entry_index}</td>
         <td>${esc(x.signal_exit_time.slice(0,16))}${x.signal_reason==="OPEN"?" (open)":""}</td>
         <td class="tagd ${stCls(x.status)}">${esc(x.status)}</td><td>${esc(x.note)}</td>
-        <td class="r">${x.paper_entry_premium ?? "—"}</td><td class="r">${x.paper_exit_premium ?? "—"}</td>
+        <td class="r">${x.paper_strike ?? "—"}</td><td class="r">${x.paper_entry_premium ?? "—"}</td><td class="r">${x.paper_exit_premium ?? "—"}</td>
         <td class="r ${cls(x.paper_net_rs)}">${x.paper_net_rs != null ? rs(x.paper_net_rs) : "—"}</td>
+        <td class="r ${x.real_strike && x.paper_strike && x.real_strike !== x.paper_strike ? "bad" : ""}">${x.real_strike ?? "—"}</td>
         <td>${x.real_entry_time ? esc(x.real_entry_time.replace("T"," ").slice(5,16)) : "—"}</td><td class="r">${x.real_entry_premium ?? "—"}</td>
         <td>${x.real_exit_time ? esc(x.real_exit_time.replace("T"," ").slice(5,16)) : "—"}</td><td class="r">${x.real_exit_premium ?? "—"}</td>
         <td class="r ${cls(x.real_net_rs)}">${x.real_net_rs != null ? rs(x.real_net_rs) : "—"}</td>
