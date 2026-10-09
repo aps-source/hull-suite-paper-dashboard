@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-09T19:54:31",
+ "generated": "2026-10-09T19:59:39",
  "auto_trading": true,
  "paused": false,
  "trading_day": "2026-10-09",
@@ -27,35 +27,6 @@
   }
  },
  "recent_events": [
-  {
-   "event": "AUTO_DROPPED",
-   "action": {
-    "kind": "ENTRY",
-    "strategy_key": "SENSEX_EHMA",
-    "symbol": "SENSEX",
-    "mode": "EHMA",
-    "direction": "LONG",
-    "quantity": 20,
-    "contract": {
-     "symbol": "SENSEX",
-     "security_id": "1102197",
-     "trading_symbol": "SENSEX-Oct2026-72600-CE",
-     "expiry": "2026-10-15",
-     "strike": 72600.0,
-     "option_type": "CE",
-     "lot": 20,
-     "exchange_segment": "BSE_FNO",
-     "ltp": 452.9,
-     "moneyness_steps": 3,
-     "moneyness": "3 OTM",
-     "spot": 72330.55
-    },
-    "signal_time": "2026-10-09 10:00:00",
-    "created_at": "2026-10-09T11:43:23"
-   },
-   "reason": "stale signal (103 min old, limit 20)",
-   "logged_at": "2026-10-09T11:43:28.823800"
-  },
   {
    "event": "AUTO_HELD",
    "action": {
@@ -812,6 +783,14 @@
     "ENTRY NIFTY_HMA"
    ],
    "logged_at": "2026-10-09T19:54:31.360095"
+  },
+  {
+   "event": "AUTO_BLOCKED",
+   "reason": "getIP call failed (network or client error)",
+   "held": [
+    "ENTRY NIFTY_HMA"
+   ],
+   "logged_at": "2026-10-09T19:59:39.801987"
   }
  ]
 }
