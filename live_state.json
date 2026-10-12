@@ -3,7 +3,7 @@
  "paper_start": "2026-09-28",
  "hull_length": 55,
  "timeframe": "15m",
- "last_tick": "2026-10-12T11:25:41",
+ "last_tick": "2026-10-12T11:30:04",
  "lots": {
   "NIFTY": 65,
   "SENSEX": 20
@@ -11,37 +11,32 @@
  "cost_per_side_pct": 0.01,
  "instruments": {
   "NIFTY": {
-   "ltp": 22394.25,
-   "last_1m": "2026-10-12 11:25:00",
+   "ltp": 22386.45,
+   "last_1m": "2026-10-12 11:30:00",
    "strategies": {
     "HMA": {
      "mode": "HMA",
      "colour": "RED",
      "colour_since": "2026-10-09 17:15:00",
-     "hull": 22517.12,
-     "hull_2_bars_ago": 22536.24,
+     "hull": 22505.0,
+     "hull_2_bars_ago": 22527.8,
      "pending_signal": null,
      "position": {
       "dir": "SHORT",
       "entry_time": "2026-10-09 17:30:00",
       "entry_price": 22520.45,
-      "ltp": 22394.25,
-      "unrealized_pts": 126.2,
-      "unrealized_net_pts": 121.71,
-      "unrealized_rs": 7911.0
+      "ltp": 22386.45,
+      "unrealized_pts": 134.0,
+      "unrealized_net_pts": 129.51,
+      "unrealized_rs": 8418.0
      },
      "closed_trades": 8,
      "wins": 5,
      "realized_net_pts": 713.78,
      "realized_net_rs": 46396.0,
-     "total_net_pts": 835.49,
-     "total_net_rs": 54307.0,
+     "total_net_pts": 843.29,
+     "total_net_rs": 54814.0,
      "tail": [
-      {
-       "t": "10-08 13:15",
-       "c": 22236.0,
-       "h": 22340.4
-      },
       {
        "t": "10-08 13:30",
        "c": 22250.85,
@@ -336,38 +331,38 @@
        "t": "10-12 11:00",
        "c": 22389.9,
        "h": 22517.12
+      },
+      {
+       "t": "10-12 11:15",
+       "c": 22386.1,
+       "h": 22505.0
       }
      ],
-     "last_completed_bar": "2026-10-12 11:00"
+     "last_completed_bar": "2026-10-12 11:15"
     },
     "EHMA": {
      "mode": "EHMA",
      "colour": "RED",
      "colour_since": "2026-10-12 10:15:00",
-     "hull": 22513.03,
-     "hull_2_bars_ago": 22523.3,
+     "hull": 22505.57,
+     "hull_2_bars_ago": 22519.15,
      "pending_signal": null,
      "position": {
       "dir": "SHORT",
       "entry_time": "2026-10-12 10:30:00",
       "entry_price": 22467.85,
-      "ltp": 22394.25,
-      "unrealized_pts": 73.6,
-      "unrealized_net_pts": 69.11,
-      "unrealized_rs": 4492.0
+      "ltp": 22386.45,
+      "unrealized_pts": 81.4,
+      "unrealized_net_pts": 76.91,
+      "unrealized_rs": 4999.0
      },
      "closed_trades": 8,
      "wins": 6,
      "realized_net_pts": 501.27,
      "realized_net_rs": 32582.0,
-     "total_net_pts": 570.38,
-     "total_net_rs": 37075.0,
+     "total_net_pts": 578.18,
+     "total_net_rs": 37582.0,
      "tail": [
-      {
-       "t": "10-08 13:15",
-       "c": 22236.0,
-       "h": 22406.34
-      },
       {
        "t": "10-08 13:30",
        "c": 22250.85,
@@ -662,44 +657,44 @@
        "t": "10-12 11:00",
        "c": 22389.9,
        "h": 22513.03
+      },
+      {
+       "t": "10-12 11:15",
+       "c": 22386.1,
+       "h": 22505.57
       }
      ],
-     "last_completed_bar": "2026-10-12 11:00"
+     "last_completed_bar": "2026-10-12 11:15"
     }
    }
   },
   "SENSEX": {
-   "ltp": 71981.08,
-   "last_1m": "2026-10-12 11:25:00",
+   "ltp": 71940.58,
+   "last_1m": "2026-10-12 11:30:00",
    "strategies": {
     "HMA": {
      "mode": "HMA",
      "colour": "RED",
      "colour_since": "2026-10-12 09:15:00",
-     "hull": 72524.27,
-     "hull_2_bars_ago": 72603.73,
+     "hull": 72474.87,
+     "hull_2_bars_ago": 72568.16,
      "pending_signal": null,
      "position": {
       "dir": "SHORT",
       "entry_time": "2026-10-12 09:30:00",
       "entry_price": 72590.31,
-      "ltp": 71981.08,
-      "unrealized_pts": 609.23,
-      "unrealized_net_pts": 594.77,
-      "unrealized_rs": 11895.0
+      "ltp": 71940.58,
+      "unrealized_pts": 649.73,
+      "unrealized_net_pts": 635.28,
+      "unrealized_rs": 12706.0
      },
      "closed_trades": 6,
      "wins": 5,
      "realized_net_pts": 1529.25,
      "realized_net_rs": 30585.0,
-     "total_net_pts": 2124.02,
-     "total_net_rs": 42480.0,
+     "total_net_pts": 2164.53,
+     "total_net_rs": 43291.0,
      "tail": [
-      {
-       "t": "10-08 10:30",
-       "c": 72157.39,
-       "h": 72438.2
-      },
       {
        "t": "10-08 10:45",
        "c": 72193.65,
@@ -994,38 +989,38 @@
        "t": "10-12 11:00",
        "c": 71936.56,
        "h": 72524.27
+      },
+      {
+       "t": "10-12 11:15",
+       "c": 71939.42,
+       "h": 72474.87
       }
      ],
-     "last_completed_bar": "2026-10-12 11:00"
+     "last_completed_bar": "2026-10-12 11:15"
     },
     "EHMA": {
      "mode": "EHMA",
      "colour": "RED",
      "colour_since": "2026-10-12 10:15:00",
-     "hull": 72393.3,
-     "hull_2_bars_ago": 72433.36,
+     "hull": 72365.52,
+     "hull_2_bars_ago": 72416.83,
      "pending_signal": null,
      "position": {
       "dir": "SHORT",
       "entry_time": "2026-10-12 10:30:00",
       "entry_price": 72196.33,
-      "ltp": 71981.08,
-      "unrealized_pts": 215.25,
-      "unrealized_net_pts": 200.83,
-      "unrealized_rs": 4017.0
+      "ltp": 71940.58,
+      "unrealized_pts": 255.75,
+      "unrealized_net_pts": 241.34,
+      "unrealized_rs": 4827.0
      },
      "closed_trades": 10,
      "wins": 3,
      "realized_net_pts": -178.88,
      "realized_net_rs": -3578.0,
-     "total_net_pts": 21.95,
-     "total_net_rs": 439.0,
+     "total_net_pts": 62.46,
+     "total_net_rs": 1249.0,
      "tail": [
-      {
-       "t": "10-08 10:30",
-       "c": 72157.39,
-       "h": 72590.63
-      },
       {
        "t": "10-08 10:45",
        "c": 72193.65,
@@ -1320,15 +1315,20 @@
        "t": "10-12 11:00",
        "c": 71936.56,
        "h": 72393.3
+      },
+      {
+       "t": "10-12 11:15",
+       "c": 71939.42,
+       "h": 72365.52
       }
      ],
-     "last_completed_bar": "2026-10-12 11:00"
+     "last_completed_bar": "2026-10-12 11:15"
     }
    }
   }
  },
  "errors": [],
- "total_net_rs": 134301.0,
+ "total_net_rs": 136936.0,
  "realized_net_rs": 105985.0,
  "open_positions": 4
 }
