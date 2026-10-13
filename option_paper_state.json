@@ -1,23 +1,23 @@
 {
  "trading_day": "2026-10-13",
- "combined_daily_pnl_rupees": 0.0,
+ "combined_daily_pnl_rupees": -5482.75,
  "strategies": {
   "NIFTY_HMA": {
-   "position": null,
+   "position": {
+    "direction": "LONG",
+    "entry_time": "2026-10-13 09:45:00",
+    "entry_ltp": 194.25,
+    "security_id": "47137",
+    "exchange_segment": "NSE_FNO",
+    "trading_symbol": "NIFTY-Oct2026-22550-CE",
+    "qty": 65
+   },
    "day_losses": 0,
    "last_rejected_signal": "2026-10-09 17:30:00"
   },
   "NIFTY_EHMA": {
-   "position": {
-    "direction": "SHORT",
-    "entry_time": "2026-10-12 10:30:00",
-    "entry_ltp": 117.4,
-    "security_id": "44613",
-    "exchange_segment": "NSE_FNO",
-    "trading_symbol": "NIFTY-Oct2026-22500-PE",
-    "qty": 65
-   },
-   "day_losses": 0,
+   "position": null,
+   "day_losses": 1,
    "last_rejected_signal": null
   },
   "SENSEX_HMA": {
