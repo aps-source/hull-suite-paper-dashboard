@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-13T11:43:45",
+ "generated": "2026-10-13T11:50:32",
  "auto_trading": true,
  "paused": false,
  "trading_day": "2026-10-13",
@@ -27,441 +27,6 @@
   }
  },
  "recent_events": [
-  {
-   "event": "AUTO_HELD",
-   "action": {
-    "kind": "ENTRY",
-    "strategy_key": "NIFTY_EHMA",
-    "symbol": "NIFTY",
-    "mode": "EHMA",
-    "direction": "LONG",
-    "quantity": 65,
-    "contract": {
-     "symbol": "NIFTY",
-     "security_id": "47137",
-     "trading_symbol": "NIFTY-Oct2026-22550-CE",
-     "expiry": "2026-10-19",
-     "strike": 22550.0,
-     "option_type": "CE",
-     "lot": 65,
-     "exchange_segment": "NSE_FNO",
-     "ltp": 208.95,
-     "moneyness_steps": 0,
-     "moneyness": "ATM",
-     "spot": 22565.5
-    },
-    "signal_time": "2026-10-13 09:45:00",
-    "created_at": "2026-10-13T10:01:41"
-   },
-   "reason": "trading OFF via dashboard toggle",
-   "logged_at": "2026-10-13T11:33:39.116906"
-  },
-  {
-   "event": "AUTO_HELD",
-   "action": {
-    "kind": "ENTRY",
-    "strategy_key": "SENSEX_EHMA",
-    "symbol": "SENSEX",
-    "mode": "EHMA",
-    "direction": "LONG",
-    "quantity": 20,
-    "contract": {
-     "symbol": "SENSEX",
-     "security_id": "1114892",
-     "trading_symbol": "SENSEX-Oct2026-72500-CE",
-     "expiry": "2026-10-15",
-     "strike": 72500.0,
-     "option_type": "CE",
-     "lot": 20,
-     "exchange_segment": "BSE_FNO",
-     "ltp": 505.0,
-     "moneyness_steps": -1,
-     "moneyness": "1 ITM",
-     "spot": 72569.97
-    },
-    "signal_time": "2026-10-13 09:45:00",
-    "created_at": "2026-10-13T10:01:49"
-   },
-   "reason": "trading OFF via dashboard toggle",
-   "logged_at": "2026-10-13T11:33:40.121500"
-  },
-  {
-   "event": "AUTO_HELD",
-   "action": {
-    "kind": "ENTRY",
-    "strategy_key": "NIFTY_HMA",
-    "symbol": "NIFTY",
-    "mode": "HMA",
-    "direction": "SHORT",
-    "quantity": 65,
-    "contract": {
-     "symbol": "NIFTY",
-     "security_id": "47124",
-     "trading_symbol": "NIFTY-Oct2026-22250-PE",
-     "expiry": "2026-10-19",
-     "strike": 22250.0,
-     "option_type": "PE",
-     "lot": 65,
-     "exchange_segment": "NSE_FNO",
-     "ltp": 50.35,
-     "moneyness_steps": 0,
-     "moneyness": "ATM",
-     "spot": 22261.95
-    },
-    "signal_time": "2026-09-30 14:30:00",
-    "created_at": "2026-10-13T10:15:17"
-   },
-   "reason": "trading OFF via dashboard toggle",
-   "logged_at": "2026-10-13T11:33:41.056932"
-  },
-  {
-   "event": "AUTO_HELD",
-   "action": {
-    "kind": "ENTRY",
-    "strategy_key": "NIFTY_EHMA",
-    "symbol": "NIFTY",
-    "mode": "EHMA",
-    "direction": "LONG",
-    "quantity": 65,
-    "contract": {
-     "symbol": "NIFTY",
-     "security_id": "47137",
-     "trading_symbol": "NIFTY-Oct2026-22550-CE",
-     "expiry": "2026-10-19",
-     "strike": 22550.0,
-     "option_type": "CE",
-     "lot": 65,
-     "exchange_segment": "NSE_FNO",
-     "ltp": 208.95,
-     "moneyness_steps": 0,
-     "moneyness": "ATM",
-     "spot": 22565.5
-    },
-    "signal_time": "2026-10-13 09:45:00",
-    "created_at": "2026-10-13T10:01:41"
-   },
-   "reason": "trading OFF via dashboard toggle",
-   "logged_at": "2026-10-13T11:34:51.036216"
-  },
-  {
-   "event": "AUTO_HELD",
-   "action": {
-    "kind": "ENTRY",
-    "strategy_key": "SENSEX_EHMA",
-    "symbol": "SENSEX",
-    "mode": "EHMA",
-    "direction": "LONG",
-    "quantity": 20,
-    "contract": {
-     "symbol": "SENSEX",
-     "security_id": "1114892",
-     "trading_symbol": "SENSEX-Oct2026-72500-CE",
-     "expiry": "2026-10-15",
-     "strike": 72500.0,
-     "option_type": "CE",
-     "lot": 20,
-     "exchange_segment": "BSE_FNO",
-     "ltp": 505.0,
-     "moneyness_steps": -1,
-     "moneyness": "1 ITM",
-     "spot": 72569.97
-    },
-    "signal_time": "2026-10-13 09:45:00",
-    "created_at": "2026-10-13T10:01:49"
-   },
-   "reason": "trading OFF via dashboard toggle",
-   "logged_at": "2026-10-13T11:34:52.045781"
-  },
-  {
-   "event": "AUTO_HELD",
-   "action": {
-    "kind": "ENTRY",
-    "strategy_key": "NIFTY_HMA",
-    "symbol": "NIFTY",
-    "mode": "HMA",
-    "direction": "SHORT",
-    "quantity": 65,
-    "contract": {
-     "symbol": "NIFTY",
-     "security_id": "47124",
-     "trading_symbol": "NIFTY-Oct2026-22250-PE",
-     "expiry": "2026-10-19",
-     "strike": 22250.0,
-     "option_type": "PE",
-     "lot": 65,
-     "exchange_segment": "NSE_FNO",
-     "ltp": 50.35,
-     "moneyness_steps": 0,
-     "moneyness": "ATM",
-     "spot": 22261.95
-    },
-    "signal_time": "2026-09-30 14:30:00",
-    "created_at": "2026-10-13T10:15:17"
-   },
-   "reason": "trading OFF via dashboard toggle",
-   "logged_at": "2026-10-13T11:34:53.071460"
-  },
-  {
-   "event": "AUTO_HELD",
-   "action": {
-    "kind": "ENTRY",
-    "strategy_key": "NIFTY_EHMA",
-    "symbol": "NIFTY",
-    "mode": "EHMA",
-    "direction": "LONG",
-    "quantity": 65,
-    "contract": {
-     "symbol": "NIFTY",
-     "security_id": "47137",
-     "trading_symbol": "NIFTY-Oct2026-22550-CE",
-     "expiry": "2026-10-19",
-     "strike": 22550.0,
-     "option_type": "CE",
-     "lot": 65,
-     "exchange_segment": "NSE_FNO",
-     "ltp": 208.95,
-     "moneyness_steps": 0,
-     "moneyness": "ATM",
-     "spot": 22565.5
-    },
-    "signal_time": "2026-10-13 09:45:00",
-    "created_at": "2026-10-13T10:01:41"
-   },
-   "reason": "trading OFF via dashboard toggle",
-   "logged_at": "2026-10-13T11:35:56.169486"
-  },
-  {
-   "event": "AUTO_HELD",
-   "action": {
-    "kind": "ENTRY",
-    "strategy_key": "SENSEX_EHMA",
-    "symbol": "SENSEX",
-    "mode": "EHMA",
-    "direction": "LONG",
-    "quantity": 20,
-    "contract": {
-     "symbol": "SENSEX",
-     "security_id": "1114892",
-     "trading_symbol": "SENSEX-Oct2026-72500-CE",
-     "expiry": "2026-10-15",
-     "strike": 72500.0,
-     "option_type": "CE",
-     "lot": 20,
-     "exchange_segment": "BSE_FNO",
-     "ltp": 505.0,
-     "moneyness_steps": -1,
-     "moneyness": "1 ITM",
-     "spot": 72569.97
-    },
-    "signal_time": "2026-10-13 09:45:00",
-    "created_at": "2026-10-13T10:01:49"
-   },
-   "reason": "trading OFF via dashboard toggle",
-   "logged_at": "2026-10-13T11:35:57.155942"
-  },
-  {
-   "event": "AUTO_HELD",
-   "action": {
-    "kind": "ENTRY",
-    "strategy_key": "NIFTY_HMA",
-    "symbol": "NIFTY",
-    "mode": "HMA",
-    "direction": "SHORT",
-    "quantity": 65,
-    "contract": {
-     "symbol": "NIFTY",
-     "security_id": "47124",
-     "trading_symbol": "NIFTY-Oct2026-22250-PE",
-     "expiry": "2026-10-19",
-     "strike": 22250.0,
-     "option_type": "PE",
-     "lot": 65,
-     "exchange_segment": "NSE_FNO",
-     "ltp": 50.35,
-     "moneyness_steps": 0,
-     "moneyness": "ATM",
-     "spot": 22261.95
-    },
-    "signal_time": "2026-09-30 14:30:00",
-    "created_at": "2026-10-13T10:15:17"
-   },
-   "reason": "trading OFF via dashboard toggle",
-   "logged_at": "2026-10-13T11:35:58.149441"
-  },
-  {
-   "event": "AUTO_HELD",
-   "action": {
-    "kind": "ENTRY",
-    "strategy_key": "NIFTY_EHMA",
-    "symbol": "NIFTY",
-    "mode": "EHMA",
-    "direction": "LONG",
-    "quantity": 65,
-    "contract": {
-     "symbol": "NIFTY",
-     "security_id": "47137",
-     "trading_symbol": "NIFTY-Oct2026-22550-CE",
-     "expiry": "2026-10-19",
-     "strike": 22550.0,
-     "option_type": "CE",
-     "lot": 65,
-     "exchange_segment": "NSE_FNO",
-     "ltp": 208.95,
-     "moneyness_steps": 0,
-     "moneyness": "ATM",
-     "spot": 22565.5
-    },
-    "signal_time": "2026-10-13 09:45:00",
-    "created_at": "2026-10-13T10:01:41"
-   },
-   "reason": "trading OFF via dashboard toggle",
-   "logged_at": "2026-10-13T11:37:00.779631"
-  },
-  {
-   "event": "AUTO_HELD",
-   "action": {
-    "kind": "ENTRY",
-    "strategy_key": "SENSEX_EHMA",
-    "symbol": "SENSEX",
-    "mode": "EHMA",
-    "direction": "LONG",
-    "quantity": 20,
-    "contract": {
-     "symbol": "SENSEX",
-     "security_id": "1114892",
-     "trading_symbol": "SENSEX-Oct2026-72500-CE",
-     "expiry": "2026-10-15",
-     "strike": 72500.0,
-     "option_type": "CE",
-     "lot": 20,
-     "exchange_segment": "BSE_FNO",
-     "ltp": 505.0,
-     "moneyness_steps": -1,
-     "moneyness": "1 ITM",
-     "spot": 72569.97
-    },
-    "signal_time": "2026-10-13 09:45:00",
-    "created_at": "2026-10-13T10:01:49"
-   },
-   "reason": "trading OFF via dashboard toggle",
-   "logged_at": "2026-10-13T11:37:01.873355"
-  },
-  {
-   "event": "AUTO_HELD",
-   "action": {
-    "kind": "ENTRY",
-    "strategy_key": "NIFTY_HMA",
-    "symbol": "NIFTY",
-    "mode": "HMA",
-    "direction": "SHORT",
-    "quantity": 65,
-    "contract": {
-     "symbol": "NIFTY",
-     "security_id": "47124",
-     "trading_symbol": "NIFTY-Oct2026-22250-PE",
-     "expiry": "2026-10-19",
-     "strike": 22250.0,
-     "option_type": "PE",
-     "lot": 65,
-     "exchange_segment": "NSE_FNO",
-     "ltp": 50.35,
-     "moneyness_steps": 0,
-     "moneyness": "ATM",
-     "spot": 22261.95
-    },
-    "signal_time": "2026-09-30 14:30:00",
-    "created_at": "2026-10-13T10:15:17"
-   },
-   "reason": "trading OFF via dashboard toggle",
-   "logged_at": "2026-10-13T11:37:02.899253"
-  },
-  {
-   "event": "AUTO_HELD",
-   "action": {
-    "kind": "ENTRY",
-    "strategy_key": "NIFTY_EHMA",
-    "symbol": "NIFTY",
-    "mode": "EHMA",
-    "direction": "LONG",
-    "quantity": 65,
-    "contract": {
-     "symbol": "NIFTY",
-     "security_id": "47137",
-     "trading_symbol": "NIFTY-Oct2026-22550-CE",
-     "expiry": "2026-10-19",
-     "strike": 22550.0,
-     "option_type": "CE",
-     "lot": 65,
-     "exchange_segment": "NSE_FNO",
-     "ltp": 208.95,
-     "moneyness_steps": 0,
-     "moneyness": "ATM",
-     "spot": 22565.5
-    },
-    "signal_time": "2026-10-13 09:45:00",
-    "created_at": "2026-10-13T10:01:41"
-   },
-   "reason": "trading OFF via dashboard toggle",
-   "logged_at": "2026-10-13T11:38:06.004990"
-  },
-  {
-   "event": "AUTO_HELD",
-   "action": {
-    "kind": "ENTRY",
-    "strategy_key": "SENSEX_EHMA",
-    "symbol": "SENSEX",
-    "mode": "EHMA",
-    "direction": "LONG",
-    "quantity": 20,
-    "contract": {
-     "symbol": "SENSEX",
-     "security_id": "1114892",
-     "trading_symbol": "SENSEX-Oct2026-72500-CE",
-     "expiry": "2026-10-15",
-     "strike": 72500.0,
-     "option_type": "CE",
-     "lot": 20,
-     "exchange_segment": "BSE_FNO",
-     "ltp": 505.0,
-     "moneyness_steps": -1,
-     "moneyness": "1 ITM",
-     "spot": 72569.97
-    },
-    "signal_time": "2026-10-13 09:45:00",
-    "created_at": "2026-10-13T10:01:49"
-   },
-   "reason": "trading OFF via dashboard toggle",
-   "logged_at": "2026-10-13T11:38:06.944927"
-  },
-  {
-   "event": "AUTO_HELD",
-   "action": {
-    "kind": "ENTRY",
-    "strategy_key": "NIFTY_HMA",
-    "symbol": "NIFTY",
-    "mode": "HMA",
-    "direction": "SHORT",
-    "quantity": 65,
-    "contract": {
-     "symbol": "NIFTY",
-     "security_id": "47124",
-     "trading_symbol": "NIFTY-Oct2026-22250-PE",
-     "expiry": "2026-10-19",
-     "strike": 22250.0,
-     "option_type": "PE",
-     "lot": 65,
-     "exchange_segment": "NSE_FNO",
-     "ltp": 50.35,
-     "moneyness_steps": 0,
-     "moneyness": "ATM",
-     "spot": 22261.95
-    },
-    "signal_time": "2026-09-30 14:30:00",
-    "created_at": "2026-10-13T10:15:17"
-   },
-   "reason": "trading OFF via dashboard toggle",
-   "logged_at": "2026-10-13T11:38:07.902921"
-  },
   {
    "event": "AUTO_HELD",
    "action": {
@@ -896,6 +461,441 @@
    },
    "reason": "trading OFF via dashboard toggle",
    "logged_at": "2026-10-13T11:43:44.391700"
+  },
+  {
+   "event": "AUTO_HELD",
+   "action": {
+    "kind": "ENTRY",
+    "strategy_key": "NIFTY_EHMA",
+    "symbol": "NIFTY",
+    "mode": "EHMA",
+    "direction": "LONG",
+    "quantity": 65,
+    "contract": {
+     "symbol": "NIFTY",
+     "security_id": "47137",
+     "trading_symbol": "NIFTY-Oct2026-22550-CE",
+     "expiry": "2026-10-19",
+     "strike": 22550.0,
+     "option_type": "CE",
+     "lot": 65,
+     "exchange_segment": "NSE_FNO",
+     "ltp": 208.95,
+     "moneyness_steps": 0,
+     "moneyness": "ATM",
+     "spot": 22565.5
+    },
+    "signal_time": "2026-10-13 09:45:00",
+    "created_at": "2026-10-13T10:01:41"
+   },
+   "reason": "trading OFF via dashboard toggle",
+   "logged_at": "2026-10-13T11:44:54.534229"
+  },
+  {
+   "event": "AUTO_HELD",
+   "action": {
+    "kind": "ENTRY",
+    "strategy_key": "SENSEX_EHMA",
+    "symbol": "SENSEX",
+    "mode": "EHMA",
+    "direction": "LONG",
+    "quantity": 20,
+    "contract": {
+     "symbol": "SENSEX",
+     "security_id": "1114892",
+     "trading_symbol": "SENSEX-Oct2026-72500-CE",
+     "expiry": "2026-10-15",
+     "strike": 72500.0,
+     "option_type": "CE",
+     "lot": 20,
+     "exchange_segment": "BSE_FNO",
+     "ltp": 505.0,
+     "moneyness_steps": -1,
+     "moneyness": "1 ITM",
+     "spot": 72569.97
+    },
+    "signal_time": "2026-10-13 09:45:00",
+    "created_at": "2026-10-13T10:01:49"
+   },
+   "reason": "trading OFF via dashboard toggle",
+   "logged_at": "2026-10-13T11:44:56.018996"
+  },
+  {
+   "event": "AUTO_HELD",
+   "action": {
+    "kind": "ENTRY",
+    "strategy_key": "NIFTY_HMA",
+    "symbol": "NIFTY",
+    "mode": "HMA",
+    "direction": "SHORT",
+    "quantity": 65,
+    "contract": {
+     "symbol": "NIFTY",
+     "security_id": "47124",
+     "trading_symbol": "NIFTY-Oct2026-22250-PE",
+     "expiry": "2026-10-19",
+     "strike": 22250.0,
+     "option_type": "PE",
+     "lot": 65,
+     "exchange_segment": "NSE_FNO",
+     "ltp": 50.35,
+     "moneyness_steps": 0,
+     "moneyness": "ATM",
+     "spot": 22261.95
+    },
+    "signal_time": "2026-09-30 14:30:00",
+    "created_at": "2026-10-13T10:15:17"
+   },
+   "reason": "trading OFF via dashboard toggle",
+   "logged_at": "2026-10-13T11:44:57.440756"
+  },
+  {
+   "event": "AUTO_HELD",
+   "action": {
+    "kind": "ENTRY",
+    "strategy_key": "NIFTY_EHMA",
+    "symbol": "NIFTY",
+    "mode": "EHMA",
+    "direction": "LONG",
+    "quantity": 65,
+    "contract": {
+     "symbol": "NIFTY",
+     "security_id": "47137",
+     "trading_symbol": "NIFTY-Oct2026-22550-CE",
+     "expiry": "2026-10-19",
+     "strike": 22550.0,
+     "option_type": "CE",
+     "lot": 65,
+     "exchange_segment": "NSE_FNO",
+     "ltp": 208.95,
+     "moneyness_steps": 0,
+     "moneyness": "ATM",
+     "spot": 22565.5
+    },
+    "signal_time": "2026-10-13 09:45:00",
+    "created_at": "2026-10-13T10:01:41"
+   },
+   "reason": "trading OFF via dashboard toggle",
+   "logged_at": "2026-10-13T11:46:38.219541"
+  },
+  {
+   "event": "AUTO_HELD",
+   "action": {
+    "kind": "ENTRY",
+    "strategy_key": "SENSEX_EHMA",
+    "symbol": "SENSEX",
+    "mode": "EHMA",
+    "direction": "LONG",
+    "quantity": 20,
+    "contract": {
+     "symbol": "SENSEX",
+     "security_id": "1114892",
+     "trading_symbol": "SENSEX-Oct2026-72500-CE",
+     "expiry": "2026-10-15",
+     "strike": 72500.0,
+     "option_type": "CE",
+     "lot": 20,
+     "exchange_segment": "BSE_FNO",
+     "ltp": 505.0,
+     "moneyness_steps": -1,
+     "moneyness": "1 ITM",
+     "spot": 72569.97
+    },
+    "signal_time": "2026-10-13 09:45:00",
+    "created_at": "2026-10-13T10:01:49"
+   },
+   "reason": "trading OFF via dashboard toggle",
+   "logged_at": "2026-10-13T11:46:46.072486"
+  },
+  {
+   "event": "AUTO_HELD",
+   "action": {
+    "kind": "ENTRY",
+    "strategy_key": "NIFTY_HMA",
+    "symbol": "NIFTY",
+    "mode": "HMA",
+    "direction": "SHORT",
+    "quantity": 65,
+    "contract": {
+     "symbol": "NIFTY",
+     "security_id": "47124",
+     "trading_symbol": "NIFTY-Oct2026-22250-PE",
+     "expiry": "2026-10-19",
+     "strike": 22250.0,
+     "option_type": "PE",
+     "lot": 65,
+     "exchange_segment": "NSE_FNO",
+     "ltp": 50.35,
+     "moneyness_steps": 0,
+     "moneyness": "ATM",
+     "spot": 22261.95
+    },
+    "signal_time": "2026-09-30 14:30:00",
+    "created_at": "2026-10-13T10:15:17"
+   },
+   "reason": "trading OFF via dashboard toggle",
+   "logged_at": "2026-10-13T11:46:56.055517"
+  },
+  {
+   "event": "AUTO_HELD",
+   "action": {
+    "kind": "ENTRY",
+    "strategy_key": "NIFTY_EHMA",
+    "symbol": "NIFTY",
+    "mode": "EHMA",
+    "direction": "LONG",
+    "quantity": 65,
+    "contract": {
+     "symbol": "NIFTY",
+     "security_id": "47137",
+     "trading_symbol": "NIFTY-Oct2026-22550-CE",
+     "expiry": "2026-10-19",
+     "strike": 22550.0,
+     "option_type": "CE",
+     "lot": 65,
+     "exchange_segment": "NSE_FNO",
+     "ltp": 208.95,
+     "moneyness_steps": 0,
+     "moneyness": "ATM",
+     "spot": 22565.5
+    },
+    "signal_time": "2026-10-13 09:45:00",
+    "created_at": "2026-10-13T10:01:41"
+   },
+   "reason": "trading OFF via dashboard toggle",
+   "logged_at": "2026-10-13T11:47:59.916986"
+  },
+  {
+   "event": "AUTO_HELD",
+   "action": {
+    "kind": "ENTRY",
+    "strategy_key": "SENSEX_EHMA",
+    "symbol": "SENSEX",
+    "mode": "EHMA",
+    "direction": "LONG",
+    "quantity": 20,
+    "contract": {
+     "symbol": "SENSEX",
+     "security_id": "1114892",
+     "trading_symbol": "SENSEX-Oct2026-72500-CE",
+     "expiry": "2026-10-15",
+     "strike": 72500.0,
+     "option_type": "CE",
+     "lot": 20,
+     "exchange_segment": "BSE_FNO",
+     "ltp": 505.0,
+     "moneyness_steps": -1,
+     "moneyness": "1 ITM",
+     "spot": 72569.97
+    },
+    "signal_time": "2026-10-13 09:45:00",
+    "created_at": "2026-10-13T10:01:49"
+   },
+   "reason": "trading OFF via dashboard toggle",
+   "logged_at": "2026-10-13T11:48:01.306556"
+  },
+  {
+   "event": "AUTO_HELD",
+   "action": {
+    "kind": "ENTRY",
+    "strategy_key": "NIFTY_HMA",
+    "symbol": "NIFTY",
+    "mode": "HMA",
+    "direction": "SHORT",
+    "quantity": 65,
+    "contract": {
+     "symbol": "NIFTY",
+     "security_id": "47124",
+     "trading_symbol": "NIFTY-Oct2026-22250-PE",
+     "expiry": "2026-10-19",
+     "strike": 22250.0,
+     "option_type": "PE",
+     "lot": 65,
+     "exchange_segment": "NSE_FNO",
+     "ltp": 50.35,
+     "moneyness_steps": 0,
+     "moneyness": "ATM",
+     "spot": 22261.95
+    },
+    "signal_time": "2026-09-30 14:30:00",
+    "created_at": "2026-10-13T10:15:17"
+   },
+   "reason": "trading OFF via dashboard toggle",
+   "logged_at": "2026-10-13T11:48:02.454434"
+  },
+  {
+   "event": "AUTO_HELD",
+   "action": {
+    "kind": "ENTRY",
+    "strategy_key": "NIFTY_EHMA",
+    "symbol": "NIFTY",
+    "mode": "EHMA",
+    "direction": "LONG",
+    "quantity": 65,
+    "contract": {
+     "symbol": "NIFTY",
+     "security_id": "47137",
+     "trading_symbol": "NIFTY-Oct2026-22550-CE",
+     "expiry": "2026-10-19",
+     "strike": 22550.0,
+     "option_type": "CE",
+     "lot": 65,
+     "exchange_segment": "NSE_FNO",
+     "ltp": 208.95,
+     "moneyness_steps": 0,
+     "moneyness": "ATM",
+     "spot": 22565.5
+    },
+    "signal_time": "2026-10-13 09:45:00",
+    "created_at": "2026-10-13T10:01:41"
+   },
+   "reason": "trading OFF via dashboard toggle",
+   "logged_at": "2026-10-13T11:49:09.185320"
+  },
+  {
+   "event": "AUTO_HELD",
+   "action": {
+    "kind": "ENTRY",
+    "strategy_key": "SENSEX_EHMA",
+    "symbol": "SENSEX",
+    "mode": "EHMA",
+    "direction": "LONG",
+    "quantity": 20,
+    "contract": {
+     "symbol": "SENSEX",
+     "security_id": "1114892",
+     "trading_symbol": "SENSEX-Oct2026-72500-CE",
+     "expiry": "2026-10-15",
+     "strike": 72500.0,
+     "option_type": "CE",
+     "lot": 20,
+     "exchange_segment": "BSE_FNO",
+     "ltp": 505.0,
+     "moneyness_steps": -1,
+     "moneyness": "1 ITM",
+     "spot": 72569.97
+    },
+    "signal_time": "2026-10-13 09:45:00",
+    "created_at": "2026-10-13T10:01:49"
+   },
+   "reason": "trading OFF via dashboard toggle",
+   "logged_at": "2026-10-13T11:49:10.462523"
+  },
+  {
+   "event": "AUTO_HELD",
+   "action": {
+    "kind": "ENTRY",
+    "strategy_key": "NIFTY_HMA",
+    "symbol": "NIFTY",
+    "mode": "HMA",
+    "direction": "SHORT",
+    "quantity": 65,
+    "contract": {
+     "symbol": "NIFTY",
+     "security_id": "47124",
+     "trading_symbol": "NIFTY-Oct2026-22250-PE",
+     "expiry": "2026-10-19",
+     "strike": 22250.0,
+     "option_type": "PE",
+     "lot": 65,
+     "exchange_segment": "NSE_FNO",
+     "ltp": 50.35,
+     "moneyness_steps": 0,
+     "moneyness": "ATM",
+     "spot": 22261.95
+    },
+    "signal_time": "2026-09-30 14:30:00",
+    "created_at": "2026-10-13T10:15:17"
+   },
+   "reason": "trading OFF via dashboard toggle",
+   "logged_at": "2026-10-13T11:49:11.491558"
+  },
+  {
+   "event": "AUTO_HELD",
+   "action": {
+    "kind": "ENTRY",
+    "strategy_key": "NIFTY_EHMA",
+    "symbol": "NIFTY",
+    "mode": "EHMA",
+    "direction": "LONG",
+    "quantity": 65,
+    "contract": {
+     "symbol": "NIFTY",
+     "security_id": "47137",
+     "trading_symbol": "NIFTY-Oct2026-22550-CE",
+     "expiry": "2026-10-19",
+     "strike": 22550.0,
+     "option_type": "CE",
+     "lot": 65,
+     "exchange_segment": "NSE_FNO",
+     "ltp": 208.95,
+     "moneyness_steps": 0,
+     "moneyness": "ATM",
+     "spot": 22565.5
+    },
+    "signal_time": "2026-10-13 09:45:00",
+    "created_at": "2026-10-13T10:01:41"
+   },
+   "reason": "trading OFF via dashboard toggle",
+   "logged_at": "2026-10-13T11:50:29.473812"
+  },
+  {
+   "event": "AUTO_HELD",
+   "action": {
+    "kind": "ENTRY",
+    "strategy_key": "SENSEX_EHMA",
+    "symbol": "SENSEX",
+    "mode": "EHMA",
+    "direction": "LONG",
+    "quantity": 20,
+    "contract": {
+     "symbol": "SENSEX",
+     "security_id": "1114892",
+     "trading_symbol": "SENSEX-Oct2026-72500-CE",
+     "expiry": "2026-10-15",
+     "strike": 72500.0,
+     "option_type": "CE",
+     "lot": 20,
+     "exchange_segment": "BSE_FNO",
+     "ltp": 505.0,
+     "moneyness_steps": -1,
+     "moneyness": "1 ITM",
+     "spot": 72569.97
+    },
+    "signal_time": "2026-10-13 09:45:00",
+    "created_at": "2026-10-13T10:01:49"
+   },
+   "reason": "trading OFF via dashboard toggle",
+   "logged_at": "2026-10-13T11:50:30.404028"
+  },
+  {
+   "event": "AUTO_HELD",
+   "action": {
+    "kind": "ENTRY",
+    "strategy_key": "NIFTY_HMA",
+    "symbol": "NIFTY",
+    "mode": "HMA",
+    "direction": "SHORT",
+    "quantity": 65,
+    "contract": {
+     "symbol": "NIFTY",
+     "security_id": "47124",
+     "trading_symbol": "NIFTY-Oct2026-22250-PE",
+     "expiry": "2026-10-19",
+     "strike": 22250.0,
+     "option_type": "PE",
+     "lot": 65,
+     "exchange_segment": "NSE_FNO",
+     "ltp": 50.35,
+     "moneyness_steps": 0,
+     "moneyness": "ATM",
+     "spot": 22261.95
+    },
+    "signal_time": "2026-09-30 14:30:00",
+    "created_at": "2026-10-13T10:15:17"
+   },
+   "reason": "trading OFF via dashboard toggle",
+   "logged_at": "2026-10-13T11:50:31.533212"
   }
  ]
 }
