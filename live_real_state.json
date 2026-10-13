@@ -1,9 +1,9 @@
 {
- "generated": "2026-10-13T09:34:54",
+ "generated": "2026-10-13T09:40:26",
  "auto_trading": true,
  "paused": false,
  "trading_day": "2026-10-13",
- "combined_daily_pnl_rupees": 217.0,
+ "combined_daily_pnl_rupees": 610.0,
  "strategies": {
   "NIFTY_HMA": {
    "position": null,
@@ -21,15 +21,15 @@
     "strategy_key": "SENSEX_HMA",
     "symbol": "SENSEX",
     "mode": "HMA",
-    "security_id": "1105225",
+    "security_id": "1101447",
     "exchange_segment": "BSE_FNO",
-    "trading_symbol": "SENSEX-Oct2026-72300-CE",
+    "trading_symbol": "SENSEX-Oct2026-72400-CE",
     "expiry": "2026-10-15",
     "quantity": 20,
-    "entry_time": "2026-10-13T09:34:53.040712",
-    "entry_ltp": 483.2
+    "entry_time": "2026-10-13T09:40:24.235709",
+    "entry_ltp": 454.75
    },
-   "day_losses": 0,
+   "day_losses": 1,
    "last_rejected_signal": "2026-10-12 09:30:00"
   },
   "SENSEX_EHMA": {
@@ -39,224 +39,6 @@
   }
  },
  "recent_events": [
-  {
-   "action": {
-    "kind": "ENTRY",
-    "strategy_key": "SENSEX_HMA",
-    "symbol": "SENSEX",
-    "mode": "HMA",
-    "direction": "SHORT",
-    "quantity": 20,
-    "contract": {
-     "symbol": "SENSEX",
-     "security_id": "1104799",
-     "trading_symbol": "SENSEX-Oct2026-72400-PE",
-     "expiry": "2026-10-15",
-     "strike": 72400.0,
-     "option_type": "PE",
-     "lot": 20,
-     "exchange_segment": "BSE_FNO",
-     "ltp": 451.25,
-     "moneyness_steps": 0,
-     "moneyness": "ATM",
-     "spot": 72364.4
-    },
-    "signal_time": "2026-10-12 09:30:00",
-    "created_at": "2026-10-12T09:45:20",
-    "tag": "hE-SENSEX_HMA-78524",
-    "placing_since": "2026-10-12T09:45:24.929685"
-   },
-   "order_response": {
-    "status": "success",
-    "remarks": "",
-    "data": {
-     "orderId": "32926101225108",
-     "orderStatus": "TRANSIT"
-    }
-   },
-   "order_ok": true,
-   "fill_check": {
-    "status": "success",
-    "remarks": "",
-    "data": [
-     {
-      "dhanClientId": "1108524760",
-      "orderId": "32926101225108",
-      "exchangeOrderId": "1791778270813757758",
-      "correlationId": "hE-SENSEX_HMA-78524",
-      "orderStatus": "TRADED",
-      "transactionType": "BUY",
-      "exchangeSegment": "BSE_FNO",
-      "productType": "MARGIN",
-      "orderType": "LIMIT",
-      "validity": "DAY",
-      "tradingSymbol": "SENSEX-Oct2026-72400-PE",
-      "securityId": "1104799",
-      "quantity": 20,
-      "disclosedQuantity": 0,
-      "price": 496.2,
-      "triggerPrice": 0.0,
-      "afterMarketOrder": false,
-      "boProfitValue": 0.0,
-      "boStopLossValue": 0.0,
-      "legName": "NA",
-      "createTime": "2026-10-12 09:45:25",
-      "updateTime": "2026-10-12 09:45:25",
-      "exchangeTime": "2026-10-12 09:45:25",
-      "drvExpiryDate": "2026-10-15",
-      "drvOptionType": "PUT",
-      "drvStrikePrice": 72400.0,
-      "omsErrorCode": "0",
-      "omsErrorDescription": "TRADE CONFIRMED",
-      "algoId": "0",
-      "remainingQuantity": 0,
-      "averageTradedPrice": 451.3,
-      "filledQty": 20
-     }
-    ]
-   },
-   "recorded_entry_price": 451.3,
-   "confirmed_by_user": false,
-   "auto": true,
-   "logged_at": "2026-10-12T09:45:26.006651"
-  },
-  {
-   "action": {
-    "kind": "EXIT",
-    "strategy_key": "SENSEX_HMA",
-    "symbol": "SENSEX",
-    "mode": "HMA",
-    "exit_reason": "flip",
-    "position": {
-     "direction": "SHORT",
-     "strategy_key": "SENSEX_HMA",
-     "symbol": "SENSEX",
-     "mode": "HMA",
-     "security_id": "1104799",
-     "exchange_segment": "BSE_FNO",
-     "trading_symbol": "SENSEX-Oct2026-72400-PE",
-     "expiry": "2026-10-15",
-     "quantity": 20,
-     "entry_time": "2026-10-12T09:45:26.006623",
-     "entry_ltp": 451.3
-    },
-    "created_at": "2026-10-12T09:46:27",
-    "tag": "hX-SENSEX_HMA-78590",
-    "placing_since": "2026-10-12T09:46:30.218838"
-   },
-   "order_response": {
-    "status": "success",
-    "remarks": "",
-    "data": {
-     "orderId": "22926101225108",
-     "orderStatus": "TRANSIT"
-    }
-   },
-   "order_ok": true,
-   "fill_check": {
-    "status": "success",
-    "remarks": "",
-    "data": [
-     {
-      "dhanClientId": "1108524760",
-      "orderId": "22926101225108",
-      "exchangeOrderId": "1791778270813948608",
-      "correlationId": "hX-SENSEX_HMA-78590",
-      "orderStatus": "TRADED",
-      "transactionType": "SELL",
-      "exchangeSegment": "BSE_FNO",
-      "productType": "MARGIN",
-      "orderType": "LIMIT",
-      "validity": "DAY",
-      "tradingSymbol": "SENSEX-Oct2026-72400-PE",
-      "securityId": "1104799",
-      "quantity": 20,
-      "disclosedQuantity": 0,
-      "price": 424.2,
-      "triggerPrice": 0.0,
-      "afterMarketOrder": false,
-      "boProfitValue": 0.0,
-      "boStopLossValue": 0.0,
-      "legName": "NA",
-      "createTime": "2026-10-12 09:46:30",
-      "updateTime": "2026-10-12 09:46:30",
-      "exchangeTime": "2026-10-12 09:46:30",
-      "drvExpiryDate": "2026-10-15",
-      "drvOptionType": "PUT",
-      "drvStrikePrice": 72400.0,
-      "omsErrorCode": "0",
-      "omsErrorDescription": "TRADE CONFIRMED",
-      "algoId": "0",
-      "remainingQuantity": 0,
-      "averageTradedPrice": 446.5,
-      "filledQty": 20
-     }
-    ]
-   },
-   "recorded_exit_price": 446.5,
-   "realized_pnl_rupees": -96.0,
-   "confirmed_by_user": false,
-   "auto": true,
-   "logged_at": "2026-10-12T09:46:31.292285"
-  },
-  {
-   "event": "AUTO_HELD",
-   "action": {
-    "kind": "ENTRY",
-    "strategy_key": "SENSEX_HMA",
-    "symbol": "SENSEX",
-    "mode": "HMA",
-    "direction": "SHORT",
-    "quantity": 20,
-    "contract": {
-     "symbol": "SENSEX",
-     "security_id": "1104799",
-     "trading_symbol": "SENSEX-Oct2026-72400-PE",
-     "expiry": "2026-10-15",
-     "strike": 72400.0,
-     "option_type": "PE",
-     "lot": 20,
-     "exchange_segment": "BSE_FNO",
-     "ltp": 449.7,
-     "moneyness_steps": 0,
-     "moneyness": "ATM",
-     "spot": 72406.84
-    },
-    "signal_time": "2026-10-12 09:30:00",
-    "created_at": "2026-10-12T09:47:32"
-   },
-   "reason": "2-loss breaker tripped for SENSEX_HMA",
-   "logged_at": "2026-10-12T09:47:37.162711"
-  },
-  {
-   "event": "AUTO_HELD",
-   "action": {
-    "kind": "ENTRY",
-    "strategy_key": "SENSEX_HMA",
-    "symbol": "SENSEX",
-    "mode": "HMA",
-    "direction": "SHORT",
-    "quantity": 20,
-    "contract": {
-     "symbol": "SENSEX",
-     "security_id": "1104799",
-     "trading_symbol": "SENSEX-Oct2026-72400-PE",
-     "expiry": "2026-10-15",
-     "strike": 72400.0,
-     "option_type": "PE",
-     "lot": 20,
-     "exchange_segment": "BSE_FNO",
-     "ltp": 449.7,
-     "moneyness_steps": 0,
-     "moneyness": "ATM",
-     "spot": 72406.84
-    },
-    "signal_time": "2026-10-12 09:30:00",
-    "created_at": "2026-10-12T09:47:32"
-   },
-   "reason": "2-loss breaker tripped for SENSEX_HMA",
-   "logged_at": "2026-10-12T09:48:55.591213"
-  },
   {
    "event": "AUTO_HELD",
    "action": {
@@ -1470,6 +1252,326 @@
    "confirmed_by_user": false,
    "auto": true,
    "logged_at": "2026-10-13T09:34:53.040724"
+  },
+  {
+   "action": {
+    "kind": "EXIT",
+    "strategy_key": "SENSEX_HMA",
+    "symbol": "SENSEX",
+    "mode": "HMA",
+    "exit_reason": "flip",
+    "position": {
+     "direction": "LONG",
+     "strategy_key": "SENSEX_HMA",
+     "symbol": "SENSEX",
+     "mode": "HMA",
+     "security_id": "1105225",
+     "exchange_segment": "BSE_FNO",
+     "trading_symbol": "SENSEX-Oct2026-72300-CE",
+     "expiry": "2026-10-15",
+     "quantity": 20,
+     "entry_time": "2026-10-13T09:34:53.040712",
+     "entry_ltp": 483.2
+    },
+    "created_at": "2026-10-13T09:35:54",
+    "tag": "hX-SENSEX_HMA-64356",
+    "placing_since": "2026-10-13T09:35:56.908687"
+   },
+   "order_response": {
+    "status": "success",
+    "remarks": "",
+    "data": {
+     "orderId": "23926101311908",
+     "orderStatus": "TRANSIT"
+    }
+   },
+   "order_ok": true,
+   "fill_check": {
+    "status": "success",
+    "remarks": "",
+    "data": [
+     {
+      "dhanClientId": "1108524760",
+      "orderId": "23926101311908",
+      "exchangeOrderId": "1791864176704752319",
+      "correlationId": "hX-SENSEX_HMA-64356",
+      "orderStatus": "TRADED",
+      "transactionType": "SELL",
+      "exchangeSegment": "BSE_FNO",
+      "productType": "MARGIN",
+      "orderType": "LIMIT",
+      "validity": "DAY",
+      "tradingSymbol": "SENSEX-Oct2026-72300-CE",
+      "securityId": "1105225",
+      "quantity": 20,
+      "disclosedQuantity": 0,
+      "price": 452.3,
+      "triggerPrice": 0.0,
+      "afterMarketOrder": false,
+      "boProfitValue": 0.0,
+      "boStopLossValue": 0.0,
+      "legName": "NA",
+      "createTime": "2026-10-13 09:35:58",
+      "updateTime": "2026-10-13 09:35:59",
+      "exchangeTime": "2026-10-13 09:35:59",
+      "drvExpiryDate": "2026-10-15",
+      "drvOptionType": "CALL",
+      "drvStrikePrice": 72300.0,
+      "omsErrorCode": "0",
+      "omsErrorDescription": "TRADE CONFIRMED",
+      "algoId": "0",
+      "remainingQuantity": 0,
+      "averageTradedPrice": 475.95,
+      "filledQty": 20
+     }
+    ]
+   },
+   "recorded_exit_price": 475.95,
+   "realized_pnl_rupees": -145.0,
+   "confirmed_by_user": false,
+   "auto": true,
+   "logged_at": "2026-10-13T09:35:57.981980"
+  },
+  {
+   "action": {
+    "kind": "ENTRY",
+    "strategy_key": "SENSEX_HMA",
+    "symbol": "SENSEX",
+    "mode": "HMA",
+    "direction": "LONG",
+    "quantity": 20,
+    "contract": {
+     "symbol": "SENSEX",
+     "security_id": "1105225",
+     "trading_symbol": "SENSEX-Oct2026-72300-CE",
+     "expiry": "2026-10-15",
+     "strike": 72300.0,
+     "option_type": "CE",
+     "lot": 20,
+     "exchange_segment": "BSE_FNO",
+     "ltp": 481.2,
+     "moneyness_steps": 0,
+     "moneyness": "ATM",
+     "spot": 72311.4
+    },
+    "signal_time": "2026-10-13 09:30:00",
+    "created_at": "2026-10-13T09:38:03",
+    "tag": "hE-SENSEX_HMA-64488",
+    "placing_since": "2026-10-13T09:38:08.982978"
+   },
+   "order_response": {
+    "status": "success",
+    "remarks": "",
+    "data": {
+     "orderId": "32926101322208",
+     "orderStatus": "TRANSIT"
+    }
+   },
+   "order_ok": true,
+   "fill_check": {
+    "status": "success",
+    "remarks": "",
+    "data": [
+     {
+      "dhanClientId": "1108524760",
+      "orderId": "32926101322208",
+      "exchangeOrderId": "1791864419648258226",
+      "correlationId": "hE-SENSEX_HMA-64488",
+      "orderStatus": "TRADED",
+      "transactionType": "BUY",
+      "exchangeSegment": "BSE_FNO",
+      "productType": "MARGIN",
+      "orderType": "LIMIT",
+      "validity": "DAY",
+      "tradingSymbol": "SENSEX-Oct2026-72300-CE",
+      "securityId": "1105225",
+      "quantity": 20,
+      "disclosedQuantity": 0,
+      "price": 527.6,
+      "triggerPrice": 0.0,
+      "afterMarketOrder": false,
+      "boProfitValue": 0.0,
+      "boStopLossValue": 0.0,
+      "legName": "NA",
+      "createTime": "2026-10-13 09:38:11",
+      "updateTime": "2026-10-13 09:38:11",
+      "exchangeTime": "2026-10-13 09:38:11",
+      "drvExpiryDate": "2026-10-15",
+      "drvOptionType": "CALL",
+      "drvStrikePrice": 72300.0,
+      "omsErrorCode": "0",
+      "omsErrorDescription": "TRADE CONFIRMED",
+      "algoId": "0",
+      "remainingQuantity": 0,
+      "averageTradedPrice": 479.6,
+      "filledQty": 20
+     }
+    ]
+   },
+   "recorded_entry_price": 479.6,
+   "confirmed_by_user": false,
+   "auto": true,
+   "logged_at": "2026-10-13T09:38:10.046150"
+  },
+  {
+   "action": {
+    "kind": "EXIT",
+    "strategy_key": "SENSEX_HMA",
+    "symbol": "SENSEX",
+    "mode": "HMA",
+    "exit_reason": "flip",
+    "position": {
+     "direction": "LONG",
+     "strategy_key": "SENSEX_HMA",
+     "symbol": "SENSEX",
+     "mode": "HMA",
+     "security_id": "1105225",
+     "exchange_segment": "BSE_FNO",
+     "trading_symbol": "SENSEX-Oct2026-72300-CE",
+     "expiry": "2026-10-15",
+     "quantity": 20,
+     "entry_time": "2026-10-13T09:38:10.046140",
+     "entry_ltp": 479.6
+    },
+    "created_at": "2026-10-13T09:39:12",
+    "tag": "hX-SENSEX_HMA-64555",
+    "placing_since": "2026-10-13T09:39:15.313005"
+   },
+   "order_response": {
+    "status": "success",
+    "remarks": "",
+    "data": {
+     "orderId": "34926101312408",
+     "orderStatus": "TRANSIT"
+    }
+   },
+   "order_ok": true,
+   "fill_check": {
+    "status": "success",
+    "remarks": "",
+    "data": [
+     {
+      "dhanClientId": "1108524760",
+      "orderId": "34926101312408",
+      "exchangeOrderId": "1791864419648528550",
+      "correlationId": "hX-SENSEX_HMA-64555",
+      "orderStatus": "TRADED",
+      "transactionType": "SELL",
+      "exchangeSegment": "BSE_FNO",
+      "productType": "MARGIN",
+      "orderType": "LIMIT",
+      "validity": "DAY",
+      "tradingSymbol": "SENSEX-Oct2026-72300-CE",
+      "securityId": "1105225",
+      "quantity": 20,
+      "disclosedQuantity": 0,
+      "price": 483.15,
+      "triggerPrice": 0.0,
+      "afterMarketOrder": false,
+      "boProfitValue": 0.0,
+      "boStopLossValue": 0.0,
+      "legName": "NA",
+      "createTime": "2026-10-13 09:39:17",
+      "updateTime": "2026-10-13 09:39:17",
+      "exchangeTime": "2026-10-13 09:39:17",
+      "drvExpiryDate": "2026-10-15",
+      "drvOptionType": "CALL",
+      "drvStrikePrice": 72300.0,
+      "omsErrorCode": "0",
+      "omsErrorDescription": "TRADE CONFIRMED",
+      "algoId": "0",
+      "remainingQuantity": 0,
+      "averageTradedPrice": 506.5,
+      "filledQty": 20
+     }
+    ]
+   },
+   "recorded_exit_price": 506.5,
+   "realized_pnl_rupees": 538.0,
+   "confirmed_by_user": false,
+   "auto": true,
+   "logged_at": "2026-10-13T09:39:16.383471"
+  },
+  {
+   "action": {
+    "kind": "ENTRY",
+    "strategy_key": "SENSEX_HMA",
+    "symbol": "SENSEX",
+    "mode": "HMA",
+    "direction": "LONG",
+    "quantity": 20,
+    "contract": {
+     "symbol": "SENSEX",
+     "security_id": "1101447",
+     "trading_symbol": "SENSEX-Oct2026-72400-CE",
+     "expiry": "2026-10-15",
+     "strike": 72400.0,
+     "option_type": "CE",
+     "lot": 20,
+     "exchange_segment": "BSE_FNO",
+     "ltp": 456.7,
+     "moneyness_steps": 0,
+     "moneyness": "ATM",
+     "spot": 72406.16
+    },
+    "signal_time": "2026-10-13 09:30:00",
+    "created_at": "2026-10-13T09:40:18",
+    "tag": "hE-SENSEX_HMA-64623",
+    "placing_since": "2026-10-13T09:40:23.143020"
+   },
+   "order_response": {
+    "status": "success",
+    "remarks": "",
+    "data": {
+     "orderId": "34926101312508",
+     "orderStatus": "TRANSIT"
+    }
+   },
+   "order_ok": true,
+   "fill_check": {
+    "status": "success",
+    "remarks": "",
+    "data": [
+     {
+      "dhanClientId": "1108524760",
+      "orderId": "34926101312508",
+      "exchangeOrderId": "1791864422977880372",
+      "correlationId": "hE-SENSEX_HMA-64623",
+      "orderStatus": "TRADED",
+      "transactionType": "BUY",
+      "exchangeSegment": "BSE_FNO",
+      "productType": "MARGIN",
+      "orderType": "LIMIT",
+      "validity": "DAY",
+      "tradingSymbol": "SENSEX-Oct2026-72400-CE",
+      "securityId": "1101447",
+      "quantity": 20,
+      "disclosedQuantity": 0,
+      "price": 499.55,
+      "triggerPrice": 0.0,
+      "afterMarketOrder": false,
+      "boProfitValue": 0.0,
+      "boStopLossValue": 0.0,
+      "legName": "NA",
+      "createTime": "2026-10-13 09:40:25",
+      "updateTime": "2026-10-13 09:40:25",
+      "exchangeTime": "2026-10-13 09:40:25",
+      "drvExpiryDate": "2026-10-15",
+      "drvOptionType": "CALL",
+      "drvStrikePrice": 72400.0,
+      "omsErrorCode": "0",
+      "omsErrorDescription": "TRADE CONFIRMED",
+      "algoId": "0",
+      "remainingQuantity": 0,
+      "averageTradedPrice": 454.75,
+      "filledQty": 20
+     }
+    ]
+   },
+   "recorded_entry_price": 454.75,
+   "confirmed_by_user": false,
+   "auto": true,
+   "logged_at": "2026-10-13T09:40:24.235726"
   }
  ]
 }
