@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-14T13:35:21",
+ "generated": "2026-10-14T13:41:29",
  "auto_trading": true,
  "paused": false,
  "trading_day": "2026-10-14",
@@ -8,7 +8,7 @@
   "NIFTY_HMA": {
    "position": null,
    "day_losses": 0,
-   "last_rejected_signal": "2026-10-13 09:45:00"
+   "last_rejected_signal": "2026-10-14 13:15:00"
   },
   "NIFTY_EHMA": {
    "position": null,
@@ -27,35 +27,6 @@
   }
  },
  "recent_events": [
-  {
-   "event": "AUTO_HELD",
-   "action": {
-    "kind": "ENTRY",
-    "strategy_key": "NIFTY_EHMA",
-    "symbol": "NIFTY",
-    "mode": "EHMA",
-    "direction": "LONG",
-    "quantity": 65,
-    "contract": {
-     "symbol": "NIFTY",
-     "security_id": "47137",
-     "trading_symbol": "NIFTY-Oct2026-22550-CE",
-     "expiry": "2026-10-19",
-     "strike": 22550.0,
-     "option_type": "CE",
-     "lot": 65,
-     "exchange_segment": "NSE_FNO",
-     "ltp": 208.95,
-     "moneyness_steps": 0,
-     "moneyness": "ATM",
-     "spot": 22565.5
-    },
-    "signal_time": "2026-10-13 09:45:00",
-    "created_at": "2026-10-13T10:01:41"
-   },
-   "reason": "outside the auto-entry window 09:20-15:15",
-   "logged_at": "2026-10-14T09:00:15.861215"
-  },
   {
    "event": "AUTO_HELD",
    "action": {
@@ -1100,6 +1071,35 @@
    },
    "reason": "stale signal (20 min old, limit 20)",
    "logged_at": "2026-10-14T13:35:20.562380"
+  },
+  {
+   "event": "AUTO_DROPPED",
+   "action": {
+    "kind": "ENTRY",
+    "strategy_key": "NIFTY_HMA",
+    "symbol": "NIFTY",
+    "mode": "HMA",
+    "direction": "SHORT",
+    "quantity": 65,
+    "contract": {
+     "symbol": "NIFTY",
+     "security_id": "47140",
+     "trading_symbol": "NIFTY-Oct2026-22600-PE",
+     "expiry": "2026-10-19",
+     "strike": 22600.0,
+     "option_type": "PE",
+     "lot": 65,
+     "exchange_segment": "NSE_FNO",
+     "ltp": 157.7,
+     "moneyness_steps": 0,
+     "moneyness": "ATM",
+     "spot": 22587.05
+    },
+    "signal_time": "2026-10-14 13:15:00",
+    "created_at": "2026-10-14T13:36:22"
+   },
+   "reason": "stale signal (21 min old, limit 20)",
+   "logged_at": "2026-10-14T13:36:26.175565"
   }
  ]
 }
