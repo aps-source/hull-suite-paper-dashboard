@@ -1,10 +1,19 @@
 [
  {
   "strategy": "SENSEX HMA",
+  "dir": "SHORT",
+  "signal_time": "2026-10-16 16:45:00",
+  "index_price": 74729.27,
+  "flip_time": null,
+  "taken": "MISSED",
+  "reason": "not attempted yet"
+ },
+ {
+  "strategy": "SENSEX HMA",
   "dir": "LONG",
   "signal_time": "2026-10-16 16:15:00",
   "index_price": 74729.27,
-  "flip_time": null,
+  "flip_time": "2026-10-16 16:45:00",
   "taken": "MISSED",
   "reason": "PAUSE.flag present"
  },
