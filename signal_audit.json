@@ -1,10 +1,19 @@
 [
  {
   "strategy": "NIFTY HMA",
+  "dir": "LONG",
+  "signal_time": "2026-10-16 15:45:00",
+  "index_price": 23146.15,
+  "flip_time": null,
+  "taken": "MISSED",
+  "reason": "not attempted yet"
+ },
+ {
+  "strategy": "NIFTY HMA",
   "dir": "SHORT",
   "signal_time": "2026-10-16 15:00:00",
   "index_price": 23080.6,
-  "flip_time": null,
+  "flip_time": "2026-10-16 15:45:00",
   "taken": "TAKEN",
   "reason": "filled 85.9 -> 87.85"
  },
