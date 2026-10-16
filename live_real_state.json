@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-16T15:05:12",
+ "generated": "2026-10-16T15:11:32",
  "auto_trading": true,
  "paused": false,
  "trading_day": "2026-10-16",
@@ -18,7 +18,7 @@
   "SENSEX_HMA": {
    "position": null,
    "day_losses": 2,
-   "last_rejected_signal": "2026-10-15 09:45:00"
+   "last_rejected_signal": "2026-10-16 14:45:00"
   },
   "SENSEX_EHMA": {
    "position": null,
@@ -27,35 +27,6 @@
   }
  },
  "recent_events": [
-  {
-   "event": "AUTO_HELD",
-   "action": {
-    "kind": "ENTRY",
-    "strategy_key": "SENSEX_HMA",
-    "symbol": "SENSEX",
-    "mode": "HMA",
-    "direction": "LONG",
-    "quantity": 20,
-    "contract": {
-     "symbol": "SENSEX",
-     "security_id": "1125634",
-     "trading_symbol": "SENSEX-Oct2026-74300-CE",
-     "expiry": "2026-10-22",
-     "strike": 74300.0,
-     "option_type": "CE",
-     "lot": 20,
-     "exchange_segment": "BSE_FNO",
-     "ltp": 382.7,
-     "moneyness_steps": 0,
-     "moneyness": "ATM",
-     "spot": 74315.61
-    },
-    "signal_time": "2026-10-15 09:45:00",
-    "created_at": "2026-10-16T08:58:06"
-   },
-   "reason": "outside the auto-entry window 09:20-15:15",
-   "logged_at": "2026-10-16T09:06:00.750635"
-  },
   {
    "event": "AUTO_HELD",
    "action": {
@@ -1100,6 +1071,35 @@
    "confirmed_by_user": false,
    "auto": true,
    "logged_at": "2026-10-16T15:05:10.951947"
+  },
+  {
+   "event": "AUTO_DROPPED",
+   "action": {
+    "kind": "ENTRY",
+    "strategy_key": "SENSEX_HMA",
+    "symbol": "SENSEX",
+    "mode": "HMA",
+    "direction": "SHORT",
+    "quantity": 20,
+    "contract": {
+     "symbol": "SENSEX",
+     "security_id": "1125704",
+     "trading_symbol": "SENSEX-Oct2026-74600-PE",
+     "expiry": "2026-10-22",
+     "strike": 74600.0,
+     "option_type": "PE",
+     "lot": 20,
+     "exchange_segment": "BSE_FNO",
+     "ltp": 460.45,
+     "moneyness_steps": 0,
+     "moneyness": "ATM",
+     "spot": 74634.44
+    },
+    "signal_time": "2026-10-16 14:45:00",
+    "created_at": "2026-10-16T15:06:13"
+   },
+   "reason": "stale signal (21 min old, limit 20)",
+   "logged_at": "2026-10-16T15:06:28.073032"
   }
  ]
 }
