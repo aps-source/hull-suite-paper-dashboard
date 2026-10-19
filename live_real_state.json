@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-19T09:14:49",
+ "generated": "2026-10-19T09:20:10",
  "auto_trading": true,
  "paused": false,
  "trading_day": "2026-10-19",
@@ -8,7 +8,7 @@
   "NIFTY_HMA": {
    "position": null,
    "day_losses": 0,
-   "last_rejected_signal": "2026-10-15 09:45:00"
+   "last_rejected_signal": "2026-10-16 15:00:00"
   },
   "NIFTY_EHMA": {
    "position": null,
@@ -18,7 +18,7 @@
   "SENSEX_HMA": {
    "position": null,
    "day_losses": 0,
-   "last_rejected_signal": "2026-10-16 14:45:00"
+   "last_rejected_signal": "2026-10-16 16:15:00"
   },
   "SENSEX_EHMA": {
    "position": null,
@@ -27,296 +27,6 @@
   }
  },
  "recent_events": [
-  {
-   "event": "AUTO_HELD",
-   "action": {
-    "kind": "ENTRY",
-    "strategy_key": "NIFTY_HMA",
-    "symbol": "NIFTY",
-    "mode": "HMA",
-    "direction": "SHORT",
-    "quantity": 65,
-    "contract": {
-     "symbol": "NIFTY",
-     "security_id": "47168",
-     "trading_symbol": "NIFTY-Oct2026-23100-PE",
-     "expiry": "2026-10-19",
-     "strike": 23100.0,
-     "option_type": "PE",
-     "lot": 65,
-     "exchange_segment": "NSE_FNO",
-     "ltp": 86.6,
-     "moneyness_steps": 0,
-     "moneyness": "ATM",
-     "spot": 23119.0
-    },
-    "signal_time": "2026-10-16 15:00:00",
-    "created_at": "2026-10-16T15:17:51"
-   },
-   "reason": "PAUSE.flag present",
-   "logged_at": "2026-10-16T16:20:53.457452"
-  },
-  {
-   "event": "AUTO_HELD",
-   "action": {
-    "kind": "ENTRY",
-    "strategy_key": "NIFTY_HMA",
-    "symbol": "NIFTY",
-    "mode": "HMA",
-    "direction": "SHORT",
-    "quantity": 65,
-    "contract": {
-     "symbol": "NIFTY",
-     "security_id": "47168",
-     "trading_symbol": "NIFTY-Oct2026-23100-PE",
-     "expiry": "2026-10-19",
-     "strike": 23100.0,
-     "option_type": "PE",
-     "lot": 65,
-     "exchange_segment": "NSE_FNO",
-     "ltp": 86.6,
-     "moneyness_steps": 0,
-     "moneyness": "ATM",
-     "spot": 23119.0
-    },
-    "signal_time": "2026-10-16 15:00:00",
-    "created_at": "2026-10-16T15:17:51"
-   },
-   "reason": "PAUSE.flag present",
-   "logged_at": "2026-10-16T16:25:58.150158"
-  },
-  {
-   "event": "AUTO_HELD",
-   "action": {
-    "kind": "ENTRY",
-    "strategy_key": "NIFTY_HMA",
-    "symbol": "NIFTY",
-    "mode": "HMA",
-    "direction": "SHORT",
-    "quantity": 65,
-    "contract": {
-     "symbol": "NIFTY",
-     "security_id": "47168",
-     "trading_symbol": "NIFTY-Oct2026-23100-PE",
-     "expiry": "2026-10-19",
-     "strike": 23100.0,
-     "option_type": "PE",
-     "lot": 65,
-     "exchange_segment": "NSE_FNO",
-     "ltp": 86.6,
-     "moneyness_steps": 0,
-     "moneyness": "ATM",
-     "spot": 23119.0
-    },
-    "signal_time": "2026-10-16 15:00:00",
-    "created_at": "2026-10-16T15:17:51"
-   },
-   "reason": "PAUSE.flag present",
-   "logged_at": "2026-10-16T16:30:59.927450"
-  },
-  {
-   "event": "AUTO_HELD",
-   "action": {
-    "kind": "ENTRY",
-    "strategy_key": "NIFTY_HMA",
-    "symbol": "NIFTY",
-    "mode": "HMA",
-    "direction": "SHORT",
-    "quantity": 65,
-    "contract": {
-     "symbol": "NIFTY",
-     "security_id": "47168",
-     "trading_symbol": "NIFTY-Oct2026-23100-PE",
-     "expiry": "2026-10-19",
-     "strike": 23100.0,
-     "option_type": "PE",
-     "lot": 65,
-     "exchange_segment": "NSE_FNO",
-     "ltp": 86.6,
-     "moneyness_steps": 0,
-     "moneyness": "ATM",
-     "spot": 23119.0
-    },
-    "signal_time": "2026-10-16 15:00:00",
-    "created_at": "2026-10-16T15:17:51"
-   },
-   "reason": "PAUSE.flag present",
-   "logged_at": "2026-10-16T16:36:08.828665"
-  },
-  {
-   "event": "AUTO_HELD",
-   "action": {
-    "kind": "ENTRY",
-    "strategy_key": "SENSEX_HMA",
-    "symbol": "SENSEX",
-    "mode": "HMA",
-    "direction": "LONG",
-    "quantity": 20,
-    "contract": {
-     "symbol": "SENSEX",
-     "security_id": "1124316",
-     "trading_symbol": "SENSEX-Oct2026-74700-CE",
-     "expiry": "2026-10-22",
-     "strike": 74700.0,
-     "option_type": "CE",
-     "lot": 20,
-     "exchange_segment": "BSE_FNO",
-     "ltp": 398.4,
-     "moneyness_steps": 0,
-     "moneyness": "ATM",
-     "spot": 74729.27
-    },
-    "signal_time": "2026-10-16 16:15:00",
-    "created_at": "2026-10-16T16:36:04"
-   },
-   "reason": "PAUSE.flag present",
-   "logged_at": "2026-10-16T16:36:08.829607"
-  },
-  {
-   "event": "AUTO_HELD",
-   "action": {
-    "kind": "ENTRY",
-    "strategy_key": "NIFTY_HMA",
-    "symbol": "NIFTY",
-    "mode": "HMA",
-    "direction": "SHORT",
-    "quantity": 65,
-    "contract": {
-     "symbol": "NIFTY",
-     "security_id": "47168",
-     "trading_symbol": "NIFTY-Oct2026-23100-PE",
-     "expiry": "2026-10-19",
-     "strike": 23100.0,
-     "option_type": "PE",
-     "lot": 65,
-     "exchange_segment": "NSE_FNO",
-     "ltp": 86.6,
-     "moneyness_steps": 0,
-     "moneyness": "ATM",
-     "spot": 23119.0
-    },
-    "signal_time": "2026-10-16 15:00:00",
-    "created_at": "2026-10-16T15:17:51"
-   },
-   "reason": "PAUSE.flag present",
-   "logged_at": "2026-10-16T16:41:11.043317"
-  },
-  {
-   "event": "AUTO_HELD",
-   "action": {
-    "kind": "ENTRY",
-    "strategy_key": "SENSEX_HMA",
-    "symbol": "SENSEX",
-    "mode": "HMA",
-    "direction": "LONG",
-    "quantity": 20,
-    "contract": {
-     "symbol": "SENSEX",
-     "security_id": "1124316",
-     "trading_symbol": "SENSEX-Oct2026-74700-CE",
-     "expiry": "2026-10-22",
-     "strike": 74700.0,
-     "option_type": "CE",
-     "lot": 20,
-     "exchange_segment": "BSE_FNO",
-     "ltp": 398.4,
-     "moneyness_steps": 0,
-     "moneyness": "ATM",
-     "spot": 74729.27
-    },
-    "signal_time": "2026-10-16 16:15:00",
-    "created_at": "2026-10-16T16:36:04"
-   },
-   "reason": "PAUSE.flag present",
-   "logged_at": "2026-10-16T16:41:11.044887"
-  },
-  {
-   "event": "AUTO_HELD",
-   "action": {
-    "kind": "ENTRY",
-    "strategy_key": "NIFTY_HMA",
-    "symbol": "NIFTY",
-    "mode": "HMA",
-    "direction": "SHORT",
-    "quantity": 65,
-    "contract": {
-     "symbol": "NIFTY",
-     "security_id": "47168",
-     "trading_symbol": "NIFTY-Oct2026-23100-PE",
-     "expiry": "2026-10-19",
-     "strike": 23100.0,
-     "option_type": "PE",
-     "lot": 65,
-     "exchange_segment": "NSE_FNO",
-     "ltp": 86.6,
-     "moneyness_steps": 0,
-     "moneyness": "ATM",
-     "spot": 23119.0
-    },
-    "signal_time": "2026-10-16 15:00:00",
-    "created_at": "2026-10-16T15:17:51"
-   },
-   "reason": "PAUSE.flag present",
-   "logged_at": "2026-10-16T16:46:20.178830"
-  },
-  {
-   "event": "AUTO_HELD",
-   "action": {
-    "kind": "ENTRY",
-    "strategy_key": "SENSEX_HMA",
-    "symbol": "SENSEX",
-    "mode": "HMA",
-    "direction": "LONG",
-    "quantity": 20,
-    "contract": {
-     "symbol": "SENSEX",
-     "security_id": "1124316",
-     "trading_symbol": "SENSEX-Oct2026-74700-CE",
-     "expiry": "2026-10-22",
-     "strike": 74700.0,
-     "option_type": "CE",
-     "lot": 20,
-     "exchange_segment": "BSE_FNO",
-     "ltp": 398.4,
-     "moneyness_steps": 0,
-     "moneyness": "ATM",
-     "spot": 74729.27
-    },
-    "signal_time": "2026-10-16 16:15:00",
-    "created_at": "2026-10-16T16:36:04"
-   },
-   "reason": "PAUSE.flag present",
-   "logged_at": "2026-10-16T16:46:20.180582"
-  },
-  {
-   "event": "AUTO_HELD",
-   "action": {
-    "kind": "ENTRY",
-    "strategy_key": "NIFTY_HMA",
-    "symbol": "NIFTY",
-    "mode": "HMA",
-    "direction": "SHORT",
-    "quantity": 65,
-    "contract": {
-     "symbol": "NIFTY",
-     "security_id": "47168",
-     "trading_symbol": "NIFTY-Oct2026-23100-PE",
-     "expiry": "2026-10-19",
-     "strike": 23100.0,
-     "option_type": "PE",
-     "lot": 65,
-     "exchange_segment": "NSE_FNO",
-     "ltp": 86.6,
-     "moneyness_steps": 0,
-     "moneyness": "ATM",
-     "spot": 23119.0
-    },
-    "signal_time": "2026-10-16 15:00:00",
-    "created_at": "2026-10-16T15:17:51"
-   },
-   "reason": "PAUSE.flag present",
-   "logged_at": "2026-10-16T16:51:22.329895"
-  },
   {
    "event": "AUTO_HELD",
    "action": {
@@ -836,6 +546,296 @@
    },
    "reason": "outside the auto-entry window 09:20-15:15",
    "logged_at": "2026-10-19T09:14:48.755257"
+  },
+  {
+   "event": "AUTO_HELD",
+   "action": {
+    "kind": "ENTRY",
+    "strategy_key": "NIFTY_HMA",
+    "symbol": "NIFTY",
+    "mode": "HMA",
+    "direction": "SHORT",
+    "quantity": 65,
+    "contract": {
+     "symbol": "NIFTY",
+     "security_id": "47168",
+     "trading_symbol": "NIFTY-Oct2026-23100-PE",
+     "expiry": "2026-10-19",
+     "strike": 23100.0,
+     "option_type": "PE",
+     "lot": 65,
+     "exchange_segment": "NSE_FNO",
+     "ltp": 86.6,
+     "moneyness_steps": 0,
+     "moneyness": "ATM",
+     "spot": 23119.0
+    },
+    "signal_time": "2026-10-16 15:00:00",
+    "created_at": "2026-10-16T15:17:51"
+   },
+   "reason": "outside the auto-entry window 09:20-15:15",
+   "logged_at": "2026-10-19T09:15:51.552780"
+  },
+  {
+   "event": "AUTO_HELD",
+   "action": {
+    "kind": "ENTRY",
+    "strategy_key": "SENSEX_HMA",
+    "symbol": "SENSEX",
+    "mode": "HMA",
+    "direction": "LONG",
+    "quantity": 20,
+    "contract": {
+     "symbol": "SENSEX",
+     "security_id": "1124316",
+     "trading_symbol": "SENSEX-Oct2026-74700-CE",
+     "expiry": "2026-10-22",
+     "strike": 74700.0,
+     "option_type": "CE",
+     "lot": 20,
+     "exchange_segment": "BSE_FNO",
+     "ltp": 398.4,
+     "moneyness_steps": 0,
+     "moneyness": "ATM",
+     "spot": 74729.27
+    },
+    "signal_time": "2026-10-16 16:15:00",
+    "created_at": "2026-10-16T16:36:04"
+   },
+   "reason": "outside the auto-entry window 09:20-15:15",
+   "logged_at": "2026-10-19T09:15:52.334751"
+  },
+  {
+   "event": "AUTO_HELD",
+   "action": {
+    "kind": "ENTRY",
+    "strategy_key": "NIFTY_HMA",
+    "symbol": "NIFTY",
+    "mode": "HMA",
+    "direction": "SHORT",
+    "quantity": 65,
+    "contract": {
+     "symbol": "NIFTY",
+     "security_id": "47168",
+     "trading_symbol": "NIFTY-Oct2026-23100-PE",
+     "expiry": "2026-10-19",
+     "strike": 23100.0,
+     "option_type": "PE",
+     "lot": 65,
+     "exchange_segment": "NSE_FNO",
+     "ltp": 86.6,
+     "moneyness_steps": 0,
+     "moneyness": "ATM",
+     "spot": 23119.0
+    },
+    "signal_time": "2026-10-16 15:00:00",
+    "created_at": "2026-10-16T15:17:51"
+   },
+   "reason": "outside the auto-entry window 09:20-15:15",
+   "logged_at": "2026-10-19T09:16:54.885840"
+  },
+  {
+   "event": "AUTO_HELD",
+   "action": {
+    "kind": "ENTRY",
+    "strategy_key": "SENSEX_HMA",
+    "symbol": "SENSEX",
+    "mode": "HMA",
+    "direction": "LONG",
+    "quantity": 20,
+    "contract": {
+     "symbol": "SENSEX",
+     "security_id": "1124316",
+     "trading_symbol": "SENSEX-Oct2026-74700-CE",
+     "expiry": "2026-10-22",
+     "strike": 74700.0,
+     "option_type": "CE",
+     "lot": 20,
+     "exchange_segment": "BSE_FNO",
+     "ltp": 398.4,
+     "moneyness_steps": 0,
+     "moneyness": "ATM",
+     "spot": 74729.27
+    },
+    "signal_time": "2026-10-16 16:15:00",
+    "created_at": "2026-10-16T16:36:04"
+   },
+   "reason": "outside the auto-entry window 09:20-15:15",
+   "logged_at": "2026-10-19T09:16:55.663373"
+  },
+  {
+   "event": "AUTO_HELD",
+   "action": {
+    "kind": "ENTRY",
+    "strategy_key": "NIFTY_HMA",
+    "symbol": "NIFTY",
+    "mode": "HMA",
+    "direction": "SHORT",
+    "quantity": 65,
+    "contract": {
+     "symbol": "NIFTY",
+     "security_id": "47168",
+     "trading_symbol": "NIFTY-Oct2026-23100-PE",
+     "expiry": "2026-10-19",
+     "strike": 23100.0,
+     "option_type": "PE",
+     "lot": 65,
+     "exchange_segment": "NSE_FNO",
+     "ltp": 86.6,
+     "moneyness_steps": 0,
+     "moneyness": "ATM",
+     "spot": 23119.0
+    },
+    "signal_time": "2026-10-16 15:00:00",
+    "created_at": "2026-10-16T15:17:51"
+   },
+   "reason": "outside the auto-entry window 09:20-15:15",
+   "logged_at": "2026-10-19T09:17:58.634161"
+  },
+  {
+   "event": "AUTO_HELD",
+   "action": {
+    "kind": "ENTRY",
+    "strategy_key": "SENSEX_HMA",
+    "symbol": "SENSEX",
+    "mode": "HMA",
+    "direction": "LONG",
+    "quantity": 20,
+    "contract": {
+     "symbol": "SENSEX",
+     "security_id": "1124316",
+     "trading_symbol": "SENSEX-Oct2026-74700-CE",
+     "expiry": "2026-10-22",
+     "strike": 74700.0,
+     "option_type": "CE",
+     "lot": 20,
+     "exchange_segment": "BSE_FNO",
+     "ltp": 398.4,
+     "moneyness_steps": 0,
+     "moneyness": "ATM",
+     "spot": 74729.27
+    },
+    "signal_time": "2026-10-16 16:15:00",
+    "created_at": "2026-10-16T16:36:04"
+   },
+   "reason": "outside the auto-entry window 09:20-15:15",
+   "logged_at": "2026-10-19T09:17:59.411475"
+  },
+  {
+   "event": "AUTO_HELD",
+   "action": {
+    "kind": "ENTRY",
+    "strategy_key": "NIFTY_HMA",
+    "symbol": "NIFTY",
+    "mode": "HMA",
+    "direction": "SHORT",
+    "quantity": 65,
+    "contract": {
+     "symbol": "NIFTY",
+     "security_id": "47168",
+     "trading_symbol": "NIFTY-Oct2026-23100-PE",
+     "expiry": "2026-10-19",
+     "strike": 23100.0,
+     "option_type": "PE",
+     "lot": 65,
+     "exchange_segment": "NSE_FNO",
+     "ltp": 86.6,
+     "moneyness_steps": 0,
+     "moneyness": "ATM",
+     "spot": 23119.0
+    },
+    "signal_time": "2026-10-16 15:00:00",
+    "created_at": "2026-10-16T15:17:51"
+   },
+   "reason": "outside the auto-entry window 09:20-15:15",
+   "logged_at": "2026-10-19T09:19:03.407595"
+  },
+  {
+   "event": "AUTO_HELD",
+   "action": {
+    "kind": "ENTRY",
+    "strategy_key": "SENSEX_HMA",
+    "symbol": "SENSEX",
+    "mode": "HMA",
+    "direction": "LONG",
+    "quantity": 20,
+    "contract": {
+     "symbol": "SENSEX",
+     "security_id": "1124316",
+     "trading_symbol": "SENSEX-Oct2026-74700-CE",
+     "expiry": "2026-10-22",
+     "strike": 74700.0,
+     "option_type": "CE",
+     "lot": 20,
+     "exchange_segment": "BSE_FNO",
+     "ltp": 398.4,
+     "moneyness_steps": 0,
+     "moneyness": "ATM",
+     "spot": 74729.27
+    },
+    "signal_time": "2026-10-16 16:15:00",
+    "created_at": "2026-10-16T16:36:04"
+   },
+   "reason": "outside the auto-entry window 09:20-15:15",
+   "logged_at": "2026-10-19T09:19:04.550173"
+  },
+  {
+   "event": "AUTO_DROPPED",
+   "action": {
+    "kind": "ENTRY",
+    "strategy_key": "NIFTY_HMA",
+    "symbol": "NIFTY",
+    "mode": "HMA",
+    "direction": "SHORT",
+    "quantity": 65,
+    "contract": {
+     "symbol": "NIFTY",
+     "security_id": "47168",
+     "trading_symbol": "NIFTY-Oct2026-23100-PE",
+     "expiry": "2026-10-19",
+     "strike": 23100.0,
+     "option_type": "PE",
+     "lot": 65,
+     "exchange_segment": "NSE_FNO",
+     "ltp": 86.6,
+     "moneyness_steps": 0,
+     "moneyness": "ATM",
+     "spot": 23119.0
+    },
+    "signal_time": "2026-10-16 15:00:00",
+    "created_at": "2026-10-16T15:17:51"
+   },
+   "reason": "stale signal (3980 min old, limit 20)",
+   "logged_at": "2026-10-19T09:20:07.865248"
+  },
+  {
+   "event": "AUTO_DROPPED",
+   "action": {
+    "kind": "ENTRY",
+    "strategy_key": "SENSEX_HMA",
+    "symbol": "SENSEX",
+    "mode": "HMA",
+    "direction": "LONG",
+    "quantity": 20,
+    "contract": {
+     "symbol": "SENSEX",
+     "security_id": "1124316",
+     "trading_symbol": "SENSEX-Oct2026-74700-CE",
+     "expiry": "2026-10-22",
+     "strike": 74700.0,
+     "option_type": "CE",
+     "lot": 20,
+     "exchange_segment": "BSE_FNO",
+     "ltp": 398.4,
+     "moneyness_steps": 0,
+     "moneyness": "ATM",
+     "spot": 74729.27
+    },
+    "signal_time": "2026-10-16 16:15:00",
+    "created_at": "2026-10-16T16:36:04"
+   },
+   "reason": "stale signal (3905 min old, limit 20)",
+   "logged_at": "2026-10-19T09:20:09.477769"
   }
  ]
 }
