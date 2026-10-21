@@ -1,5 +1,14 @@
 [
  {
+  "strategy": "SENSEX EHMA",
+  "dir": "SHORT",
+  "signal_time": "2026-10-21 11:45:00",
+  "index_price": 73786.12,
+  "flip_time": null,
+  "taken": "MISSED",
+  "reason": "not attempted yet"
+ },
+ {
   "strategy": "NIFTY EHMA",
   "dir": "SHORT",
   "signal_time": "2026-10-21 11:30:00",
@@ -31,7 +40,7 @@
   "dir": "LONG",
   "signal_time": "2026-10-21 10:00:00",
   "index_price": 74375.9,
-  "flip_time": null,
+  "flip_time": "2026-10-21 11:45:00",
   "taken": "TAKEN",
   "reason": "filled 446.15 -> 412.25"
  },
