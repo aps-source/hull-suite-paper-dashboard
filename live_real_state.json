@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-21T11:59:48",
+ "generated": "2026-10-21T12:05:42",
  "auto_trading": true,
  "paused": false,
  "trading_day": "2026-10-21",
@@ -23,155 +23,10 @@
   "SENSEX_EHMA": {
    "position": null,
    "day_losses": 2,
-   "last_rejected_signal": "2026-10-21 10:00:00"
+   "last_rejected_signal": "2026-10-21 11:45:00"
   }
  },
  "recent_events": [
-  {
-   "event": "AUTO_DROPPED",
-   "action": {
-    "kind": "ENTRY",
-    "strategy_key": "SENSEX_HMA",
-    "symbol": "SENSEX",
-    "mode": "HMA",
-    "direction": "SHORT",
-    "quantity": 20,
-    "contract": {
-     "symbol": "SENSEX",
-     "security_id": "1125579",
-     "trading_symbol": "SENSEX-Oct2026-73800-PE",
-     "expiry": "2026-10-22",
-     "strike": 73800.0,
-     "option_type": "PE",
-     "lot": 20,
-     "exchange_segment": "BSE_FNO",
-     "ltp": 361.65,
-     "moneyness_steps": 0,
-     "moneyness": "ATM",
-     "spot": 73835.07
-    },
-    "signal_time": "2026-10-16 16:45:00",
-    "created_at": "2026-10-19T13:41:36"
-   },
-   "reason": "stale signal (4137 min old, limit 20)",
-   "logged_at": "2026-10-19T13:41:45.163256"
-  },
-  {
-   "event": "AUTO_DROPPED",
-   "action": {
-    "kind": "ENTRY",
-    "strategy_key": "SENSEX_EHMA",
-    "symbol": "SENSEX",
-    "mode": "EHMA",
-    "direction": "SHORT",
-    "quantity": 20,
-    "contract": {
-     "symbol": "SENSEX",
-     "security_id": "1125354",
-     "trading_symbol": "SENSEX-Oct2026-73900-PE",
-     "expiry": "2026-10-22",
-     "strike": 73900.0,
-     "option_type": "PE",
-     "lot": 20,
-     "exchange_segment": "BSE_FNO",
-     "ltp": 406.4,
-     "moneyness_steps": -1,
-     "moneyness": "1 ITM",
-     "spot": 73835.07
-    },
-    "signal_time": "2026-10-19 09:30:00",
-    "created_at": "2026-10-19T13:41:38"
-   },
-   "reason": "stale signal (252 min old, limit 20)",
-   "logged_at": "2026-10-19T13:41:46.679671"
-  },
-  {
-   "event": "AUTO_DROPPED",
-   "action": {
-    "kind": "ENTRY",
-    "strategy_key": "SENSEX_HMA",
-    "symbol": "SENSEX",
-    "mode": "HMA",
-    "direction": "LONG",
-    "quantity": 20,
-    "contract": {
-     "symbol": "SENSEX",
-     "security_id": "1125634",
-     "trading_symbol": "SENSEX-Oct2026-74300-CE",
-     "expiry": "2026-10-22",
-     "strike": 74300.0,
-     "option_type": "CE",
-     "lot": 20,
-     "exchange_segment": "BSE_FNO",
-     "ltp": 297.05,
-     "moneyness_steps": 0,
-     "moneyness": "ATM",
-     "spot": 74274.1
-    },
-    "signal_time": "2026-10-21 09:45:00",
-    "created_at": "2026-10-21T10:07:55"
-   },
-   "reason": "stale signal (23 min old, limit 20)",
-   "logged_at": "2026-10-21T10:07:59.990873"
-  },
-  {
-   "event": "AUTO_DROPPED",
-   "action": {
-    "kind": "ENTRY",
-    "strategy_key": "SENSEX_HMA",
-    "symbol": "SENSEX",
-    "mode": "HMA",
-    "direction": "SHORT",
-    "quantity": 20,
-    "contract": {
-     "symbol": "SENSEX",
-     "security_id": "1125366",
-     "trading_symbol": "SENSEX-Oct2026-72400-PE",
-     "expiry": "2026-10-22",
-     "strike": 72400.0,
-     "option_type": "PE",
-     "lot": 20,
-     "exchange_segment": "BSE_FNO",
-     "ltp": 11.6,
-     "moneyness_steps": 0,
-     "moneyness": "ATM",
-     "spot": 72432.32
-    },
-    "signal_time": "2026-09-28 09:45:00",
-    "created_at": "2026-10-21T10:09:02"
-   },
-   "reason": "stale signal (33144 min old, limit 20)",
-   "logged_at": "2026-10-21T10:09:11.144153"
-  },
-  {
-   "event": "AUTO_DROPPED",
-   "action": {
-    "kind": "ENTRY",
-    "strategy_key": "SENSEX_EHMA",
-    "symbol": "SENSEX",
-    "mode": "EHMA",
-    "direction": "SHORT",
-    "quantity": 20,
-    "contract": {
-     "symbol": "SENSEX",
-     "security_id": "1123758",
-     "trading_symbol": "SENSEX-Oct2026-72500-PE",
-     "expiry": "2026-10-22",
-     "strike": 72500.0,
-     "option_type": "PE",
-     "lot": 20,
-     "exchange_segment": "BSE_FNO",
-     "ltp": 14.4,
-     "moneyness_steps": -1,
-     "moneyness": "1 ITM",
-     "spot": 72432.32
-    },
-    "signal_time": "2026-09-28 09:45:00",
-    "created_at": "2026-10-21T10:09:06"
-   },
-   "reason": "stale signal (33144 min old, limit 20)",
-   "logged_at": "2026-10-21T10:09:12.554596"
-  },
   {
    "event": "AUTO_DROPPED",
    "action": {
@@ -1610,6 +1465,151 @@
    },
    "reason": "stale signal (22 min old, limit 20)",
    "logged_at": "2026-10-21T11:51:42.415822"
+  },
+  {
+   "event": "AUTO_HELD",
+   "action": {
+    "kind": "ENTRY",
+    "strategy_key": "SENSEX_EHMA",
+    "symbol": "SENSEX",
+    "mode": "EHMA",
+    "direction": "SHORT",
+    "quantity": 20,
+    "contract": {
+     "symbol": "SENSEX",
+     "security_id": "1125579",
+     "trading_symbol": "SENSEX-Oct2026-73800-PE",
+     "expiry": "2026-10-22",
+     "strike": 73800.0,
+     "option_type": "PE",
+     "lot": 20,
+     "exchange_segment": "BSE_FNO",
+     "ltp": 405.0,
+     "moneyness_steps": -1,
+     "moneyness": "1 ITM",
+     "spot": 73726.76
+    },
+    "signal_time": "2026-10-21 11:45:00",
+    "created_at": "2026-10-21T12:00:48"
+   },
+   "reason": "2-loss breaker tripped for SENSEX_EHMA",
+   "logged_at": "2026-10-21T12:01:17.887233"
+  },
+  {
+   "event": "AUTO_HELD",
+   "action": {
+    "kind": "ENTRY",
+    "strategy_key": "SENSEX_EHMA",
+    "symbol": "SENSEX",
+    "mode": "EHMA",
+    "direction": "SHORT",
+    "quantity": 20,
+    "contract": {
+     "symbol": "SENSEX",
+     "security_id": "1125579",
+     "trading_symbol": "SENSEX-Oct2026-73800-PE",
+     "expiry": "2026-10-22",
+     "strike": 73800.0,
+     "option_type": "PE",
+     "lot": 20,
+     "exchange_segment": "BSE_FNO",
+     "ltp": 405.0,
+     "moneyness_steps": -1,
+     "moneyness": "1 ITM",
+     "spot": 73726.76
+    },
+    "signal_time": "2026-10-21 11:45:00",
+    "created_at": "2026-10-21T12:00:48"
+   },
+   "reason": "2-loss breaker tripped for SENSEX_EHMA",
+   "logged_at": "2026-10-21T12:02:31.439872"
+  },
+  {
+   "event": "AUTO_HELD",
+   "action": {
+    "kind": "ENTRY",
+    "strategy_key": "SENSEX_EHMA",
+    "symbol": "SENSEX",
+    "mode": "EHMA",
+    "direction": "SHORT",
+    "quantity": 20,
+    "contract": {
+     "symbol": "SENSEX",
+     "security_id": "1125579",
+     "trading_symbol": "SENSEX-Oct2026-73800-PE",
+     "expiry": "2026-10-22",
+     "strike": 73800.0,
+     "option_type": "PE",
+     "lot": 20,
+     "exchange_segment": "BSE_FNO",
+     "ltp": 405.0,
+     "moneyness_steps": -1,
+     "moneyness": "1 ITM",
+     "spot": 73726.76
+    },
+    "signal_time": "2026-10-21 11:45:00",
+    "created_at": "2026-10-21T12:00:48"
+   },
+   "reason": "2-loss breaker tripped for SENSEX_EHMA",
+   "logged_at": "2026-10-21T12:03:33.917885"
+  },
+  {
+   "event": "AUTO_HELD",
+   "action": {
+    "kind": "ENTRY",
+    "strategy_key": "SENSEX_EHMA",
+    "symbol": "SENSEX",
+    "mode": "EHMA",
+    "direction": "SHORT",
+    "quantity": 20,
+    "contract": {
+     "symbol": "SENSEX",
+     "security_id": "1125579",
+     "trading_symbol": "SENSEX-Oct2026-73800-PE",
+     "expiry": "2026-10-22",
+     "strike": 73800.0,
+     "option_type": "PE",
+     "lot": 20,
+     "exchange_segment": "BSE_FNO",
+     "ltp": 405.0,
+     "moneyness_steps": -1,
+     "moneyness": "1 ITM",
+     "spot": 73726.76
+    },
+    "signal_time": "2026-10-21 11:45:00",
+    "created_at": "2026-10-21T12:00:48"
+   },
+   "reason": "2-loss breaker tripped for SENSEX_EHMA",
+   "logged_at": "2026-10-21T12:04:36.504092"
+  },
+  {
+   "event": "AUTO_DROPPED",
+   "action": {
+    "kind": "ENTRY",
+    "strategy_key": "SENSEX_EHMA",
+    "symbol": "SENSEX",
+    "mode": "EHMA",
+    "direction": "SHORT",
+    "quantity": 20,
+    "contract": {
+     "symbol": "SENSEX",
+     "security_id": "1125579",
+     "trading_symbol": "SENSEX-Oct2026-73800-PE",
+     "expiry": "2026-10-22",
+     "strike": 73800.0,
+     "option_type": "PE",
+     "lot": 20,
+     "exchange_segment": "BSE_FNO",
+     "ltp": 405.0,
+     "moneyness_steps": -1,
+     "moneyness": "1 ITM",
+     "spot": 73726.76
+    },
+    "signal_time": "2026-10-21 11:45:00",
+    "created_at": "2026-10-21T12:00:48"
+   },
+   "reason": "stale signal (21 min old, limit 20)",
+   "logged_at": "2026-10-21T12:05:41.406132"
   }
  ]
 }
