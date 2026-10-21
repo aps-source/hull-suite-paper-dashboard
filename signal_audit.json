@@ -1,5 +1,14 @@
 [
  {
+  "strategy": "NIFTY HMA",
+  "dir": "SHORT",
+  "signal_time": "2026-10-21 12:00:00",
+  "index_price": 22810.3,
+  "flip_time": null,
+  "taken": "MISSED",
+  "reason": "not attempted yet"
+ },
+ {
   "strategy": "SENSEX EHMA",
   "dir": "SHORT",
   "signal_time": "2026-10-21 11:45:00",
@@ -14,15 +23,15 @@
   "signal_time": "2026-10-21 11:30:00",
   "index_price": 22887.25,
   "flip_time": null,
-  "taken": "MISSED",
-  "reason": "stale signal (22 min old, limit 20)"
+  "taken": "TAKEN",
+  "reason": "filled 210.85 -> 206.55"
  },
  {
   "strategy": "NIFTY HMA",
   "dir": "LONG",
   "signal_time": "2026-10-21 10:00:00",
   "index_price": 23022.8,
-  "flip_time": null,
+  "flip_time": "2026-10-21 12:00:00",
   "taken": "TAKEN",
   "reason": "filled 179.95 -> 187.6"
  },
