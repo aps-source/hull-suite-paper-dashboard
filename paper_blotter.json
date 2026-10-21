@@ -1,14 +1,14 @@
 [
  {
-  "strategy": "NIFTY HMA",
-  "dir": "LONG",
-  "strike": 22950.0,
-  "symbol": "NIFTY-Oct2026-22950-CE",
-  "entry_price": 178.95,
-  "entry_time": "2026-10-21 10:00:00",
+  "strategy": "NIFTY EHMA",
+  "dir": "SHORT",
+  "strike": 22900.0,
+  "symbol": "NIFTY-Oct2026-22900-PE",
+  "entry_price": 211.75,
+  "entry_time": "2026-10-21 11:30:00",
   "exit_price": null,
   "exit_time": null,
-  "pnl_rs": -3432.0,
+  "pnl_rs": null,
   "status": "OPEN"
  },
  {
@@ -17,6 +17,18 @@
   "strike": 22900.0,
   "symbol": "NIFTY-Oct2026-22900-CE",
   "entry_price": 206.4,
+  "entry_time": "2026-10-21 10:00:00",
+  "exit_price": 146.85,
+  "exit_time": "2026-10-21T11:44:32",
+  "pnl_rs": -3870.75,
+  "status": "CLOSED"
+ },
+ {
+  "strategy": "NIFTY HMA",
+  "dir": "LONG",
+  "strike": 22950.0,
+  "symbol": "NIFTY-Oct2026-22950-CE",
+  "entry_price": 178.95,
   "entry_time": "2026-10-21 10:00:00",
   "exit_price": null,
   "exit_time": null,
