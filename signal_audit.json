@@ -1,10 +1,46 @@
 [
  {
   "strategy": "NIFTY HMA",
+  "dir": "SHORT",
+  "signal_time": "2026-10-22 09:30:00",
+  "index_price": 22601.55,
+  "flip_time": null,
+  "taken": "MISSED",
+  "reason": "not attempted yet"
+ },
+ {
+  "strategy": "NIFTY EHMA",
+  "dir": "SHORT",
+  "signal_time": "2026-10-22 09:30:00",
+  "index_price": 22601.55,
+  "flip_time": null,
+  "taken": "MISSED",
+  "reason": "not attempted yet"
+ },
+ {
+  "strategy": "SENSEX HMA",
+  "dir": "SHORT",
+  "signal_time": "2026-10-22 09:30:00",
+  "index_price": 73165.63,
+  "flip_time": null,
+  "taken": "MISSED",
+  "reason": "not attempted yet"
+ },
+ {
+  "strategy": "SENSEX EHMA",
+  "dir": "SHORT",
+  "signal_time": "2026-10-22 09:30:00",
+  "index_price": 73165.63,
+  "flip_time": null,
+  "taken": "MISSED",
+  "reason": "not attempted yet"
+ },
+ {
+  "strategy": "NIFTY HMA",
   "dir": "LONG",
   "signal_time": "2026-10-22 09:15:00",
   "index_price": 22687.75,
-  "flip_time": null,
+  "flip_time": "2026-10-22 09:30:00",
   "taken": "MISSED",
   "reason": "stale signal (21 min old, limit 20)"
  },
@@ -13,7 +49,7 @@
   "dir": "LONG",
   "signal_time": "2026-10-22 09:15:00",
   "index_price": 22687.75,
-  "flip_time": null,
+  "flip_time": "2026-10-22 09:30:00",
   "taken": "MISSED",
   "reason": "stale signal (21 min old, limit 20)"
  },
@@ -22,7 +58,7 @@
   "dir": "LONG",
   "signal_time": "2026-10-22 09:15:00",
   "index_price": 73343.33,
-  "flip_time": null,
+  "flip_time": "2026-10-22 09:30:00",
   "taken": "MISSED",
   "reason": "stale signal (21 min old, limit 20)"
  },
@@ -31,7 +67,7 @@
   "dir": "LONG",
   "signal_time": "2026-10-22 09:15:00",
   "index_price": 73343.33,
-  "flip_time": null,
+  "flip_time": "2026-10-22 09:30:00",
   "taken": "MISSED",
   "reason": "stale signal (21 min old, limit 20)"
  },
