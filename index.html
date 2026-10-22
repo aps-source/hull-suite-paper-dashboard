@@ -184,16 +184,15 @@
 <header class="hero">
   <div class="hero-inner">
     <div class="brand"><div class="logo">〰</div>
-      <div><h1>Hull Suite</h1><div class="tag">NIFTY + SENSEX · HMA &amp; EHMA (length 55) · 15-min · positional · paper (below) + real futures (top)</div></div></div>
+      <div><h1>Hull Suite</h1><div class="tag">NIFTY + SENSEX · HMA &amp; EHMA (length 55) · 15-min · positional · paper only — real-money trading discontinued 2026-10-22</div></div></div>
     <div class="hero-right">
       <span id="status"></span><span class="hero-pill" id="tick">…</span>
-      <div class="toggle-wrap">
-        <span class="toggle-label">Trading</span>
-        <button class="switch" id="trading-switch" title="Turn new entries on/off for the live engine (both instruments)"></button>
-        <span class="toggle-state" id="trading-switch-state">loading…</span>
-      </div>
       <a class="btn" href="trades.html">Day-wise trades &amp; P&amp;L →</a><a class="btn" href="backtest.html">Backtest data →</a>
     </div>
+  </div>
+  <div style="background:var(--warning);color:#1a1200;padding:0.6rem 1.1rem;font-size:0.85rem;font-weight:700">
+    REAL-MONEY TRADING DISCONTINUED 2026-10-22 — this project converted to paper-only. The real trade blotter and
+    "Real trading" sections below are historical (frozen at shutdown), kept for reference only.
   </div>
   <details class="rules"><summary>Strategy rules</summary>
     <p>Hull Suite (InSilico): the Hull line is <b>GREEN</b> when it is above its value 2 bars ago, <b>RED</b> otherwise. A flip to green = go LONG, a flip to red = go SHORT; the opposite flip closes the trade and reverses. Signal on the closed 15-min bar, fill at the next bar's open. Positional: trades are held overnight, always in the market after the first flip. HMA = weighted Hull average, EHMA = the same built from exponential averages. Nothing else — no CPR, no EMA exit (both tested and rejected). 1 lot per strategy.</p></details>
@@ -202,7 +201,7 @@
   <div id="err"></div>
   <div id="real"></div>
   <div class="grid" id="sigChecklist" style="margin-bottom:1.1rem"></div>
-  <h2 style="font-size:0.95rem;margin:1.1rem 0 0.6rem;color:var(--text-secondary)">Real trading — detail (chart, entry/exit, stats per strategy)</h2>
+  <h2 style="font-size:0.95rem;margin:1.1rem 0 0.6rem;color:var(--text-secondary)">Real trading — detail, DISCONTINUED 2026-10-22 (chart, entry/exit, stats per strategy — historical)</h2>
   <div class="kpis" id="kpis"></div>
   <div class="grid" id="cards"></div>
   <div id="optPaper"></div>
@@ -216,7 +215,7 @@
       the exact logged reason, or "not attempted yet" if nothing was logged. Strike/entry/exit detail for a taken signal is in
       the blotter above, joined by strategy + time.</div>
     <div class="tbl-scroll" id="signals"></div></div>
-  <div class="foot">This page cannot place, modify or cancel any order itself — it only displays state written by the engines. <b>Real trade blotter</b> reflects the live options engine (NIFTY 65 / SENSEX 20 qty per strategy, product MARGIN); it places real orders only while armed (<code>AUTO_TRADING.on</code>), subject to a Rs 5,000/day combined loss cap and a 2-consecutive-loss breaker per strategy. <b>Paper trade blotter</b> simulates the same option premiums and strike selection without ever placing an order. Refreshes every 30 seconds.</div>
+  <div class="foot">This page cannot place, modify or cancel any order itself — it only displays state written by the engines. <b>Real trade blotter</b> is DISCONTINUED 2026-10-22 — frozen historical record of the real-money options engine (NIFTY 65 / SENSEX 20 qty per strategy, product MARGIN) that ran 2026-10-07 to 2026-10-22, subject to a Rs 5,000/day combined loss cap and a 2-consecutive-loss breaker per strategy; no new real trades will appear. <b>Paper trade blotter</b> is the active strategy now, simulating the same option premiums and strike selection without ever placing an order. Refreshes every 30 seconds.</div>
 
   <section class="chart-section">
     <h2>Today's chart &middot; strategy, signals &amp; trades</h2>
@@ -287,21 +286,8 @@ function chart(v, trades) {
   </svg>`;
 }
 function healthCard(s, r) {
-  if (!r) return `<div class="health"><div class="hh"><b>Start-of-day checklist</b><span class="pill bad">CHECK NEEDED</span></div>
-    <div class="row"><span class="ic bad">!</span>Could not load live_real_state.json — real engine may not be running</div></div>`;
-  const age = (Date.now() - new Date(s.last_tick + "+05:30").getTime()) / 60000;
-  const lastEv = (r.recent_events && r.recent_events.length) ? r.recent_events[r.recent_events.length - 1] : null;
-  const lastOrderOk = !lastEv || lastEv.order_ok !== false;
-  const checks = [
-    ["Both instruments ticking (last tick ≤ 10 min old)", age <= 10],
-    ["Not paused (PAUSE.flag absent)", !r.paused],
-    ["Armed for real orders (AUTO_TRADING.on present)", !!r.auto_trading],
-    ["No data errors this tick", !(s.errors || []).length],
-    ["No error on most recent order attempt", lastOrderOk],
-  ];
-  const allOk = checks.every(c => c[1]);
-  return `<div class="health"><div class="hh"><b>Start-of-day checklist</b><span class="pill ${allOk ? "ok" : "bad"}">${allOk ? "ALL CLEAR" : "CHECK NEEDED"}</span></div>
-    ${checks.map(([label, ok]) => `<div class="row"><span class="ic ${ok ? "ok" : "bad"}">${ok ? "✓" : "!"}</span>${esc(label)}</div>`).join("")}</div>`;
+  return `<div class="health"><div class="hh"><b>Start-of-day checklist</b><span class="pill bad">REAL ENGINE DISCONTINUED</span></div>
+    <div class="row"><span class="ic bad">!</span>Real-money engine stopped permanently 2026-10-22 — this checklist no longer applies. See the paper engine's own status below instead.</div></div>`;
 }
 function eventLine(e) {
   const t = e.logged_at ? esc(e.logged_at.slice(5, 16)) : "";
@@ -369,18 +355,15 @@ function optPaperSection(optState, optHist) {
 }
 function realBanner(r) {
   if (!r) return "";
-  const bannerCls = r.auto_trading && !r.paused ? "" : "off";
-  const status = r.paused ? "PAUSED — new entries blocked, exits still fire"
-    : (r.auto_trading ? "ARMED — placing real orders" : "NOT ARMED — signals detected, no real orders");
   const strats = Object.entries(r.strategies || {}).map(([k, s]) => {
     const p = s.position;
     const label = p ? `${esc(p.direction)} @ ${p.entry_ltp}` : "flat";
     return `<div class="real-strat"><div class="n">${esc(k.replace("_", " "))}</div><div class="p">${label}</div>
-      <div class="m">${s.day_losses} loss${s.day_losses === 1 ? "" : "es"} today</div></div>`;
+      <div class="m">${s.day_losses} loss${s.day_losses === 1 ? "" : "es"} today (frozen)</div></div>`;
   }).join("");
-  return `<div class="real-banner ${bannerCls}">
-      <div><div class="lbl">Real trading · NIFTY 65 / SENSEX 20 qty per strategy</div><div class="big">${esc(status)}</div></div>
-      <div style="text-align:right"><div class="lbl">Combined P&amp;L today</div><div class="big">${rs(r.combined_daily_pnl_rupees)}</div></div>
+  return `<div class="real-banner off">
+      <div><div class="lbl">Real trading · NIFTY 65 / SENSEX 20 qty per strategy</div><div class="big">DISCONTINUED 2026-10-22 — last state shown below</div></div>
+      <div style="text-align:right"><div class="lbl">Final combined P&amp;L (2026-10-22)</div><div class="big">${rs(r.combined_daily_pnl_rupees)}</div></div>
     </div>
     <div class="real-strats">${strats}</div>`;
 }
@@ -500,88 +483,6 @@ function refreshTables() {
 refreshTables();
 refresh(); setInterval(refresh, 30000);
 setInterval(refreshTables, 30000);
-
-/* ---------- trading on/off toggle: writes control.json in this repo via the GitHub API.
-   The live engine pulls this repo once per tick and blocks every new entry, both NIFTY and
-   SENSEX, whenever trading_enabled is false -- same effect as the engine's local PAUSE.flag,
-   just reachable from the dashboard instead of the trading PC. A GitHub token is required to
-   WRITE; asked for once, kept only in this browser's localStorage, never sent anywhere but
-   github.com. */
-const GH_REPO = "aps-source/hull-suite-paper-dashboard";
-const GH_API = `https://api.github.com/repos/${GH_REPO}/contents/control.json`;
-const switchBtn = document.getElementById("trading-switch");
-const switchState = document.getElementById("trading-switch-state");
-let controlSha = null;
-
-function renderSwitch(enabled, note) {
-  switchBtn.classList.toggle("on", !!enabled);
-  switchState.textContent = note || (enabled ? "ON — entries allowed" : "OFF — entries blocked");
-}
-
-async function loadControl() {
-  try {
-    const res = await fetch("control.json?t=" + Date.now(), { cache: "no-store" });
-    if (!res.ok) throw new Error("HTTP " + res.status);
-    const c = await res.json();
-    renderSwitch(c.trading_enabled !== false);
-  } catch (e) {
-    renderSwitch(true, "status unknown");
-  }
-}
-
-async function flipTrading() {
-  const turningOn = !switchBtn.classList.contains("on");
-  if (!confirm(turningOn
-    ? "Turn trading back ON for NIFTY + SENSEX?"
-    : "Turn trading OFF for NIFTY + SENSEX?\n\nThe live engine will stop taking new entries (open positions are not touched) until switched back on here.")) return;
-
-  let pat = localStorage.getItem("hull_gh_pat");
-  if (!pat) {
-    pat = prompt("GitHub token with write access to this repo (saved only in this browser):");
-    if (!pat) return;
-    localStorage.setItem("hull_gh_pat", pat.trim());
-    pat = pat.trim();
-  }
-
-  switchBtn.disabled = true;
-  switchState.textContent = "saving…";
-  try {
-    if (!controlSha) {
-      const cur = await fetch(GH_API, { headers: { Authorization: "Bearer " + pat } });
-      if (!cur.ok) throw new Error("could not read current file (HTTP " + cur.status + ")");
-      controlSha = (await cur.json()).sha;
-    }
-    const body = {
-      trading_enabled: turningOn,
-      updated_at: new Date().toISOString(),
-      updated_by: "dashboard",
-    };
-    const content = btoa(unescape(encodeURIComponent(JSON.stringify(body, null, 2) + "\n")));
-    const res = await fetch(GH_API, {
-      method: "PUT",
-      headers: { Authorization: "Bearer " + pat, "Content-Type": "application/json" },
-      body: JSON.stringify({
-        message: `Trading ${turningOn ? "ON" : "OFF"} via dashboard toggle`,
-        content, sha: controlSha, branch: "main",
-      }),
-    });
-    if (!res.ok) {
-      if (res.status === 401 || res.status === 403) localStorage.removeItem("hull_gh_pat");
-      throw new Error("GitHub rejected the write (HTTP " + res.status + ")");
-    }
-    controlSha = (await res.json()).content.sha;
-    renderSwitch(turningOn, (turningOn ? "ON" : "OFF") + " — reaches the engine on its next tick");
-  } catch (e) {
-    alert("Could not update trading status: " + e.message);
-    renderSwitch(!turningOn);
-  } finally {
-    switchBtn.disabled = false;
-  }
-}
-
-switchBtn.addEventListener("click", flipTrading);
-loadControl();
-setInterval(loadControl, 30000);
 
 /* ---------- today's chart section: trades-table image + per-instrument annotated/strategy
    chart, same PNGs already sent to Telegram at 15:40 by send_daily_trades_image.py, copied here
