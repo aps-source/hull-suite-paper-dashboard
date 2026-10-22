@@ -1,9 +1,9 @@
 {
- "engine_status": "data_error",
+ "engine_status": "running",
  "paper_start": "2026-09-28",
  "hull_length": 55,
  "timeframe": "15m",
- "last_tick": "2026-10-22T16:32:03",
+ "last_tick": "2026-10-22T16:37:23",
  "lots": {
   "NIFTY": 65,
   "SENSEX": 20
@@ -12,14 +12,14 @@
  "instruments": {
   "NIFTY": {
    "ltp": 22687.65,
-   "last_1m": "2026-10-22 16:26:00",
+   "last_1m": "2026-10-22 16:37:00",
    "strategies": {
     "HMA": {
      "mode": "HMA",
      "colour": "GREEN",
      "colour_since": "2026-10-22 15:30:00",
-     "hull": 22634.63,
-     "hull_2_bars_ago": 22629.25,
+     "hull": 22638.11,
+     "hull_2_bars_ago": 22631.49,
      "pending_signal": null,
      "position": {
       "dir": "LONG",
@@ -37,11 +37,6 @@
      "total_net_pts": -8.69,
      "total_net_rs": -565.0,
      "tail": [
-      {
-       "t": "10-19 15:15",
-       "c": 22888.95,
-       "h": 22874.08
-      },
       {
        "t": "10-19 15:30",
        "c": 22888.95,
@@ -336,16 +331,21 @@
        "t": "10-22 16:00",
        "c": 22687.65,
        "h": 22634.63
+      },
+      {
+       "t": "10-22 16:15",
+       "c": 22687.65,
+       "h": 22638.11
       }
      ],
-     "last_completed_bar": "2026-10-22 16:00"
+     "last_completed_bar": "2026-10-22 16:15"
     },
     "EHMA": {
      "mode": "EHMA",
      "colour": "GREEN",
      "colour_since": "2026-10-22 15:45:00",
-     "hull": 22630.91,
-     "hull_2_bars_ago": 22629.39,
+     "hull": 22632.15,
+     "hull_2_bars_ago": 22629.95,
      "pending_signal": null,
      "position": {
       "dir": "LONG",
@@ -363,11 +363,6 @@
      "total_net_pts": 712.47,
      "total_net_rs": 46311.0,
      "tail": [
-      {
-       "t": "10-19 15:15",
-       "c": 22888.95,
-       "h": 22961.52
-      },
       {
        "t": "10-19 15:30",
        "c": 22888.95,
@@ -662,15 +657,20 @@
        "t": "10-22 16:00",
        "c": 22687.65,
        "h": 22630.91
+      },
+      {
+       "t": "10-22 16:15",
+       "c": 22687.65,
+       "h": 22632.15
       }
      ],
-     "last_completed_bar": "2026-10-22 16:00"
+     "last_completed_bar": "2026-10-22 16:15"
     }
    }
   },
   "SENSEX": {
    "ltp": 73249.39,
-   "last_1m": "2026-10-22 16:32:00",
+   "last_1m": "2026-10-22 16:37:00",
    "strategies": {
     "HMA": {
      "mode": "HMA",
@@ -1327,9 +1327,7 @@
    }
   }
  },
- "errors": [
-  "NIFTY: {'status': 'failure', 'remarks': 'HTTPSConnectionPool(host=\\'api.dhan.co\\', port=443): Max retries exceeded with url: /v2/charts/intraday (Caused by NameResolutionError(\"<urllib3.connection.HTTPSConne"
- ],
+ "errors": [],
  "total_net_rs": 31827.0,
  "realized_net_rs": 30922.0,
  "open_positions": 4
