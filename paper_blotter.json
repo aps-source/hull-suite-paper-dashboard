@@ -1,15 +1,27 @@
 [
  {
   "strategy": "NIFTY EHMA",
+  "dir": "SHORT",
+  "strike": 22650.0,
+  "symbol": "NIFTY-Nov2026-22650-PE",
+  "entry_price": 226.45,
+  "entry_time": "2026-10-28 09:30:00",
+  "exit_price": null,
+  "exit_time": null,
+  "pnl_rs": null,
+  "status": "OPEN"
+ },
+ {
+  "strategy": "NIFTY EHMA",
   "dir": "LONG",
   "strike": 22500.0,
   "symbol": "NIFTY-Nov2026-22500-CE",
   "entry_price": 238.95,
   "entry_time": "2026-10-28 09:15:00",
-  "exit_price": null,
-  "exit_time": null,
-  "pnl_rs": null,
-  "status": "OPEN"
+  "exit_price": 262.1,
+  "exit_time": "2026-10-28T09:44:47",
+  "pnl_rs": 1504.75,
+  "status": "CLOSED"
  },
  {
   "strategy": "NIFTY EHMA",
