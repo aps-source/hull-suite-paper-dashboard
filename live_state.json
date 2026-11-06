@@ -3,7 +3,7 @@
  "paper_start": "2026-09-28",
  "hull_length": 55,
  "timeframe": "15m",
- "last_tick": "2026-11-06T17:43:27",
+ "last_tick": "2026-11-06T17:48:33",
  "lots": {
   "NIFTY": 65,
   "SENSEX": 20
@@ -12,14 +12,14 @@
  "instruments": {
   "NIFTY": {
    "ltp": 25030.35,
-   "last_1m": "2026-11-06 17:43:00",
+   "last_1m": "2026-11-06 17:48:00",
    "strategies": {
     "HMA": {
      "mode": "HMA",
      "colour": "GREEN",
      "colour_since": "2026-11-04 13:30:00",
-     "hull": 25024.6,
-     "hull_2_bars_ago": 24982.61,
+     "hull": 25043.16,
+     "hull_2_bars_ago": 25004.41,
      "pending_signal": null,
      "position": {
       "dir": "LONG",
@@ -37,11 +37,6 @@
      "total_net_pts": 1263.99,
      "total_net_rs": 82159.0,
      "tail": [
-      {
-       "t": "11-04 15:45",
-       "c": 23960.6,
-       "h": 23919.85
-      },
       {
        "t": "11-04 16:00",
        "c": 23960.6,
@@ -336,16 +331,21 @@
        "t": "11-06 17:15",
        "c": 25030.35,
        "h": 25024.6
+      },
+      {
+       "t": "11-06 17:30",
+       "c": 25030.35,
+       "h": 25043.16
       }
      ],
-     "last_completed_bar": "2026-11-06 17:15"
+     "last_completed_bar": "2026-11-06 17:30"
     },
     "EHMA": {
      "mode": "EHMA",
      "colour": "GREEN",
      "colour_since": "2026-11-04 12:30:00",
-     "hull": 25014.04,
-     "hull_2_bars_ago": 24979.02,
+     "hull": 25029.49,
+     "hull_2_bars_ago": 24997.22,
      "pending_signal": null,
      "position": {
       "dir": "LONG",
@@ -363,11 +363,6 @@
      "total_net_pts": 2439.14,
      "total_net_rs": 158544.0,
      "tail": [
-      {
-       "t": "11-04 15:45",
-       "c": 23960.6,
-       "h": 23952.37
-      },
       {
        "t": "11-04 16:00",
        "c": 23960.6,
@@ -662,9 +657,14 @@
        "t": "11-06 17:15",
        "c": 25030.35,
        "h": 25014.04
+      },
+      {
+       "t": "11-06 17:30",
+       "c": 25030.35,
+       "h": 25029.49
       }
      ],
-     "last_completed_bar": "2026-11-06 17:15"
+     "last_completed_bar": "2026-11-06 17:30"
     }
    }
   },
