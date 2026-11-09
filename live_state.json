@@ -3,7 +3,7 @@
  "paper_start": "2026-09-28",
  "hull_length": 55,
  "timeframe": "15m",
- "last_tick": "2026-11-09T15:01:01",
+ "last_tick": "2026-11-09T15:06:32",
  "lots": {
   "NIFTY": 65,
   "SENSEX": 20
@@ -12,7 +12,7 @@
  "instruments": {
   "NIFTY": {
    "ltp": 24995.1,
-   "last_1m": "2026-11-09 15:01:00",
+   "last_1m": "2026-11-09 15:06:00",
    "strategies": {
     "HMA": {
      "mode": "HMA",
@@ -669,8 +669,8 @@
    }
   },
   "SENSEX": {
-   "ltp": 81051.72,
-   "last_1m": "2026-11-09 15:01:00",
+   "ltp": 81042.2,
+   "last_1m": "2026-11-09 15:06:00",
    "strategies": {
     "HMA": {
      "mode": "HMA",
@@ -683,17 +683,17 @@
       "dir": "SHORT",
       "entry_time": "2026-11-09 10:30:00",
       "entry_price": 80764.3,
-      "ltp": 81051.72,
-      "unrealized_pts": -287.42,
-      "unrealized_net_pts": -303.6,
-      "unrealized_rs": -6072.0
+      "ltp": 81042.2,
+      "unrealized_pts": -277.9,
+      "unrealized_net_pts": -294.08,
+      "unrealized_rs": -5882.0
      },
      "closed_trades": 30,
      "wins": 15,
      "realized_net_pts": 4198.47,
      "realized_net_rs": 83969.0,
-     "total_net_pts": 3894.87,
-     "total_net_rs": 77897.0,
+     "total_net_pts": 3904.39,
+     "total_net_rs": 78088.0,
      "tail": [
       {
        "t": "11-06 09:15",
@@ -1009,17 +1009,17 @@
       "dir": "LONG",
       "entry_time": "2026-11-09 14:45:00",
       "entry_price": 81091.98,
-      "ltp": 81051.72,
-      "unrealized_pts": -40.26,
-      "unrealized_net_pts": -56.47,
-      "unrealized_rs": -1129.0
+      "ltp": 81042.2,
+      "unrealized_pts": -49.78,
+      "unrealized_net_pts": -65.99,
+      "unrealized_rs": -1320.0
      },
      "closed_trades": 31,
      "wins": 10,
      "realized_net_pts": 2967.27,
      "realized_net_rs": 59345.0,
-     "total_net_pts": 2910.8,
-     "total_net_rs": 58216.0,
+     "total_net_pts": 2901.28,
+     "total_net_rs": 58026.0,
      "tail": [
       {
        "t": "11-06 09:15",
@@ -1328,7 +1328,7 @@
   }
  },
  "errors": [],
- "total_net_rs": 354186.0,
+ "total_net_rs": 354187.0,
  "realized_net_rs": 365419.0,
  "open_positions": 4
 }
